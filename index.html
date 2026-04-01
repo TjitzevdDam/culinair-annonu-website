@@ -3,11 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Culinair AnnoNu — High-End Gastronomische Evenementen</title>
-    <meta name="description" content="Culinair AnnoNu is uw partner voor exclusieve gastronomische evenementen. Van een intiem diner voor 6 gasten tot een volledig brand event voor 1000 personen.">
+    <title>Culinair AnnoNu — Brand Events & Exclusieve Culinaire Ervaringen</title>
+    <meta name="description" content="Culinair AnnoNu is de culinaire regisseur voor merken in Nederland. Wij produceren exclusieve brand events, culinaire merkervaringen en gastronomische evenementen voor 15 tot 1000 gasten. Bewezen bij Penfolds, Samsung, Hotel Okura en Gault&Millau.">
+    <meta name="keywords" content="brand events, culinaire evenementen, brand experience agency, exclusieve events organiseren, gastronomisch event, brand dinner, culinaire merkbeleving, corporate events Nederland, luxury events, private chef">
+    <meta property="og:title" content="Culinair AnnoNu — De Culinaire Regisseur voor Merken">
+    <meta property="og:description" content="Wij produceren exclusieve culinaire ervaringen waarmee merken hun relaties verrassen en hun merk laden. Van concept tot uitvoering.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tjitzevddam.github.io/culinair-annonu-website/">
+    <meta property="og:image" content="https://tjitzevddam.github.io/culinair-annonu-website/images/hero-action.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://tjitzevddam.github.io/culinair-annonu-website/">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "EventPlanner",
+        "name": "Culinair AnnoNu",
+        "description": "De culinaire regisseur voor merken in Nederland. Wij produceren exclusieve brand events en gastronomische merkervaringen.",
+        "url": "https://tjitzevddam.github.io/culinair-annonu-website/",
+        "telephone": "+31619150928",
+        "email": "info@culinair-annonu.com",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Vlielandstraat 2, De Groene Bark, Lokaal 207",
+            "addressLocality": "Zaandam",
+            "postalCode": "1506 ZK",
+            "addressCountry": "NL"
+        },
+        "founder": {
+            "@type": "Person",
+            "name": "Tjitze van der Dam",
+            "jobTitle": "Culinair Regisseur & Oprichter"
+        },
+        "areaServed": "Nederland",
+        "knowsAbout": ["Brand Events", "Culinaire Evenementen", "Brand Experience", "Gastronomische Events", "Corporate Dining", "Private Chef"],
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Event Formats",
+            "itemListElement": [
+                {"@type": "Offer", "name": "Chef's Table Intiem", "description": "Exclusief culinair event voor 15-25 gasten"},
+                {"@type": "Offer", "name": "Brand Dinner", "description": "Volledig geproduceerd brand event voor 40-65 gasten"},
+                {"@type": "Offer", "name": "Grand Experience", "description": "Grootschalig culinair event voor 80-120 gasten"},
+                {"@type": "Offer", "name": "Multi-Event Partnership", "description": "Doorlopend culinair programma voor merken"}
+            ]
+        }
+    }
+    </script>
+
     <style>
         /* ============================================
            CSS RESET & VARIABLES
@@ -404,11 +450,11 @@
 
         .hero h1 {
             font-family: var(--font-display);
-            font-size: clamp(3rem, 7vw, 6rem);
+            font-size: clamp(3rem, 7vw, 5.5rem);
             font-weight: 400;
             color: var(--white);
             line-height: 1.1;
-            max-width: 800px;
+            max-width: 850px;
             margin-bottom: 32px;
             animation: fadeUp 0.8s var(--transition) 0.2s both;
         }
@@ -422,7 +468,7 @@
             font-size: 1.15rem;
             line-height: 1.7;
             color: rgba(255, 255, 255, 0.7);
-            max-width: 520px;
+            max-width: 560px;
             margin-bottom: 48px;
             font-weight: 300;
             animation: fadeUp 0.8s var(--transition) 0.4s both;
@@ -515,6 +561,39 @@
             50% { opacity: 1; }
         }
 
+        /* Hero client strip */
+        .hero-clients {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            animation: fadeUp 0.8s var(--transition) 0.8s both;
+        }
+
+        .hero-clients-label {
+            font-size: 0.75rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.35);
+            margin-bottom: 20px;
+        }
+
+        .hero-clients-logos {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .hero-clients-logos span {
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.35);
+            white-space: nowrap;
+        }
+
         /* ============================================
            ABOUT SECTION
            ============================================ */
@@ -549,19 +628,6 @@
             background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
             opacity: 0.15;
             z-index: 1;
-        }
-
-        .about-image-placeholder {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, var(--cream) 0%, var(--cream-dark) 100%);
-            font-family: var(--font-display);
-            font-size: 1.2rem;
-            color: var(--gold);
-            font-style: italic;
         }
 
         .about-image-wrapper .deco-frame {
@@ -649,6 +715,135 @@
         }
 
         /* ============================================
+           EVENT FORMATS SECTION
+           ============================================ */
+        .formats {
+            padding: var(--section-padding) 0;
+            background: var(--charcoal);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .formats::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            right: -200px;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(196, 149, 106, 0.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .formats-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 72px;
+        }
+
+        .formats-header .section-label {
+            justify-content: center;
+        }
+        .formats-header .section-label::before { display: none; }
+        .formats-header .section-label::after {
+            content: '';
+            width: 40px;
+            height: 2px;
+            background: var(--gold);
+        }
+
+        .formats .section-title { color: var(--white); }
+
+        .formats-intro {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: rgba(255,255,255,0.6);
+        }
+
+        .formats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+        }
+
+        .format-card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            padding: 48px 40px;
+            position: relative;
+            transition: all 0.5s var(--transition);
+        }
+
+        .format-card:hover {
+            background: rgba(255,255,255,0.07);
+            border-color: var(--gold);
+            transform: translateY(-4px);
+        }
+
+        .format-card-number {
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .format-card-number::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: rgba(255,255,255,0.1);
+        }
+
+        .format-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: var(--white);
+        }
+
+        .format-card .format-guests {
+            font-size: 0.9rem;
+            color: var(--gold-light);
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .format-card p {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: rgba(255,255,255,0.55);
+            margin-bottom: 24px;
+        }
+
+        .format-card .format-ideal {
+            font-size: 0.8rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.35);
+        }
+
+        .format-card .format-ideal strong {
+            color: rgba(255,255,255,0.5);
+        }
+
+        .formats-cta {
+            text-align: center;
+            margin-top: 64px;
+        }
+
+        @media (max-width: 768px) {
+            .formats-grid { grid-template-columns: 1fr; }
+        }
+
+        /* ============================================
            SERVICES SECTION
            ============================================ */
         .services {
@@ -659,7 +854,7 @@
 
         .services-header {
             text-align: center;
-            max-width: 640px;
+            max-width: 700px;
             margin: 0 auto 72px;
         }
 
@@ -760,8 +955,7 @@
            ============================================ */
         .projects {
             padding: var(--section-padding) 0;
-            background: var(--charcoal);
-            color: var(--white);
+            background: var(--white);
         }
 
         .projects-header {
@@ -773,8 +967,6 @@
             gap: 24px;
         }
 
-        .projects .section-title { color: var(--white); }
-
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -784,7 +976,8 @@
         .project-card {
             position: relative;
             aspect-ratio: 4/3;
-            overflow: hidden;C            cursor: pointer;
+            overflow: hidden;
+            cursor: pointer;
             background: var(--charcoal-light);
         }
 
@@ -824,11 +1017,22 @@
             opacity: 1;
         }
 
+        .project-card-content .project-tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--gold-light);
+            margin-bottom: 8px;
+        }
+
         .project-card-content h3 {
             font-family: var(--font-display);
             font-size: 1.4rem;
             font-weight: 500;
             margin-bottom: 8px;
+            color: var(--white);
         }
 
         .project-card-content p {
@@ -839,6 +1043,53 @@
 
         @media (max-width: 768px) {
             .projects-grid { grid-template-columns: 1fr; }
+        }
+
+        /* ============================================
+           CLIENTS SECTION
+           ============================================ */
+        .clients {
+            padding: 80px 0;
+            background: var(--cream);
+        }
+
+        .clients-inner {
+            text-align: center;
+        }
+
+        .clients-label {
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-light);
+            margin-bottom: 48px;
+        }
+
+        .clients-grid {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 40px 56px;
+            opacity: 0.5;
+            filter: grayscale(100%);
+            transition: all 0.5s;
+        }
+
+        .clients-grid:hover {
+            opacity: 0.7;
+            filter: grayscale(50%);
+        }
+
+        .client-logo {
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--text-medium);
+            white-space: nowrap;
         }
 
         /* ============================================
@@ -891,25 +1142,6 @@
             position: relative;
         }
 
-        .product-image-placeholder {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            background: linear-gradient(135deg, var(--cream) 0%, var(--cream-dark) 100%);
-            font-family: var(--font-display);
-            font-style: italic;
-            color: var(--gold);
-        }
-
-        .product-image-placeholder .product-icon {
-            font-size: 3rem;
-            opacity: 0.6;
-        }
-
         .product-card h3 {
             font-family: var(--font-display);
             font-size: 1.3rem;
@@ -959,55 +1191,6 @@
 
         @media (max-width: 768px) {
             .shop-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto 60px; }
-        }
-
-        /* Shopify embed styling */
-        .shopify-embed-container {
-            margin-top: 24px;
-        }
-
-        /* ============================================
-           CLIENTS SECTION
-           ============================================ */
-        .clients {
-            padding: 80px 0;
-            background: var(--cream);
-        }
-
-        .clients-label {
-            text-align: center;
-            font-size: 0.85rem;
-            font-weight: 500;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--text-light);
-            margin-bottom: 48px;
-        }
-
-        .clients-grid {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: center;
-            gap: 40px 56px;
-            opacity: 0.5;
-            filter: grayscale(100%);
-            transition: all 0.5s;
-        }
-
-        .clients-grid:hover {
-            opacity: 0.7;
-            filter: grayscale(50%);
-        }
-
-        .client-logo {
-            font-family: var(--font-body);
-            font-size: 0.9rem;
-            font-weight: 600;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            color: var(--text-medium);
-            white-space: nowrap;
         }
 
         /* ============================================
@@ -1106,6 +1289,7 @@
         }
 
         .form-group input,
+        .form-group select,
         .form-group textarea {
             padding: 16px 0;
             font-family: var(--font-body);
@@ -1119,7 +1303,19 @@
             resize: none;
         }
 
+        .form-group select {
+            cursor: pointer;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%237A7A7A' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 4px center;
+            padding-right: 24px;
+        }
+
         .form-group input:focus,
+        .form-group select:focus,
         .form-group textarea:focus {
             border-color: var(--gold);
         }
@@ -1216,7 +1412,7 @@
         }
 
         /* ============================================
-           SMOOTH@IURSOR TRAIL (subtle)
+           CURSOR GLOW
            ============================================ */
         .cursor-glow {
             position: fixed;
@@ -1231,14 +1427,21 @@
             display: none;
         }
 
-        @âºedia (min-width: 1024px) {
+        @media (min-width: 1024px) {
             .cursor-glow { display: block; }
         }
     </style>
 </head>
+<body>
 
     <!-- Cursor glow effect -->
     <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- Announcement Bar -->
+    <div class="announcement-bar" id="announcementBar">
+        Exclusieve culinaire brand events voor 15 tot 1000 gasten — <a href="#contact">Plan een kennismaking</a>
+        <button class="close-btn" onclick="this.parentElement.style.display='none'; document.querySelector('.nav').classList.remove('has-announcement');">&times;</button>
+    </div>
 
     <!-- Navigation -->
     <nav class="nav has-announcement" id="navbar">
@@ -1249,9 +1452,9 @@
 
             <ul class="nav-links" id="navLinks">
                 <li><a href="#about">Over Ons</a></li>
+                <li><a href="#formats">Event Formats</a></li>
                 <li><a href="#services">Diensten</a></li>
-                <li><a href="#projects">Projecten</a></li>
-                <li><a href="#shop">Webshop</a></li>
+                <li><a href="#projects">Cases</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
 
@@ -1278,14 +1481,27 @@
         <div class="hero-bg"></div>
         <div class="hero-image"></div>
         <div class="hero-content">
-            <div class="hero-label">Van 6 tot 1000 gasten</div>
-            <h1>Uw partner voor exclusieve <em>gastronomische</em> evenementen</h1>
+            <div class="hero-label">De culinaire regisseur voor merken</div>
+            <h1>Wij produceren <em>culinaire ervaringen</em> die uw merk laden</h1>
             <p class="hero-description">
-                Van een intiem privédiner tot een grootschalig brand event — Culinair AnnoNu organiseert high-end gastronomische ervaringen die uw merk onvergetelijk maken.
+                Van concept tot uitvoering. Wij zorgen voor de chef, de locatie, het menu en de beleving. U zorgt voor de gasten. Dat is wat wij doen voor Penfolds, Samsung, Hotel Okura en Gault&amp;Millau.
             </p>
-                <div class="hero-actions">
-                <a href="#contact" class="btn btn-primary">Plan uw evenement</a>
-                <a href="#services" class="btn btn-outline">Onze diensten</a>
+            <div class="hero-actions">
+                <a href="#contact" class="btn btn-primary">Bespreek uw event</a>
+                <a href="#formats" class="btn btn-outline">Bekijk onze formats</a>
+            </div>
+            <div class="hero-clients">
+                <div class="hero-clients-label">Bewezen bij</div>
+                <div class="hero-clients-logos">
+                    <span>Penfolds</span>
+                    <span>Samsung</span>
+                    <span>Hotel Okura</span>
+                    <span>Gault&amp;Millau</span>
+                    <span>JOE Radio</span>
+                    <span>Schaap &amp; Citroen</span>
+                    <span>Coca-Cola</span>
+                    <span>Big Green Egg</span>
+                </div>
             </div>
         </div>
         <div class="hero-scroll">
@@ -1300,34 +1516,85 @@
             <div class="about-grid">
                 <div class="about-image-wrapper reveal">
                     <div class="about-image">
-                        <img src="images/private-chef.jpg" alt="Chef Tjitze van der Dam" style="width:100%; height:100%; object-fit:cover;">
+                        <img src="images/private-chef.jpg" alt="Chef Tjitze van der Dam — Culinair Regisseur" style="width:100%; height:100%; object-fit:cover;">
                     </div>
                     <div class="deco-frame"></div>
                 </div>
                 <div class="about-content">
-                    <div class="section-label reveal">Wie we zijn</div>
-                    <h2 class="section-title reveal reveal-delay-1">De organiserende kracht achter <em>uw evenement</em></h2>
+                    <div class="section-label reveal">Wie wij zijn</div>
+                    <h2 class="section-title reveal reveal-delay-1">Geen cateraar. Geen eventbureau. <em>Culinaire regie.</em></h2>
                     <p class="about-text reveal reveal-delay-2">
-                        Culinair AnnoNu is een gastronomische organisatie onder leiding van chef Tjitze van der Dam. Wij zijn gespecialiseerd in het creÃÂ«ren van hoogwaardige culinaire ervaringen, variÃÂ«rend van private chef services tot exclusieve brand events.
+                        Culinair AnnoNu bedenkt, produceert en levert exclusieve culinaire ervaringen waarmee merken hun relaties verrassen, hun merk laden en hun netwerk activeren. Onder creatieve leiding van Tjitze van der Dam combineren wij culinaire autoriteit met merkstrategie en totaalregie.
                     </p>
                     <p class="about-text reveal reveal-delay-3">
-                        Met 25+ jaar ervaring in de gastronomie en samenwerkingen met merken als Gault&amp;Millau Nederland, 24H Chefs en CuliQuiz, weten wij wat het verschil maakt tussen een evenement en een onvergetelijke ervaring.
+                        Wij werken met topchefs, regisseren de avond van tafelschikking tot entertainment, en zorgen dat uw merk centraal staat. Niet als leverancier, maar als creatief partner. Dat hebben wij bewezen bij Penfolds, JOE Radio, Schaap &amp; Citroen, Gault&amp;Millau en tientallen andere premium merken.
                     </p>
                     <div class="about-stats reveal reveal-delay-4">
                         <div class="stat-item">
                             <div class="stat-number">25+</div>
-                            <div class="stat-label">Jaar ervaring</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">2</div>
-                            <div class="stat-label">Kookboeken</div>
+                            <div class="stat-label">Jaar culinaire regie</div>
                         </div>
                         <div class="stat-item">
                             <div class="stat-number">100+</div>
-                            <div class="stat-label">Evenementen</div>
+                            <div class="stat-label">Brand events</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">50+</div>
+                            <div class="stat-label">Premium merken</div>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Formats Section -->
+    <section class="formats" id="formats">
+        <div class="container">
+            <div class="formats-header">
+                <div class="section-label reveal" style="color: var(--gold-light);">Event Formats</div>
+                <h2 class="section-title reveal reveal-delay-1">Vier formats, <em>elk op maat</em></h2>
+                <p class="formats-intro reveal reveal-delay-2">
+                    Elk event is maatwerk, maar wij werken vanuit vier bewezen formats. Van een intiem diner voor 15 gasten tot een meerdaagse merkbeleving — wij leveren het complete concept.
+                </p>
+            </div>
+
+            <div class="formats-grid">
+                <div class="format-card reveal">
+                    <div class="format-card-number">Format I</div>
+                    <h3>Chef's Table Intiem</h3>
+                    <div class="format-guests">15 &ndash; 25 gasten</div>
+                    <p>Een exclusief culinair diner met een topchef in De Proefklas of een intieme externe locatie. Vier tot vijf gangen, sommelier, en een avond die uw gasten nog maanden bespreken. Ideaal om relaties te verdiepen in een persoonlijke setting.</p>
+                    <div class="format-ideal"><strong>Ideaal voor:</strong> wijnhuizen, premium food brands, private banking</div>
+                </div>
+
+                <div class="format-card reveal reveal-delay-1">
+                    <div class="format-card-number">Format II</div>
+                    <h3>Brand Dinner</h3>
+                    <div class="format-guests">40 &ndash; 65 gasten</div>
+                    <p>Een volledig geproduceerd avondprogramma rond uw merk. Chef, entertainment, styling en hospitality — alles in perfecte regie. Dit is het format dat wij leverden voor JOE Radio en Penfolds. Bewezen impact, meetbaar resultaat.</p>
+                    <div class="format-ideal"><strong>Ideaal voor:</strong> mediamerken, FMCG, techbedrijven</div>
+                </div>
+
+                <div class="format-card reveal">
+                    <div class="format-card-number">Format III</div>
+                    <h3>Grand Experience</h3>
+                    <div class="format-guests">80 &ndash; 120 gasten</div>
+                    <p>Meerdere chefs, live cooking stations, meerdere ruimtes. Een grootschalige culinaire ervaring die uw merk op het hoogste niveau presenteert. Van productlanceringen tot jaarlijkse relatiebijeenkomsten — wij leveren schaal zonder concessies aan kwaliteit.</p>
+                    <div class="format-ideal"><strong>Ideaal voor:</strong> productlanceringen, relatie-evenementen, merkvieringen</div>
+                </div>
+
+                <div class="format-card reveal reveal-delay-1">
+                    <div class="format-card-number">Format IV</div>
+                    <h3>Multi-Event Partnership</h3>
+                    <div class="format-guests">Serie van 3 &ndash; 4 events per jaar</div>
+                    <p>Een doorlopend culinair programma voor merken die structureel willen investeren in relatiebeheer. Wij ontwikkelen een jaarkalender met events die op elkaar voortbouwen en uw merkidentiteit consistent versterken.</p>
+                    <div class="format-ideal"><strong>Ideaal voor:</strong> merken met een doorlopend relatieprogramma</div>
+                </div>
+            </div>
+
+            <div class="formats-cta reveal">
+                <a href="#contact" class="btn btn-primary">Bespreek welk format bij u past</a>
             </div>
         </div>
     </section>
@@ -1336,10 +1603,10 @@
     <section class="services" id="services">
         <div class="container">
             <div class="services-header">
-                <div class="section-label reveal">Onze diensten</div>
-                <h2 class="section-title reveal reveal-delay-1">High-end gastronomie, <em>volledig</em> ontzorgd</h2>
+                <div class="section-label reveal">Wat wij leveren</div>
+                <h2 class="section-title reveal reveal-delay-1">Totaalregie, van <em>concept</em> tot applaus</h2>
                 <p class="services-description reveal reveal-delay-2">
-                    Bij Culinair AnnoNu ondersteunen wi u met het organiseren van unieje evenementen en het leveren van private chef services. Wij werken met bekende labels als Gault&amp;Millau Nederland, CuliQuiz en 24H Chefs.
+                    Wij zijn geen partij die een menu samenstelt. Wij bedenken het concept, regisseren de avond, en zorgen dat elk detail bijdraagt aan de merkbeleving. Dit is wat ons onderscheidt.
                 </p>
             </div>
 
@@ -1347,27 +1614,27 @@
                 <div class="service-card reveal">
                     <div class="card-number">01</div>
                     <h3>Brand Events</h3>
-                    <p>Van een exclusieve productpresentatie tot een belevingsdiner voor 1000 gasten — wij creëren gastronomische brand events die uw merk versterken. Volledig concept, organisatie en uitvoering.</p>
-                    <a href="#contact" class="card-link">
-                        Plan uw event
+                    <p>De kern van wat wij doen. Wij produceren culinaire evenementen waarmee merken hun relaties verrassen en hun merkidentiteit versterken. Concept, locatie, chef, entertainment, styling — alles vanuit &eacute;&eacute;n regie.</p>
+                    <a href="#formats" class="card-link">
+                        Bekijk formats
                         <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                     </a>
                 </div>
                 <div class="service-card reveal reveal-delay-1">
                     <div class="card-number">02</div>
                     <h3>Private Chef</h3>
-                    <p>Vanaf 6 personen transformeren wij uw locatie tot een exclusief restaurant. Een intiem gastronomisch diner met persoonlijke service van chef Tjitze of een van onze private chefs.</p>
+                    <p>Vanaf 6 personen transformeren wij uw locatie tot een exclusief restaurant. Chef Tjitze of een van onze private chefs komt naar u toe voor een gastronomisch diner dat nergens anders te ervaren is.</p>
                     <a href="#contact" class="card-link">
-                        Meer informatie
+                        Boek een chef
                         <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                     </a>
                 </div>
                 <div class="service-card reveal reveal-delay-2">
                     <div class="card-number">03</div>
                     <h3>De Proefklas</h3>
-                    <p>Onze eigen inspirerende keukenruimte voor workshops, teambuilding en culinaire sessies. De perfecte setting voor een unieke hands-on ervaring.</p>
+                    <p>Onze eigen culinaire locatie in Zaandam. Een inspirerende ruimte voor workshops, Chef's Table diners en creatieve sessies. De perfecte setting voor intieme brand events tot 25 gasten.</p>
                     <a href="#contact" class="card-link">
-                        Meer informatie
+                        Bekijk de locatie
                         <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                     </a>
                 </div>
@@ -1375,59 +1642,86 @@
         </div>
     </section>
 
-    <!-- Projectts Section -->
+    <!-- Projects / Cases Section -->
     <section class="projects" id="projects">
         <div class="container">
             <div class="projects-header">
                 <div>
-                    <div class="section-label reveal" style="color: var(--gold-light);">Portfolio</div>
-                    <h2 class="section-title reveal reveal-delay-1">Evenementen &amp; <em>projecten</em></h2>
+                    <div class="section-label reveal" style="color: var(--gold-light);">Cases</div>
+                    <h2 class="section-title reveal reveal-delay-1" style="color: var(--white);">Bewezen bij <em>premium merken</em></h2>
                 </div>
-                <a href="#contact" class="btn btn-outline reveal reveal-delay-2" style="border-color: rgba(255,255,255,0.2);">Samenwerken?</a>
+                <a href="#contact" class="btn btn-outline reveal reveal-delay-2" style="border-color: rgba(255,255,255,0.2);">Uw merk hier?</a>
             </div>
 
             <div class="projects-grid">
                 <div class="project-card reveal">
-                    <div class="project-card-bg"><img src="images/tjitze-portrait2.jpg" alt="24H Chefs"></div>
+                    <div class="project-card-bg"><img src="images/culiquiz-event.jpg" alt="Penfolds Grange Dinner"></div>
                     <div class="project-card-content">
-                        <h3>24H Chefs</h3>
-                        <p>Een grootschalig culinair evenement: 24 uur non-stop koken met de beste chefs van Nederland voor het goede doel.</p>
+                        <span class="project-tag">Brand Dinner</span>
+                        <h3>Penfolds Grange Dinner</h3>
+                        <p>Exclusief wijnmakers-diner rond de Penfolds Grange 2018. Topchef, sommelier en een avond die het merk op het hoogste niveau presenteerde.</p>
                     </div>
                 </div>
                 <div class="project-card reveal reveal-delay-1">
-                    <div class="project-card-bg"><img src="images/culiquiz-event.jpg" alt="100Chefs by Gault&Millau"></div>
+                    <div class="project-card-bg"><img src="images/tjitze-portrait2.jpg" alt="JOE Radio Brand Event"></div>
                     <div class="project-card-content">
+                        <span class="project-tag">Brand Dinner &middot; 62 gasten</span>
+                        <h3>JOE Radio Brand Dinner</h3>
+                        <p>Volledig geproduceerd brand event voor JOE Radio. Van concept tot uitvoering, inclusief chef, entertainment en merkbeleving.</p>
+                    </div>
+                </div>
+                <div class="project-card reveal reveal-delay-2">
+                    <div class="project-card-bg"><img src="images/private-dinner.jpg" alt="Schaap & Citroen"></div>
+                    <div class="project-card-content">
+                        <span class="project-tag">Chef's Table Intiem</span>
+                        <h3>Schaap &amp; Citroen</h3>
+                        <p>Exclusief relatiediner voor de meest prestigieuze juwelier van Nederland. Culinaire perfectie voor een selecte groep relaties.</p>
+                    </div>
+                </div>
+                <div class="project-card reveal">
+                    <div class="project-card-bg"><img src="images/hero-action.jpg" alt="100Chefs by Gault&Millau"></div>
+                    <div class="project-card-content">
+                        <span class="project-tag">Grand Experience &middot; 2000 gasten</span>
                         <h3>100Chefs by Gault&amp;Millau</h3>
-                        <p>Brand event op topniveau: 100 chefs, 2000 gasten, 2 dagen in het Miele Experience Center. Volledig georganiseerd door Culinair AnnoNu.</p>
+                        <p>100 chefs, 2000 gasten, 2 dagen in het Miele Experience Center. Het grootste gastronomische brand event van Nederland.</p>
+                    </div>
+                </div>
+                <div class="project-card reveal reveal-delay-1">
+                    <div class="project-card-bg"><img src="images/tjitze-portrait.jpg" alt="24H Chefs"></div>
+                    <div class="project-card-content">
+                        <span class="project-tag">Grand Experience</span>
+                        <h3>24H Chefs</h3>
+                        <p>Ons eigen signature event: 24 uur non-stop koken met de beste chefs van Nederland. Jaarlijks het bewijs van onze culinaire slagkracht.</p>
                     </div>
                 </div>
                 <div class="project-card reveal reveal-delay-2">
                     <div class="project-card-bg"><img src="images/webshop-culiquiz.jpg" alt="CuliQuiz"></div>
                     <div class="project-card-content">
+                        <span class="project-tag">Content & Activatie</span>
                         <h3>CuliQuiz</h3>
-                        <p>De culinaire kennisquiz voor het onderwijs. Kennis delen en gamification komen samen in dit jaarprogramma.</p>
+                        <p>De culinaire kennisquiz met partners als Samsung, Kikkoman en Hendi. Merkactivatie door kennis, gamification en gastronomie.</p>
                     </div>
                 </div>
-                <div class="project-card reveal">
-                    <div class="project-card-bg"><img src="images/private-dinner.jpg" alt="Private Chef"></div>
-                    <div class="project-card-content">
-                        <h3>Private Chef</h3>
-                        <p>Vanaf 6 personen kan Tjitze of een van onze private chefs uw eigen huis omtoveren tot restaurant.</p>
-                    </div>
-                </div>
-                <div class="project-card reveal reveal-delay-1">
-                    <div class="project-card-bg"><img src="images/tjitze-portrait.jpg" alt="De Proefklas"></div>
-                    <div class="project-card-content">
-                        <h3>De Proefklas</h3>
-                        <p>Een unieke en inspirerende keukenruimte, waar koken, creÃÂ«ren en experimenteren centraal staan.</p>
-                    </div>
-                </div>
-                <div class="project-card reveal reveal-delay-2">
-                    <div class="project-card-bg"><img src="images/spijs-cover.jpg" alt="Kookboeken"></div>
-                    <div class="project-card-content">
-                        <h3>Kookboeken</h3>
-                        <p>Van 'Spijs' tot 'Hollandse Klassiekers AnnoNu' Ã¢â¬â ontdek de culinaire wereld van Tjitze van der Dam.</p>
-                    </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clients Section -->
+    <section class="clients">
+        <div class="container">
+            <div class="clients-inner">
+                <p class="clients-label reveal">Merken die op ons vertrouwen</p>
+                <div class="clients-grid reveal reveal-delay-1">
+                    <span class="client-logo">Penfolds</span>
+                    <span class="client-logo">Samsung</span>
+                    <span class="client-logo">Hotel Okura</span>
+                    <span class="client-logo">Gault&amp;Millau</span>
+                    <span class="client-logo">JOE Radio</span>
+                    <span class="client-logo">Schaap &amp; Citroen</span>
+                    <span class="client-logo">Coca-Cola</span>
+                    <span class="client-logo">Big Green Egg</span>
+                    <span class="client-logo">Miele</span>
+                    <span class="client-logo">Kikkoman</span>
                 </div>
             </div>
         </div>
@@ -1440,7 +1734,7 @@
                 <div class="section-label reveal">Webshop</div>
                 <h2 class="section-title reveal reveal-delay-1">Culinaire <em>producten</em></h2>
                 <p class="shop-description reveal reveal-delay-2">
-                    In onze culinaire webshop vind je een selectie van producten die zijn ontworpen om je kook- en eetervaring te verrijken. Ontdek de kookboeken van Tjitze van der Dam en het unieke CuliQuiz kaartspel.
+                    Naast onze events brengen wij culinaire producten uit die passen bij ons vakmanschap. Ontdek de kookboeken van Tjitze van der Dam en het CuliQuiz kaartspel.
                 </p>
             </div>
 
@@ -1480,35 +1774,20 @@
         </div>
     </section>
 
-    <!-- Clients Section -->
-    <section class="clients">
-        <div class="container">
-            <p class="clients-label reveal">We zijn trots dat we met onderstaande klanten hebben mogen werken</p>
-            <div class="clients-grid reveal reveal-delay-1">
-                <span class="client-logo">JOE Radio</span>
-                <span class="client-logo">Champions Lounge</span>
-                <span class="client-logo">Onze Lokale Helden</span>
-                <span class="client-logo">Penfolds</span>
-                <span class="client-logo">San Pellegrino</span>
-                <span class="client-logo">Gault&amp;Millau</span>
-                <span class="client-logo">Bidfood</span>
-                <span class="client-logo">NestlÃÂ© Professional</span>
-                <span class="client-logo">Miele</span>
-            </div>
-        </div>
-    </section>
-
     <!-- Contact Section -->
     <section class="contact" id="contact">
         <div class="container">
             <div class="contact-grid">
                 <div class="contact-left">
-                    <h2 class="contact-title reveal">De koffie staat <em>klaar</em></h2>
+                    <h2 class="contact-title reveal">Laten we <em>praten</em></h2>
 
-                    <div class="contact-info-group reveal reveal-delay-1">
-                        <h4>Bezoekadres</h4>
+                    <p class="about-text reveal reveal-delay-1" style="margin-bottom: 32px;">
+                        Vertel ons over uw merk, uw doelgroep en wat u wilt bereiken. Wij komen met een concept dat past bij uw ambitie.
+                    </p>
+
+                    <div class="contact-info-group reveal reveal-delay-2">
+                        <h4>Bezoekadres — De Proefklas</h4>
                         <p>
-                            Ons kantoor is "De Proefklas"<br>
                             De Groene Bark<br>
                             Lokaal 207<br>
                             Vlielandstraat 2<br>
@@ -1516,41 +1795,59 @@
                         </p>
                     </div>
 
-                    <div class="contact-info-group reveal reveal-delay-2">
-                        <h4>Contact</h4>
+                    <div class="contact-info-group reveal reveal-delay-3">
+                        <h4>Direct contact</h4>
                         <p>
                             <a href="mailto:info@culinair-annonu.com">info@culinair-annonu.com</a><br>
                             <a href="tel:+31619150928">(+31) 6 19 15 09 28</a>
                         </p>
                     </div>
 
-                    <div class="contact-legal reveal reveal-delay-3">
+                    <div class="contact-legal reveal reveal-delay-4">
                         <strong>Handelsnaam:</strong> Culinair AnnoNu B.V.<br>
                         <strong>KVK:</strong> 92064426 | <strong>BTW:</strong> NL865871437B01
                     </div>
                 </div>
 
-                <form class="contact-form reveal" onsubmit="event.preventDefault(); alert('Bedankt voor je bericht! We nemen zo snel mogelijk contact met je op.');">
+                <form class="contact-form reveal" onsubmit="event.preventDefault(); alert('Bedankt voor uw bericht! Wij nemen binnen 24 uur contact met u op.');">
                     <div class="form-row">
                         <div class="form-group">
                             <label for="firstName">Voornaam <span>*</span></label>
                             <input type="text" id="firstName" name="firstName" required>
                         </div>
                         <div class="form-group">
-                            <label for="lastName">Achhernaam <span>*</span></label>
+                            <label for="lastName">Achternaam <span>*</span></label>
                             <input type="text" id="lastName" name="lastName" required>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="email">Email adres <span>*</span></label>
-                        <input type="email" id="email" name="email" required>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">E-mailadres <span>*</span></label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="company">Bedrijf / Merk</label>
+                            <input type="text" id="company" name="company">
+                        </div>
                     </div>
                     <div class="form-group">
-                        <label for="message">Uw bericht <span>*</span></label>
-                        <textarea id="message" name="message" required></textarea>
+                        <label for="eventType">Type event</label>
+                        <select id="eventType" name="eventType">
+                            <option value="">Selecteer een format...</option>
+                            <option value="chefs-table">Chef's Table Intiem (15-25 gasten)</option>
+                            <option value="brand-dinner">Brand Dinner (40-65 gasten)</option>
+                            <option value="grand-experience">Grand Experience (80-120 gasten)</option>
+                            <option value="multi-event">Multi-Event Partnership</option>
+                            <option value="private-chef">Private Chef</option>
+                            <option value="anders">Anders / Weet ik nog niet</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Vertel ons over uw plannen <span>*</span></label>
+                        <textarea id="message" name="message" required placeholder="Uw merk, het gewenste aantal gasten, de gelegenheid..."></textarea>
                     </div>
                     <div class="form-submit">
-                        <button type="submit" class="btn btn-primary">Verstuur bericht</button>
+                        <button type="submit" class="btn btn-primary">Verstuur aanvraag</button>
                     </div>
                 </form>
             </div>
@@ -1581,7 +1878,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Culinair AnnoNu B.V. Ã¢â¬â Alle rechten voorbehouden.</p>
+                <p>&copy; 2025 Culinair AnnoNu B.V. — De culinaire regisseur voor merken.</p>
             </div>
         </div>
     </footer>
@@ -1726,7 +2023,7 @@
                     ui.createComponent('product', {
                         id: '9516005327196',
                         node: document.getElementById('product-component-spijs'),
-                        moneyFormat: 'Ã¢âÂ¬{{amount_with_comma_separator}}',
+                        moneyFormat: '€{{amount_with_comma_separator}}',
                         options: {
                             product: {
                                 styles: {
