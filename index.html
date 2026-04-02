@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Culinair AnnoNu — Brand Events & Exclusieve Culinaire Ervaringen</title>
-    <meta name="description" content="Culinair AnnoNu is de culinaire regisseur voor merken in Nederland. Wij produceren exclusieve brand events, culinaire merkervaringen en gastronomische evenementen voor 15 tot 1000 gasten. Bewezen bij Penfolds, Samsung, Hotel Okura en Gault&Millau.">
+    <meta name="description" content="Culinair AnnoNu is de culinaire regisseur voor merken in Nederland. Wij produceren exclusieve brand events, culinaire merkervaringen en gastronomische evenementen voor 15 tot 1000 gasten. Bewezen bij Penfolds, Gault&Millau, DPG Media en Gall&Gall.">
     <meta name="keywords" content="brand events, culinaire evenementen, brand experience agency, exclusieve events organiseren, gastronomisch event, brand dinner, culinaire merkbeleving, corporate events Nederland, luxury events, private chef">
     <meta property="og:title" content="Culinair AnnoNu — De Culinaire Regisseur voor Merken">
     <meta property="og:description" content="Wij produceren exclusieve culinaire ervaringen waarmee merken hun relaties verrassen en hun merk laden. Van concept tot uitvoering.">
@@ -45,1417 +45,35 @@
             "@type": "OfferCatalog",
             "name": "Event Formats",
             "itemListElement": [
-                {"@type": "Offer", "name": "Chef's Table Intiem", "description": "Exclusief culinair event voor 15-25 gasten"},
-                {"@type": "Offer", "name": "Brand Dinner", "description": "Volledig geproduceerd brand event voor 40-65 gasten"},
-                {"@type": "Offer", "name": "Grand Experience", "description": "Grootschalig culinair event voor 80-120 gasten"},
-                {"@type": "Offer", "name": "Multi-Event Partnership", "description": "Doorlopend culinair programma voor merken"}
+                {"@type": "Offer", "name": "Brand Events", "description": "Culinaire evenementen van 15 tot 2000 gasten, van concept tot uitvoering"},
+                {"@type": "Offer", "name": "Private Chef", "description": "Exclusief gastronomisch diner op uw locatie vanaf 6 personen"},
+                {"@type": "Offer", "name": "De Proefklas", "description": "Onze culinaire locatie in Zaandam voor workshops en intieme events tot 25 gasten"},
+                {"@type": "Offer", "name": "Multi-Event Partnership", "description": "Doorlopend culinair jaarprogramma voor merken"}
             ]
         }
     }
     </script>
 
-    <style>
-        /* ============================================
-           CSS RESET & VARIABLES
-           ============================================ */
-        *, *::before, *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --gold: #C4956A;
-            --gold-light: #D4AD84;
-            --gold-dark: #A67B52;
-            --cream: #FAF6F1;
-            --cream-dark: #F0E8DD;
-            --charcoal: #1A1A1A;
-            --charcoal-light: #2D2D2D;
-            --text-dark: #1A1A1A;
-            --text-medium: #4A4A4A;
-            --text-light: #7A7A7A;
-            --white: #FFFFFF;
-            --font-display: 'Playfair Display', Georgia, serif;
-            --font-body: 'Inter', -apple-system, sans-serif;
-            --section-padding: clamp(80px, 10vw, 140px);
-            --container-max: 1280px;
-            --transition: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        html {
-            scroll-behavior: smooth;
-            font-size: 16px;
-        }
-
-        body {
-            font-family: var(--font-body);
-            color: var(--text-dark);
-            background: var(--white);
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        img {
-            max-width: 100%;
-            display: block;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        /* ============================================
-           UTILITY
-           ============================================ */
-        .container {
-            max-width: var(--container-max);
-            margin: 0 auto;
-            padding: 0 clamp(24px, 4vw, 48px);
-        }
-
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0,0,0,0);
-            border: 0;
-        }
-
-        /* ============================================
-           ANIMATIONS
-           ============================================ */
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes scaleIn {
-            from { opacity: 0; transform: scale(0.92); }
-            to { opacity: 1; transform: scale(1); }
-        }
-
-        @keyframes slideInLeft {
-            from { opacity: 0; transform: translateX(-60px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        @keyframes slideInRight {
-            from { opacity: 0; transform: translateX(60px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        @keyframes drawLine {
-            from { width: 0; }
-            to { width: 60px; }
-        }
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s var(--transition), transform 0.8s var(--transition);
-        }
-
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .reveal-delay-1 { transition-delay: 0.15s; }
-        .reveal-delay-2 { transition-delay: 0.3s; }
-        .reveal-delay-3 { transition-delay: 0.45s; }
-        .reveal-delay-4 { transition-delay: 0.6s; }
-
-        /* ============================================
-           ANNOUNCEMENT BAR
-           ============================================ */
-        .announcement-bar {
-            background: var(--gold);
-            color: var(--white);
-            text-align: center;
-            padding: 12px 24px;
-            font-size: 0.875rem;
-            font-weight: 500;
-            letter-spacing: 0.03em;
-            position: relative;
-            z-index: 100;
-        }
-
-        .announcement-bar a {
-            color: var(--white);
-            text-decoration: underline;
-            text-underline-offset: 3px;
-        }
-
-        .announcement-bar .close-btn {
-            position: absolute;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: none;
-            border: none;
-            color: var(--white);
-            cursor: pointer;
-            font-size: 1.2rem;
-            opacity: 0.8;
-            transition: opacity 0.3s;
-        }
-
-        .announcement-bar .close-btn:hover { opacity: 1; }
-
-        /* ============================================
-           NAVIGATION
-           ============================================ */
-        .nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            padding: 20px 0;
-            transition: all 0.4s var(--transition);
-        }
-
-        .nav.has-announcement {
-            top: 44px;
-        }
-
-        .nav.scrolled {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            box-shadow: 0 1px 30px rgba(0, 0, 0, 0.06);
-            padding: 14px 0;
-            top: 0 !important;
-        }
-
-        .nav-inner {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            max-width: var(--container-max);
-            margin: 0 auto;
-            padding: 0 clamp(24px, 4vw, 48px);
-        }
-
-        .nav-logo {
-            font-family: var(--font-display);
-            font-size: 1.6rem;
-            font-weight: 600;
-            color: var(--charcoal);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .nav-logo .logo-icon {
-            width: 48px;
-            height: 48px;
-            border: 2px solid var(--gold);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: var(--font-display);
-            font-size: 1rem;
-            font-style: italic;
-            color: var(--gold);
-            position: relative;
-        }
-
-        .nav-logo .logo-icon::after {
-            content: '';
-            position: absolute;
-            inset: -5px;
-            border: 1px solid var(--gold-light);
-            border-radius: 50%;
-            opacity: 0.5;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 40px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            font-size: 0.9rem;
-            font-weight: 500;
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
-            color: var(--text-medium);
-            position: relative;
-            padding: 4px 0;
-            transition: color 0.3s;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--gold);
-            transition: width 0.3s var(--transition);
-        }
-
-        .nav-links a:hover { color: var(--charcoal); }
-        .nav-links a:hover::after { width: 100%; }
-
-        .nav-social {
-            display: flex;
-            gap: 16px;
-        }
-
-        .nav-social a {
-            width: 36px;
-            height: 36px;
-            border: 1.5px solid var(--cream-dark);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
-        }
-
-        .nav-social a:hover {
-            border-color: var(--gold);
-            background: var(--gold);
-        }
-
-        .nav-social a:hover svg { stroke: var(--white); }
-
-        .nav-social svg {
-            width: 16px;
-            height: 16px;
-            stroke: var(--text-medium);
-            fill: none;
-            stroke-width: 2;
-            transition: stroke 0.3s;
-        }
-
-        /* Mobile menu */
-        .nav-toggle {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 8px;
-        }
-
-        .nav-toggle span {
-            width: 24px;
-            height: 2px;
-            background: var(--charcoal);
-            transition: all 0.3s;
-            display: block;
-        }
-
-        .nav-toggle.active span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
-        }
-        .nav-toggle.active span:nth-child(2) { opacity: 0; }
-        .nav-toggle.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(5px, -5px);
-        }
-
-        @media (max-width: 768px) {
-            .nav-toggle { display: flex; }
-            .nav-links, .nav-social {
-                display: none;
-            }
-            .nav-links.open {
-                display: flex;
-                flex-direction: column;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: var(--white);
-                padding: 32px;
-                gap: 24px;
-                box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-            }
-        }
-
-        /* ============================================
-           HERO SECTION
-           ============================================ */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            background: var(--charcoal);
-            overflow: hidden;
-        }
-
-        .hero-bg {
-            position: absolute;
-            inset: 0;
-            background:
-                linear-gradient(135deg, rgba(26, 26, 26, 0.7) 0%, rgba(26, 26, 26, 0.3) 50%, rgba(196, 149, 106, 0.2) 100%);
-            z-index: 2;
-        }
-
-        .hero-image {
-            position: absolute;
-            inset: 0;
-            background: url('images/hero-action.jpg') center/cover no-repeat;
-            filter: brightness(0.45);
-            z-index: 1;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 3;
-            max-width: var(--container-max);
-            margin: 0 auto;
-            padding: 0 clamp(24px, 4vw, 48px);
-            padding-top: 120px;
-        }
-
-        .hero-label {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            color: var(--gold-light);
-            font-size: 0.85rem;
-            font-weight: 500;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            margin-bottom: 32px;
-            animation: fadeUp 0.8s var(--transition) both;
-        }
-
-        .hero-label::before {
-            content: '';
-            width: 40px;
-            height: 1px;
-            background: var(--gold);
-        }
-
-        .hero h1 {
-            font-family: var(--font-display);
-            font-size: clamp(3rem, 7vw, 5.5rem);
-            font-weight: 400;
-            color: var(--white);
-            line-height: 1.1;
-            max-width: 850px;
-            margin-bottom: 32px;
-            animation: fadeUp 0.8s var(--transition) 0.2s both;
-        }
-
-        .hero h1 em {
-            font-style: italic;
-            color: var(--gold-light);
-        }
-
-        .hero-description {
-            font-size: 1.15rem;
-            line-height: 1.7;
-            color: rgba(255, 255, 255, 0.7);
-            max-width: 560px;
-            margin-bottom: 48px;
-            font-weight: 300;
-            animation: fadeUp 0.8s var(--transition) 0.4s both;
-        }
-
-        .hero-actions {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            animation: fadeUp 0.8s var(--transition) 0.6s both;
-        }
-
-        /* Buttons */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 16px 36px;
-            font-family: var(--font-body);
-            font-size: 0.9rem;
-            font-weight: 500;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            border: none;
-            cursor: pointer;
-            transition: all 0.4s var(--transition);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-primary {
-            background: var(--gold);
-            color: var(--white);
-        }
-
-        .btn-primary:hover {
-            background: var(--gold-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(196, 149, 106, 0.3);
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: var(--white);
-            border: 1.5px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .btn-outline:hover {
-            border-color: var(--gold);
-            color: var(--gold);
-        }
-
-        .btn-dark {
-            background: var(--charcoal);
-            color: var(--white);
-        }
-
-        .btn-dark:hover {
-            background: var(--charcoal-light);
-            transform: translateY(-2px);
-        }
-
-        /* Hero decorative elements */
-        .hero-scroll {
-            position: absolute;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 3;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-            color: rgba(255,255,255,0.4);
-            font-size: 0.75rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            animation: fadeIn 1s var(--transition) 1s both;
-        }
-
-        .hero-scroll .scroll-line {
-            width: 1px;
-            height: 60px;
-            background: linear-gradient(to bottom, var(--gold), transparent);
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 0.4; }
-            50% { opacity: 1; }
-        }
-
-        /* Hero client strip */
-        .hero-clients {
-            margin-top: 64px;
-            padding-top: 32px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            animation: fadeUp 0.8s var(--transition) 0.8s both;
-        }
-
-        .hero-clients-label {
-            font-size: 0.75rem;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: rgba(255,255,255,0.35);
-            margin-bottom: 20px;
-        }
-
-        .hero-clients-logos {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 32px;
-            align-items: center;
-        }
-
-        .hero-clients-logos span {
-            font-family: var(--font-body);
-            font-size: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            color: rgba(255,255,255,0.35);
-            white-space: nowrap;
-        }
-
-        /* ============================================
-           ABOUT SECTION
-           ============================================ */
-        .about {
-            padding: var(--section-padding) 0;
-            background: var(--white);
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: clamp(40px, 6vw, 100px);
-            align-items: center;
-        }
-
-        .about-image-wrapper {
-            position: relative;
-        }
-
-        .about-image {
-            width: 100%;
-            aspect-ratio: 4/5;
-            background: var(--cream);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .about-image::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
-            opacity: 0.15;
-            z-index: 1;
-        }
-
-        .about-image-wrapper .deco-frame {
-            position: absolute;
-            top: -20px;
-            right: -20px;
-            width: 100%;
-            height: 100%;
-            border: 2px solid var(--gold);
-            opacity: 0.3;
-            z-index: -1;
-        }
-
-        .section-label {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 20px;
-        }
-
-        .section-label::before {
-            content: '';
-            width: 40px;
-            height: 2px;
-            background: var(--gold);
-        }
-
-        .section-title {
-            font-family: var(--font-display);
-            font-size: clamp(2rem, 4vw, 3.2rem);
-            font-weight: 400;
-            line-height: 1.2;
-            color: var(--text-dark);
-            margin-bottom: 28px;
-        }
-
-        .section-title em {
-            font-style: italic;
-            color: var(--gold);
-        }
-
-        .about-text {
-            font-size: 1.05rem;
-            line-height: 1.8;
-            color: var(--text-medium);
-            margin-bottom: 20px;
-        }
-
-        .about-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-            margin-top: 48px;
-            padding-top: 48px;
-            border-top: 1px solid var(--cream-dark);
-        }
-
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-number {
-            font-family: var(--font-display);
-            font-size: 2.5rem;
-            font-weight: 500;
-            color: var(--gold);
-            line-height: 1;
-        }
-
-        .stat-label {
-            font-size: 0.8rem;
-            color: var(--text-light);
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            margin-top: 8px;
-        }
-
-        @media (max-width: 768px) {
-            .about-grid { grid-template-columns: 1fr; }
-        }
-
-        /* ============================================
-           EVENT FORMATS SECTION
-           ============================================ */
-        .formats {
-            padding: var(--section-padding) 0;
-            background: var(--charcoal);
-            color: var(--white);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .formats::before {
-            content: '';
-            position: absolute;
-            top: -200px;
-            right: -200px;
-            width: 600px;
-            height: 600px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(196, 149, 106, 0.06) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        .formats-header {
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto 72px;
-        }
-
-        .formats-header .section-label {
-            justify-content: center;
-        }
-        .formats-header .section-label::before { display: none; }
-        .formats-header .section-label::after {
-            content: '';
-            width: 40px;
-            height: 2px;
-            background: var(--gold);
-        }
-
-        .formats .section-title { color: var(--white); }
-
-        .formats-intro {
-            font-size: 1.05rem;
-            line-height: 1.7;
-            color: rgba(255,255,255,0.6);
-        }
-
-        .formats-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 32px;
-        }
-
-        .format-card {
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.08);
-            padding: 48px 40px;
-            position: relative;
-            transition: all 0.5s var(--transition);
-        }
-
-        .format-card:hover {
-            background: rgba(255,255,255,0.07);
-            border-color: var(--gold);
-            transform: translateY(-4px);
-        }
-
-        .format-card-number {
-            font-family: var(--font-display);
-            font-size: 0.85rem;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .format-card-number::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: rgba(255,255,255,0.1);
-        }
-
-        .format-card h3 {
-            font-family: var(--font-display);
-            font-size: 1.6rem;
-            font-weight: 500;
-            margin-bottom: 8px;
-            color: var(--white);
-        }
-
-        .format-card .format-guests {
-            font-size: 0.9rem;
-            color: var(--gold-light);
-            margin-bottom: 20px;
-            font-weight: 500;
-        }
-
-        .format-card p {
-            font-size: 0.95rem;
-            line-height: 1.7;
-            color: rgba(255,255,255,0.55);
-            margin-bottom: 24px;
-        }
-
-        .format-card .format-ideal {
-            font-size: 0.8rem;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            color: rgba(255,255,255,0.35);
-        }
-
-        .format-card .format-ideal strong {
-            color: rgba(255,255,255,0.5);
-        }
-
-        .formats-cta {
-            text-align: center;
-            margin-top: 64px;
-        }
-
-        @media (max-width: 768px) {
-            .formats-grid { grid-template-columns: 1fr; }
-        }
-
-        /* ============================================
-           SERVICES SECTION
-           ============================================ */
-        .services {
-            padding: var(--section-padding) 0;
-            background: var(--cream);
-            position: relative;
-        }
-
-        .services-header {
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto 72px;
-        }
-
-        .services-header .section-label::before { display: none; }
-        .services-header .section-label::after {
-            content: '';
-            width: 40px;
-            height: 2px;
-            background: var(--gold);
-        }
-
-        .services-header .section-label {
-            justify-content: center;
-        }
-
-        .services-description {
-            font-size: 1.05rem;
-            line-height: 1.7;
-            color: var(--text-medium);
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 32px;
-        }
-
-        .service-card {
-            background: var(--white);
-            padding: 48px 36px;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.5s var(--transition);
-            border: 1px solid transparent;
-        }
-
-        .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 24px 60px rgba(0,0,0,0.06);
-            border-color: var(--gold);
-        }
-
-        .service-card .card-number {
-            font-family: var(--font-display);
-            font-size: 4rem;
-            font-weight: 700;
-            color: var(--cream-dark);
-            line-height: 1;
-            margin-bottom: 24px;
-            transition: color 0.5s;
-        }
-
-        .service-card:hover .card-number { color: var(--gold-light); opacity: 0.4; }
-
-        .service-card h3 {
-            font-family: var(--font-display);
-            font-size: 1.5rem;
-            font-weight: 500;
-            margin-bottom: 16px;
-            color: var(--text-dark);
-        }
-
-        .service-card p {
-            font-size: 0.95rem;
-            line-height: 1.7;
-            color: var(--text-medium);
-        }
-
-        .service-card .card-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin-top: 24px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            color: var(--gold);
-            transition: gap 0.3s;
-        }
-
-        .service-card:hover .card-link { gap: 14px; }
-
-        .card-link svg {
-            width: 16px;
-            height: 16px;
-            stroke: var(--gold);
-            fill: none;
-            stroke-width: 2;
-        }
-
-        @media (max-width: 768px) {
-            .services-grid { grid-template-columns: 1fr; }
-        }
-
-        /* ============================================
-           PROJECTS SECTION
-           ============================================ */
-        .projects {
-            padding: var(--section-padding) 0;
-            background: var(--white);
-        }
-
-        .projects-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            margin-bottom: 64px;
-            flex-wrap: wrap;
-            gap: 24px;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 24px;
-        }
-
-        .project-card {
-            position: relative;
-            aspect-ratio: 4/3;
-            overflow: hidden;
-            cursor: pointer;
-            background: var(--charcoal-light);
-        }
-
-        .project-card-bg {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, var(--charcoal-light) 0%, var(--gold-dark) 100%);
-            opacity: 0.3;
-            transition: all 0.6s var(--transition);
-        }
-
-        .project-card-bg img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.7;
-            transition: all 0.6s var(--transition);
-        }
-
-        .project-card:hover .project-card-bg { opacity: 0.6; }
-        .project-card:hover .project-card-bg img { transform: scale(1.05); opacity: 0.9; }
-
-        .project-card-content {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 36px;
-            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
-            transform: translateY(20px);
-            opacity: 0.8;
-            transition: all 0.5s var(--transition);
-        }
-
-        .project-card:hover .project-card-content {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        .project-card-content .project-tag {
-            display: inline-block;
-            font-size: 0.7rem;
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--gold-light);
-            margin-bottom: 8px;
-        }
-
-        .project-card-content h3 {
-            font-family: var(--font-display);
-            font-size: 1.4rem;
-            font-weight: 500;
-            margin-bottom: 8px;
-            color: var(--white);
-        }
-
-        .project-card-content p {
-            font-size: 0.9rem;
-            color: rgba(255,255,255,0.7);
-            line-height: 1.6;
-        }
-
-        @media (max-width: 768px) {
-            .projects-grid { grid-template-columns: 1fr; }
-        }
-
-        /* ============================================
-           CLIENTS SECTION
-           ============================================ */
-        .clients {
-            padding: 80px 0;
-            background: var(--cream);
-        }
-
-        .clients-inner {
-            text-align: center;
-        }
-
-        .clients-label {
-            font-size: 0.85rem;
-            font-weight: 500;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--text-light);
-            margin-bottom: 48px;
-        }
-
-        .clients-grid {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: center;
-            gap: 40px 56px;
-            opacity: 0.5;
-            filter: grayscale(100%);
-            transition: all 0.5s;
-        }
-
-        .clients-grid:hover {
-            opacity: 0.7;
-            filter: grayscale(50%);
-        }
-
-        .client-logo {
-            font-family: var(--font-body);
-            font-size: 0.9rem;
-            font-weight: 600;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            color: var(--text-medium);
-            white-space: nowrap;
-        }
-
-        /* ============================================
-           SHOP SECTION
-           ============================================ */
-        .shop {
-            padding: var(--section-padding) 0;
-            background: var(--white);
-        }
-
-        .shop-header {
-            text-align: center;
-            max-width: 640px;
-            margin: 0 auto 72px;
-        }
-
-        .shop-header .section-label {
-            justify-content: center;
-        }
-
-        .shop-header .section-label::before { display: none; }
-
-        .shop-description {
-            font-size: 1.05rem;
-            line-height: 1.7;
-            color: var(--text-medium);
-        }
-
-        .shop-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-            margin-bottom: 60px;
-        }
-
-        .product-card {
-            text-align: center;
-            transition: transform 0.4s var(--transition);
-        }
-
-        .product-card:hover {
-            transform: translateY(-6px);
-        }
-
-        .product-image {
-            aspect-ratio: 3/4;
-            background: var(--cream);
-            margin-bottom: 24px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .product-card h3 {
-            font-family: var(--font-display);
-            font-size: 1.3rem;
-            font-weight: 500;
-            margin-bottom: 8px;
-        }
-
-        .product-price {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--gold);
-            margin-bottom: 20px;
-        }
-
-        .product-status {
-            display: inline-block;
-            padding: 8px 20px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            background: var(--cream-dark);
-            color: var(--text-light);
-        }
-
-        .btn-shop {
-            background: var(--gold);
-            color: var(--white);
-            border: none;
-            padding: 14px 32px;
-            font-family: var(--font-body);
-            font-size: 0.85rem;
-            font-weight: 500;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .btn-shop:hover {
-            background: var(--gold-dark);
-        }
-
-        .shop-cta {
-            text-align: center;
-        }
-
-        @media (max-width: 768px) {
-            .shop-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto 60px; }
-        }
-
-        /* ============================================
-           CONTACT SECTION
-           ============================================ */
-        .contact {
-            padding: var(--section-padding) 0;
-            background: var(--white);
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: clamp(40px, 8vw, 120px);
-        }
-
-        .contact-title {
-            font-family: var(--font-display);
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 400;
-            line-height: 1.15;
-            margin-bottom: 40px;
-        }
-
-        .contact-title em {
-            font-style: italic;
-            color: var(--gold);
-        }
-
-        .contact-info-group {
-            margin-bottom: 32px;
-        }
-
-        .contact-info-group h4 {
-            font-size: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 12px;
-        }
-
-        .contact-info-group p,
-        .contact-info-group a {
-            font-size: 1rem;
-            line-height: 1.7;
-            color: var(--text-medium);
-        }
-
-        .contact-info-group a {
-            text-decoration: underline;
-            text-underline-offset: 3px;
-            transition: color 0.3s;
-        }
-
-        .contact-info-group a:hover { color: var(--gold); }
-
-        .contact-legal {
-            margin-top: 40px;
-            padding-top: 24px;
-            border-top: 1px solid var(--cream-dark);
-            font-size: 0.85rem;
-            color: var(--text-light);
-            line-height: 1.7;
-        }
-
-        /* Contact form */
-        .contact-form {
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .form-group label {
-            font-size: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: var(--text-medium);
-            margin-bottom: 10px;
-        }
-
-        .form-group label span {
-            color: var(--gold);
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            padding: 16px 0;
-            font-family: var(--font-body);
-            font-size: 1rem;
-            color: var(--text-dark);
-            background: transparent;
-            border: none;
-            border-bottom: 1.5px solid var(--cream-dark);
-            outline: none;
-            transition: border-color 0.3s;
-            resize: none;
-        }
-
-        .form-group select {
-            cursor: pointer;
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%237A7A7A' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 4px center;
-            padding-right: 24px;
-        }
-
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            border-color: var(--gold);
-        }
-
-        .form-group textarea {
-            min-height: 120px;
-        }
-
-        .form-submit {
-            align-self: flex-start;
-            margin-top: 16px;
-        }
-
-        @media (max-width: 768px) {
-            .contact-grid { grid-template-columns: 1fr; }
-            .form-row { grid-template-columns: 1fr; }
-        }
-
-        /* ============================================
-           FOOTER
-           ============================================ */
-        .footer {
-            background: var(--charcoal);
-            color: rgba(255,255,255,0.5);
-            padding: 64px 0 40px;
-        }
-
-        .footer-inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 24px;
-        }
-
-        .footer-logo {
-            font-family: var(--font-display);
-            font-size: 1.3rem;
-            color: var(--white);
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 32px;
-            list-style: none;
-            flex-wrap: wrap;
-        }
-
-        .footer-links a {
-            font-size: 0.85rem;
-            color: rgba(255,255,255,0.5);
-            transition: color 0.3s;
-        }
-
-        .footer-links a:hover { color: var(--gold-light); }
-
-        .footer-social {
-            display: flex;
-            gap: 12px;
-        }
-
-        .footer-social a {
-            width: 40px;
-            height: 40px;
-            border: 1px solid rgba(255,255,255,0.15);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
-        }
-
-        .footer-social a:hover {
-            border-color: var(--gold);
-            background: var(--gold);
-        }
-
-        .footer-social svg {
-            width: 16px;
-            height: 16px;
-            stroke: rgba(255,255,255,0.6);
-            fill: none;
-            stroke-width: 2;
-        }
-
-        .footer-social a:hover svg { stroke: var(--white); }
-
-        .footer-bottom {
-            margin-top: 48px;
-            padding-top: 24px;
-            border-top: 1px solid rgba(255,255,255,0.08);
-            text-align: center;
-            font-size: 0.8rem;
-        }
-
-        /* ============================================
-           CURSOR GLOW
-           ============================================ */
-        .cursor-glow {
-            position: fixed;
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(196, 149, 106, 0.06) 0%, transparent 70%);
-            pointer-events: none;
-            z-index: 9999;
-            transform: translate(-50%, -50%);
-            transition: left 0.5s ease, top 0.5s ease;
-            display: none;
-        }
-
-        @media (min-width: 1024px) {
-            .cursor-glow { display: block; }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <!-- Cursor glow effect -->
     <div class="cursor-glow" id="cursorGlow"></div>
 
-    <!-- Announcement Bar -->
-    <div class="announcement-bar" id="announcementBar">
-        Exclusieve culinaire brand events voor 15 tot 1000 gasten — <a href="#contact">Plan een kennismaking</a>
-        <button class="close-btn" onclick="this.parentElement.style.display='none'; document.querySelector('.nav').classList.remove('has-announcement');">&times;</button>
-    </div>
-
     <!-- Navigation -->
-    <nav class="nav has-announcement" id="navbar">
+    <nav class="nav" id="navbar">
         <div class="nav-inner">
             <a href="#" class="nav-logo">
                 <img src="images/logo.png" alt="Culinair AnnoNu" style="height: 52px; width: auto;">
             </a>
 
             <ul class="nav-links" id="navLinks">
-                <li><a href="#about">Over Ons</a></li>
-                <li><a href="#formats">Event Formats</a></li>
-                <li><a href="#services">Diensten</a></li>
-                <li><a href="#projects">Cases</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="over-ons.html">Over Ons</a></li>
+                <li><a href="diensten.html">Diensten</a></li>
+                <li><a href="cases.html">Cases</a></li>
+                <li><a href="#shop">Shop</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
 
             <div class="nav-social">
@@ -1484,23 +102,22 @@
             <div class="hero-label">De culinaire regisseur voor merken</div>
             <h1>Wij produceren <em>culinaire ervaringen</em> die uw merk laden</h1>
             <p class="hero-description">
-                Van concept tot uitvoering. Wij zorgen voor de chef, de locatie, het menu en de beleving. U zorgt voor de gasten. Dat is wat wij doen voor Penfolds, Samsung, Hotel Okura en Gault&amp;Millau.
+                Van concept tot uitvoering. Wij zorgen voor de chef, de locatie, het menu en de beleving. U zorgt voor de gasten. Dat is wat wij doen voor Penfolds, Gault&amp;Millau, DPG Media en Gall&amp;Gall.
             </p>
             <div class="hero-actions">
                 <a href="#contact" class="btn btn-primary">Bespreek uw event</a>
-                <a href="#formats" class="btn btn-outline">Bekijk onze formats</a>
+                <a href="#services" class="btn btn-outline">Onze diensten</a>
             </div>
             <div class="hero-clients">
                 <div class="hero-clients-label">Bewezen bij</div>
                 <div class="hero-clients-logos">
                     <span>Penfolds</span>
-                    <span>Samsung</span>
-                    <span>Hotel Okura</span>
                     <span>Gault&amp;Millau</span>
+                    <span>DPG Media</span>
+                    <span>Gall&amp;Gall</span>
+                    <span>Nestl&eacute;</span>
                     <span>JOE Radio</span>
-                    <span>Schaap &amp; Citroen</span>
-                    <span>Coca-Cola</span>
-                    <span>Big Green Egg</span>
+                    <span>Landgoed de Salentein</span>
                 </div>
             </div>
         </div>
@@ -1527,7 +144,7 @@
                         Culinair AnnoNu bedenkt, produceert en levert exclusieve culinaire ervaringen waarmee merken hun relaties verrassen, hun merk laden en hun netwerk activeren. Onder creatieve leiding van Tjitze van der Dam combineren wij culinaire autoriteit met merkstrategie en totaalregie.
                     </p>
                     <p class="about-text reveal reveal-delay-3">
-                        Wij werken met topchefs, regisseren de avond van tafelschikking tot entertainment, en zorgen dat uw merk centraal staat. Niet als leverancier, maar als creatief partner. Dat hebben wij bewezen bij Penfolds, JOE Radio, Schaap &amp; Citroen, Gault&amp;Millau en tientallen andere premium merken.
+                        Wij werken met topchefs, regisseren de avond van tafelschikking tot entertainment, en zorgen dat uw merk centraal staat. Niet als leverancier, maar als creatief partner. Dat hebben wij bewezen bij Penfolds, Gault&amp;Millau, DPG Media, Gall&amp;Gall en tientallen andere premium merken.
                     </p>
                     <div class="about-stats reveal reveal-delay-4">
                         <div class="stat-item">
@@ -1548,56 +165,7 @@
         </div>
     </section>
 
-    <!-- Event Formats Section -->
-    <section class="formats" id="formats">
-        <div class="container">
-            <div class="formats-header">
-                <div class="section-label reveal" style="color: var(--gold-light);">Event Formats</div>
-                <h2 class="section-title reveal reveal-delay-1">Vier formats, <em>elk op maat</em></h2>
-                <p class="formats-intro reveal reveal-delay-2">
-                    Elk event is maatwerk, maar wij werken vanuit vier bewezen formats. Van een intiem diner voor 15 gasten tot een meerdaagse merkbeleving — wij leveren het complete concept.
-                </p>
-            </div>
-
-            <div class="formats-grid">
-                <div class="format-card reveal">
-                    <div class="format-card-number">Format I</div>
-                    <h3>Chef's Table Intiem</h3>
-                    <div class="format-guests">15 &ndash; 25 gasten</div>
-                    <p>Een exclusief culinair diner met een topchef in De Proefklas of een intieme externe locatie. Vier tot vijf gangen, sommelier, en een avond die uw gasten nog maanden bespreken. Ideaal om relaties te verdiepen in een persoonlijke setting.</p>
-                    <div class="format-ideal"><strong>Ideaal voor:</strong> wijnhuizen, premium food brands, private banking</div>
-                </div>
-
-                <div class="format-card reveal reveal-delay-1">
-                    <div class="format-card-number">Format II</div>
-                    <h3>Brand Dinner</h3>
-                    <div class="format-guests">40 &ndash; 65 gasten</div>
-                    <p>Een volledig geproduceerd avondprogramma rond uw merk. Chef, entertainment, styling en hospitality — alles in perfecte regie. Dit is het format dat wij leverden voor JOE Radio en Penfolds. Bewezen impact, meetbaar resultaat.</p>
-                    <div class="format-ideal"><strong>Ideaal voor:</strong> mediamerken, FMCG, techbedrijven</div>
-                </div>
-
-                <div class="format-card reveal">
-                    <div class="format-card-number">Format III</div>
-                    <h3>Grand Experience</h3>
-                    <div class="format-guests">80 &ndash; 120 gasten</div>
-                    <p>Meerdere chefs, live cooking stations, meerdere ruimtes. Een grootschalige culinaire ervaring die uw merk op het hoogste niveau presenteert. Van productlanceringen tot jaarlijkse relatiebijeenkomsten — wij leveren schaal zonder concessies aan kwaliteit.</p>
-                    <div class="format-ideal"><strong>Ideaal voor:</strong> productlanceringen, relatie-evenementen, merkvieringen</div>
-                </div>
-
-                <div class="format-card reveal reveal-delay-1">
-                    <div class="format-card-number">Format IV</div>
-                    <h3>Multi-Event Partnership</h3>
-                    <div class="format-guests">Serie van 3 &ndash; 4 events per jaar</div>
-                    <p>Een doorlopend culinair programma voor merken die structureel willen investeren in relatiebeheer. Wij ontwikkelen een jaarkalender met events die op elkaar voortbouwen en uw merkidentiteit consistent versterken.</p>
-                    <div class="format-ideal"><strong>Ideaal voor:</strong> merken met een doorlopend relatieprogramma</div>
-                </div>
-            </div>
-
-            <div class="formats-cta reveal">
-                <a href="#contact" class="btn btn-primary">Bespreek welk format bij u past</a>
-            </div>
-        </div>
-    </section>
+    <!-- Event Formats Section removed -->
 
     <!-- Services Section -->
     <section class="services" id="services">
@@ -1614,9 +182,9 @@
                 <div class="service-card reveal">
                     <div class="card-number">01</div>
                     <h3>Brand Events</h3>
-                    <p>De kern van wat wij doen. Wij produceren culinaire evenementen waarmee merken hun relaties verrassen en hun merkidentiteit versterken. Concept, locatie, chef, entertainment, styling — alles vanuit &eacute;&eacute;n regie.</p>
-                    <a href="#formats" class="card-link">
-                        Bekijk formats
+                    <p>Wij produceren culinaire evenementen waarmee merken als Penfolds, Gault&amp;Millau en DPG Media hun relaties verrassen. Van intiem diner voor 15 gasten tot festival voor 2000 bezoekers — alles vanuit &eacute;&eacute;n regie.</p>
+                    <a href="diensten.html" class="card-link">
+                        Meer over Brand Events
                         <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                     </a>
                 </div>
@@ -1624,17 +192,26 @@
                     <div class="card-number">02</div>
                     <h3>Private Chef</h3>
                     <p>Vanaf 6 personen transformeren wij uw locatie tot een exclusief restaurant. Chef Tjitze of een van onze private chefs komt naar u toe voor een gastronomisch diner dat nergens anders te ervaren is.</p>
-                    <a href="#contact" class="card-link">
-                        Boek een chef
+                    <a href="diensten.html" class="card-link">
+                        Meer over Private Chef
                         <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                     </a>
                 </div>
                 <div class="service-card reveal reveal-delay-2">
                     <div class="card-number">03</div>
                     <h3>De Proefklas</h3>
-                    <p>Onze eigen culinaire locatie in Zaandam. Een inspirerende ruimte voor workshops, Chef's Table diners en creatieve sessies. De perfecte setting voor intieme brand events tot 25 gasten.</p>
-                    <a href="#contact" class="card-link">
-                        Bekijk de locatie
+                    <p>Onze eigen culinaire locatie in Zaandam. Een inspirerende ruimte voor workshops, Chef&rsquo;s Table diners en creatieve sessies. De perfecte setting voor intieme brand events tot 25 gasten.</p>
+                    <a href="diensten.html" class="card-link">
+                        Meer over De Proefklas
+                        <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </a>
+                </div>
+                <div class="service-card reveal">
+                    <div class="card-number">04</div>
+                    <h3>Multi-Event Partnership</h3>
+                    <p>Voor merken die culinaire beleving structureel willen inzetten. Wij ontwikkelen een doorlopend jaarprogramma van events, content en ervaringen die uw merk het hele jaar laden.</p>
+                    <a href="diensten.html" class="card-link">
+                        Meer over Partnerships
                         <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                     </a>
                 </div>
@@ -1655,7 +232,7 @@
 
             <div class="projects-grid">
                 <div class="project-card reveal">
-                    <div class="project-card-bg"><img src="images/culiquiz-event.jpg" alt="Penfolds Grange Dinner"></div>
+                    <div class="project-card-bg"><img src="images/private-dinner.jpg" alt="Penfolds Grange Dinner"></div>
                     <div class="project-card-content">
                         <span class="project-tag">Brand Dinner</span>
                         <h3>Penfolds Grange Dinner</h3>
@@ -1663,19 +240,11 @@
                     </div>
                 </div>
                 <div class="project-card reveal reveal-delay-1">
-                    <div class="project-card-bg"><img src="images/tjitze-portrait2.jpg" alt="JOE Radio Brand Event"></div>
+                    <div class="project-card-bg"><img src="images/culiquiz-event.jpg" alt="Gall&amp;Gall Wijnfestival"></div>
                     <div class="project-card-content">
-                        <span class="project-tag">Brand Dinner &middot; 62 gasten</span>
-                        <h3>JOE Radio Brand Dinner</h3>
-                        <p>Volledig geproduceerd brand event voor JOE Radio. Van concept tot uitvoering, inclusief chef, entertainment en merkbeleving.</p>
-                    </div>
-                </div>
-                <div class="project-card reveal reveal-delay-2">
-                    <div class="project-card-bg"><img src="images/private-dinner.jpg" alt="Schaap & Citroen"></div>
-                    <div class="project-card-content">
-                        <span class="project-tag">Chef's Table Intiem</span>
-                        <h3>Schaap &amp; Citroen</h3>
-                        <p>Exclusief relatiediner voor de meest prestigieuze juwelier van Nederland. Culinaire perfectie voor een selecte groep relaties.</p>
+                        <span class="project-tag">Brand Experience</span>
+                        <h3>Gall&amp;Gall Wijnfestival</h3>
+                        <p>Culinaire brand experience voor Gall&amp;Gall. Wijnproeverij gecombineerd met gastronomie, van concept tot uitvoering.</p>
                     </div>
                 </div>
                 <div class="project-card reveal">
@@ -1694,14 +263,6 @@
                         <p>Ons eigen signature event: 24 uur non-stop koken met de beste chefs van Nederland. Jaarlijks het bewijs van onze culinaire slagkracht.</p>
                     </div>
                 </div>
-                <div class="project-card reveal reveal-delay-2">
-                    <div class="project-card-bg"><img src="images/webshop-culiquiz.jpg" alt="CuliQuiz"></div>
-                    <div class="project-card-content">
-                        <span class="project-tag">Content & Activatie</span>
-                        <h3>CuliQuiz</h3>
-                        <p>De culinaire kennisquiz met partners als Samsung, Kikkoman en Hendi. Merkactivatie door kennis, gamification en gastronomie.</p>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -1712,16 +273,14 @@
             <div class="clients-inner">
                 <p class="clients-label reveal">Merken die op ons vertrouwen</p>
                 <div class="clients-grid reveal reveal-delay-1">
-                    <span class="client-logo">Penfolds</span>
-                    <span class="client-logo">Samsung</span>
-                    <span class="client-logo">Hotel Okura</span>
-                    <span class="client-logo">Gault&amp;Millau</span>
-                    <span class="client-logo">JOE Radio</span>
-                    <span class="client-logo">Schaap &amp; Citroen</span>
-                    <span class="client-logo">Coca-Cola</span>
-                    <span class="client-logo">Big Green Egg</span>
-                    <span class="client-logo">Miele</span>
-                    <span class="client-logo">Kikkoman</span>
+                    <span class="client-logo"><img src="https://logo.clearbit.com/penfolds.com" alt="Penfolds" onerror="this.parentElement.textContent='Penfolds'"></span>
+                    <span class="client-logo"><img src="https://logo.clearbit.com/gaultmillau.com" alt="Gault&amp;Millau" onerror="this.parentElement.textContent='Gault&amp;Millau'"></span>
+                    <span class="client-logo"><img src="https://logo.clearbit.com/dpgmedia.nl" alt="DPG Media" onerror="this.parentElement.textContent='DPG Media'"></span>
+                    <span class="client-logo"><img src="https://logo.clearbit.com/gall.nl" alt="Gall&amp;Gall" onerror="this.parentElement.textContent='Gall&amp;Gall'"></span>
+                    <span class="client-logo"><img src="https://logo.clearbit.com/nestle.com" alt="Nestl&eacute;" onerror="this.parentElement.textContent='Nestlé'"></span>
+                    <span class="client-logo"><img src="https://logo.clearbit.com/joe.nl" alt="JOE Radio" onerror="this.parentElement.textContent='JOE Radio'"></span>
+                    <span class="client-logo"><img src="https://logo.clearbit.com/salentein.com" alt="Landgoed de Salentein" onerror="this.parentElement.textContent='Landgoed de Salentein'"></span>
+                    <span class="client-logo"><img src="https://logo.clearbit.com/24hchefs.com" alt="24H Chefs" onerror="this.parentElement.textContent='24H Chefs'"></span>
                 </div>
             </div>
         </div>
@@ -1734,7 +293,7 @@
                 <div class="section-label reveal">Webshop</div>
                 <h2 class="section-title reveal reveal-delay-1">Culinaire <em>producten</em></h2>
                 <p class="shop-description reveal reveal-delay-2">
-                    Naast onze events brengen wij culinaire producten uit die passen bij ons vakmanschap. Ontdek de kookboeken van Tjitze van der Dam en het CuliQuiz kaartspel.
+                    Naast onze events brengen wij culinaire producten uit die passen bij ons vakmanschap. Ontdek de kookboeken van Tjitze van der Dam.
                 </p>
             </div>
 
@@ -1758,14 +317,7 @@
                     <div class="product-status">Uitverkocht</div>
                 </div>
 
-                <div class="product-card reveal reveal-delay-2">
-                    <div class="product-image">
-                        <img src="images/webshop-culiquiz.jpg" alt="CuliQuiz Kaartspel" style="width:100%; height:100%; object-fit:cover;">
-                    </div>
-                    <h3>CuliQuiz Kaartspel</h3>
-                    <div class="product-price">&euro;14,95</div>
-                    <button class="btn-shop" onclick="alert('Shopify integratie wordt hier geladen')">Doe in winkelwagen</button>
-                </div>
+                <!-- CuliQuiz removed -->
             </div>
 
             <div class="shop-cta reveal">
@@ -1833,12 +385,11 @@
                     <div class="form-group">
                         <label for="eventType">Type event</label>
                         <select id="eventType" name="eventType">
-                            <option value="">Selecteer een format...</option>
-                            <option value="chefs-table">Chef's Table Intiem (15-25 gasten)</option>
-                            <option value="brand-dinner">Brand Dinner (40-65 gasten)</option>
-                            <option value="grand-experience">Grand Experience (80-120 gasten)</option>
-                            <option value="multi-event">Multi-Event Partnership</option>
+                            <option value="">Selecteer een dienst...</option>
+                            <option value="brand-event">Brand Event</option>
                             <option value="private-chef">Private Chef</option>
+                            <option value="proefklas">De Proefklas</option>
+                            <option value="multi-event">Multi-Event Partnership</option>
                             <option value="anders">Anders / Weet ik nog niet</option>
                         </select>
                     </div>
