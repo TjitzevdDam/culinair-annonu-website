@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact — Culinair AnnoNu</title>
+    <meta name="description" content="Neem contact op met Culinair AnnoNu. Vertel ons over uw merk en wij komen met een culinair concept dat past.">
+    <meta property="og:title" content="Contact — Culinair AnnoNu">
+    <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <nav class="nav" id="navbar">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">
+                <img src="images/logo.png" alt="Culinair AnnoNu" style="height: 52px; width: auto;">
+            </a>
+            <ul class="nav-links" id="navLinks">
+<li><a href="over-ons.html">Over Ons</a></li>
+                <li><a href="diensten.html">Diensten</a></li>
+                <li><a href="cases.html">Cases</a></li>
+                <li><a href="index.html#shop">Shop</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+            <div class="nav-social">
+                <a href="https://www.instagram.com/culinairannonu" target="_blank" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+                </a>
+                <a href="https://www.linkedin.com/company/culinairannonu" target="_blank" aria-label="LinkedIn">
+                    <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                </a>
+                <a href="https://www.facebook.com/culinairannonu" target="_blank" aria-label="Facebook">
+                    <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                </a>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <section class="page-hero">
+        <div class="container">
+            <div class="section-label reveal">Contact</div>
+            <h1 class="reveal reveal-delay-1">Laten we <em>praten</em></h1>
+            <p class="reveal reveal-delay-2">Vertel ons over uw merk, uw doelgroep en wat u wilt bereiken. Wij komen met een concept dat past bij uw ambitie.</p>
+        </div>
+    </section>
+
+    <section class="contact" style="padding-top: var(--section-padding);">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-left">
+                    <div class="contact-info-group reveal">
+                        <h4>Bezoekadres &mdash; De Proefklas</h4>
+                        <p>
+                            De Groene Bark<br>
+                            Lokaal 207<br>
+                            Vlielandstraat 2<br>
+                            1506 ZK Zaandam
+                        </p>
+                    </div>
+
+                    <div class="contact-info-group reveal reveal-delay-1">
+                        <h4>Direct contact</h4>
+                        <p>
+                            <a href="mailto:info@culinair-annonu.com">info@culinair-annonu.com</a><br>
+                            <a href="tel:+31619150928">(+31) 6 19 15 09 28</a>
+                        </p>
+                    </div>
+
+                    <div class="contact-info-group reveal reveal-delay-2">
+                        <h4>Volg ons</h4>
+                        <p>
+                            <a href="https://www.instagram.com/culinairannonu" target="_blank">Instagram</a><br>
+                            <a href="https://www.linkedin.com/company/culinairannonu" target="_blank">LinkedIn</a><br>
+                            <a href="https://www.facebook.com/culinairannonu" target="_blank">Facebook</a>
+                        </p>
+                    </div>
+
+                    <div class="contact-legal reveal reveal-delay-3">
+                        <strong>Handelsnaam:</strong> Culinair AnnoNu B.V.<br>
+                        <strong>KVK:</strong> 92064426 | <strong>BTW:</strong> NL865871437B01
+                    </div>
+                </div>
+
+                <form class="contact-form reveal" onsubmit="event.preventDefault(); alert('Bedankt voor uw bericht! Wij nemen binnen 24 uur contact met u op.');">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">Voornaam <span>*</span></label>
+                            <input type="text" id="firstName" name="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Achternaam <span>*</span></label>
+                            <input type="text" id="lastName" name="lastName" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">E-mailadres <span>*</span></label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="company">Bedrijf / Merk</label>
+                            <input type="text" id="company" name="company">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="eventType">Type event</label>
+                        <select id="eventType" name="eventType">
+                            <option value="">Selecteer een format...</option>
+                            <option value="chefs-table">Chef&rsquo;s Table Intiem (15-25 gasten)</option>
+                            <option value="brand-dinner">Brand Dinner (40-65 gasten)</option>
+                            <option value="grand-experience">Grand Experience (80-120 gasten)</option>
+                            <option value="multi-event">Multi-Event Partnership</option>
+                            <option value="private-chef">Private Chef</option>
+                            <option value="anders">Anders / Weet ik nog niet</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Vertel ons over uw plannen <span>*</span></label>
+                        <textarea id="message" name="message" required placeholder="Uw merk, het gewenste aantal gasten, de gelegenheid..."></textarea>
+                    </div>
+                    <div class="form-submit">
+                        <button type="submit" class="btn btn-primary">Verstuur aanvraag</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-logo"><img src="images/logo.png" alt="Culinair AnnoNu" style="height:48px; filter: brightness(10);"></div>
+                <ul class="footer-links">
+                    <li><a href="over-ons.html">Over Ons</a></li>
+                    <li><a href="diensten.html">Diensten</a></li>
+                    <li><a href="cases.html">Cases</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="footer-social">
+                    <a href="https://www.instagram.com/culinairannonu" target="_blank" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg>
+                    </a>
+                    <a href="https://www.linkedin.com/company/culinairannonu" target="_blank" aria-label="LinkedIn">
+                        <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                    </a>
+                    <a href="https://www.facebook.com/culinairannonu" target="_blank" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Culinair AnnoNu B.V. &mdash; De culinaire regisseur voor merken.</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 80) { navbar.classList.add('scrolled'); }
+            else { navbar.classList.remove('scrolled'); }
+        });
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+        navToggle.addEventListener('click', () => {
+            navToggle.classList.toggle('active');
+            navLinks.classList.toggle('open');
+        });
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navToggle.classList.remove('active');
+                navLinks.classList.remove('open');
+            });
+        });
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+        revealElements.forEach(el => revealObserver.observe(el));
+        const cursorGlow = document.getElementById('cursorGlow');
+        document.addEventListener('mousemove', (e) => {
+            cursorGlow.style.left = e.clientX + 'px';
+            cursorGlow.style.top = e.clientY + 'px';
+        });
+    </script>
+</body>
+</html>
