@@ -7,7 +7,7 @@ import Cta from "@/components/Cta";
 export const metadata: Metadata = {
   title: "Cases — Premium Brand Events",
   description:
-    "Van Penfolds Grange Dinners tot Gall&Gall Wijnfestivals. De culinaire brand events die Culinair AnnoNu produceerde voor premium merken.",
+    "Van Penfolds Grange Dinners tot exclusieve wijnmakersdiners. De culinaire brand events die Culinair AnnoNu produceerde voor premium merken.",
 };
 
 const cases = [
@@ -26,11 +26,11 @@ const cases = [
       "100 chefs, 2000 gasten, 2 dagen in het Miele Experience Center. Het grootste gastronomische brand event van Nederland — volledig door ons geproduceerd.",
   },
   {
-    title: "Gall & Gall Wijnfestival",
-    tag: "Brand Experience",
+    title: "Wijnmakersdiner",
+    tag: "Brand Dinner",
     img: "/images/culiquiz-event.jpg",
     blurb:
-      "Culinaire brand experience voor Gall & Gall. Wijnproeverij gecombineerd met gastronomie — van concept tot uitvoering geproduceerd.",
+      "Exclusief diner met de wijnmaker aan tafel. Het verhaal achter elke fles, vertaald in een gastronomisch parcours dat het merk laadt en relaties verrast.",
   },
   {
     title: "24H Chefs",
