@@ -46,11 +46,9 @@ export default function Manifesto() {
           </Reveal>
           <Reveal delay={0.1}>
             <h2 className="mt-6 font-display text-4xl leading-[1.05] tracking-tight text-cream md:text-6xl text-balance">
-              Geen cateraar.
-              <br />
-              Geen eventbureau.{" "}
+              Voor merken die{" "}
               <span className="italic gold-gradient-text">
-                Culinaire regie.
+                hoog mikken.
               </span>
             </h2>
           </Reveal>

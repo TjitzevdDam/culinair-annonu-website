@@ -36,10 +36,8 @@ export default function OverOnsPage() {
         eyebrow="Wie wij zijn"
         title={
           <>
-            Geen cateraar.
-            <br />
-            Geen eventbureau.{" "}
-            <span className="italic gold-gradient-text">Culinaire regie.</span>
+            Voor merken die{" "}
+            <span className="italic gold-gradient-text">hoog mikken.</span>
           </>
         }
         intro="Culinair AnnoNu bedenkt, produceert en levert exclusieve culinaire ervaringen voor merken die op het hoogste niveau willen spelen."

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -38,14 +39,15 @@ export default function Nav() {
       }`}
     >
       <div className="mx-auto flex max-w-[1320px] items-center justify-between px-6 md:px-10">
-        <Link href="/" className="flex items-center gap-3 group">
-          <div className="relative flex h-10 w-10 items-center justify-center rounded-full border border-gold/60 transition-transform duration-500 ease-soft group-hover:scale-105">
-            <span className="font-display text-lg italic text-gold">A</span>
-            <span className="absolute -inset-1 rounded-full border border-gold/20" />
-          </div>
-          <span className="hidden font-display text-lg tracking-tight text-cream sm:inline">
-            Culinair <span className="italic text-gold-light">AnnoNu</span>
-          </span>
+        <Link href="/" className="flex items-center group" aria-label="Culinair AnnoNu">
+          <Image
+            src="/images/logo-gold.png"
+            alt="Culinair AnnoNu"
+            width={64}
+            height={64}
+            priority
+            className="h-12 w-12 transition-transform duration-500 ease-soft group-hover:scale-105 md:h-14 md:w-14"
+          />
         </Link>
 
         <nav className="hidden items-center gap-8 lg:flex">

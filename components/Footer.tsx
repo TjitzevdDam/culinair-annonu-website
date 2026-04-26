@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const sitemap = [
@@ -49,14 +50,14 @@ export default function Footer() {
       <div className="relative mx-auto max-w-[1320px] px-6 md:px-10 py-20">
         <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr]">
           <div>
-            <Link href="/" className="inline-flex items-center gap-3">
-              <div className="relative flex h-12 w-12 items-center justify-center rounded-full border border-gold/60">
-                <span className="font-display text-xl italic text-gold">A</span>
-                <span className="absolute -inset-1 rounded-full border border-gold/20" />
-              </div>
-              <span className="font-display text-xl text-cream">
-                Culinair <span className="italic text-gold-light">AnnoNu</span>
-              </span>
+            <Link href="/" className="inline-flex items-center" aria-label="Culinair AnnoNu">
+              <Image
+                src="/images/logo-gold.png"
+                alt="Culinair AnnoNu"
+                width={80}
+                height={80}
+                className="h-16 w-16"
+              />
             </Link>
             <p className="mt-6 max-w-md font-display text-2xl leading-snug text-cream/90">
               De culinaire regisseur voor merken.

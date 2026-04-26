@@ -61,9 +61,10 @@ export default function Hero() {
         </h1>
 
         <p className="fade-up fade-up-delay-3 mt-10 max-w-xl text-base leading-relaxed text-cream/70 md:text-lg">
-          Wij zijn geen cateraar. Geen eventbureau. Wij zijn de culinaire
-          regisseur voor merken — van concept tot applaus. Bewezen bij
-          Penfolds, Gault&amp;Millau, DPG Media en Gall&amp;Gall.
+          Concept, productie en regie — onder één dak. Wij ontwerpen culinaire
+          merkmomenten waarmee u uw relaties verrast en uw merk op het hoogste
+          niveau presenteert. Bewezen bij Penfolds, Gault&amp;Millau, DPG Media en
+          Gall&amp;Gall.
         </p>
 
         <div className="fade-up fade-up-delay-4 mt-12 flex flex-wrap items-center gap-4">
