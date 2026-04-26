@@ -1,13 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-
-const sitemap = [
-  { href: "/brand-events", label: "Brand Events" },
-  { href: "/cases", label: "Cases" },
-  { href: "/diensten", label: "Diensten" },
-  { href: "/over-ons", label: "Over Ons" },
-  { href: "/contact", label: "Contact" },
-];
+import type { Dict, Locale } from "@/lib/dict";
+import { pathFor } from "@/lib/dict";
 
 const socials = [
   {
@@ -43,14 +37,29 @@ const socials = [
   },
 ];
 
-export default function Footer() {
+export default function Footer({
+  dict,
+  locale,
+}: {
+  dict: Dict;
+  locale: Locale;
+}) {
+  const t = dict.footer;
+  const sitemap = [
+    { href: pathFor("brandEvents", locale), label: dict.nav.brandEvents },
+    { href: pathFor("cases", locale), label: dict.nav.cases },
+    { href: pathFor("services", locale), label: dict.nav.services },
+    { href: pathFor("about", locale), label: dict.nav.about },
+    { href: pathFor("contact", locale), label: dict.nav.contact },
+  ];
+
   return (
     <footer className="relative border-t border-white/5 bg-charcoal text-cream/70">
       <div className="absolute inset-0 bg-noise opacity-[0.03] pointer-events-none" />
       <div className="relative mx-auto max-w-[1320px] px-6 md:px-10 py-20">
         <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr]">
           <div>
-            <Link href="/" className="inline-flex items-center" aria-label="Culinair AnnoNu">
+            <Link href={pathFor("home", locale)} className="inline-flex items-center" aria-label="Culinair AnnoNu">
               <Image
                 src="/images/logo-gold.png"
                 alt="Culinair AnnoNu"
@@ -60,17 +69,16 @@ export default function Footer() {
               />
             </Link>
             <p className="mt-6 max-w-md font-display text-2xl leading-snug text-cream/90">
-              De culinaire regisseur voor merken.
+              {t.tagline}
             </p>
             <p className="mt-4 max-w-md text-sm leading-relaxed text-cream/55">
-              Wij produceren high-end brand events waarmee merken hun relaties
-              verrassen en hun merk laden — van concept tot uitvoering.
+              {t.blurb}
             </p>
           </div>
 
           <div>
             <h4 className="text-[11px] uppercase tracking-[0.32em] text-gold">
-              Navigatie
+              {t.navHeading}
             </h4>
             <ul className="mt-6 space-y-3">
               {sitemap.map((s) => (
@@ -88,16 +96,16 @@ export default function Footer() {
 
           <div>
             <h4 className="text-[11px] uppercase tracking-[0.32em] text-gold">
-              Bezoekadres
+              {t.addressHeading}
             </h4>
             <p className="mt-6 text-sm leading-relaxed text-cream/70">
-              De Proefklas
-              <br />
-              De Groene Bark, Lokaal 207
-              <br />
-              Vlielandstraat 2
-              <br />
-              1506 ZK Zaandam
+              {t.addressVenue}
+              {t.addressLines.map((line) => (
+                <span key={line}>
+                  <br />
+                  {line}
+                </span>
+              ))}
             </p>
             <p className="mt-6 text-sm">
               <a
@@ -132,13 +140,13 @@ export default function Footer() {
         </div>
 
         <div className="mt-16 flex flex-col items-start justify-between gap-4 border-t border-white/5 pt-6 text-xs text-cream/40 md:flex-row md:items-center">
-          <p>© {new Date().getFullYear()} Culinair AnnoNu B.V. — KVK 92064426 — BTW NL865871437B01</p>
+          <p>© {new Date().getFullYear()} Culinair AnnoNu B.V. — {t.legalSuffix}</p>
           <div className="flex items-center gap-5">
-            <Link href="/privacy" className="hover:text-gold-light">
-              Privacy
+            <Link href={pathFor("privacy", locale)} className="hover:text-gold-light">
+              {t.privacy}
             </Link>
-            <Link href="/voorwaarden" className="hover:text-gold-light">
-              Voorwaarden
+            <Link href={pathFor("terms", locale)} className="hover:text-gold-light">
+              {t.terms}
             </Link>
           </div>
         </div>

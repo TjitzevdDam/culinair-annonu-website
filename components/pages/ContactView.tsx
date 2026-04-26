@@ -1,50 +1,35 @@
-import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
 import ContactForm from "@/components/ContactForm";
 import { BreadcrumbsJsonLd } from "@/components/JsonLd";
+import { type Dict, type Locale, pathFor, SITE } from "@/lib/dict";
 
-const SITE = "https://culinair-annonu.com";
-
-export const metadata: Metadata = {
-  title: "Contact — Plan een Kennismaking",
-  description:
-    "Plan een kennismaking met Culinair AnnoNu. Conceptvoorstel binnen 5 werkdagen. Bezoekadres De Proefklas Zaandam, info@culinair-annonu.com, +31 6 19 15 09 28.",
-  keywords: [
-    "Culinair AnnoNu contact",
-    "brand events offerte",
-    "De Proefklas Zaandam",
-    "kennismaking brand event",
-    "conceptvoorstel brand events",
-  ],
-  alternates: { canonical: "/contact" },
-  openGraph: {
-    title: "Contact — Culinair AnnoNu",
-    description: "Plan een kennismaking. Conceptvoorstel binnen 5 werkdagen.",
-    url: `${SITE}/contact`,
-    images: ["/images/gm-tivoli.jpg"],
-  },
-};
-
-export default function ContactPage() {
+export default function ContactView({
+  dict,
+  locale,
+}: {
+  dict: Dict;
+  locale: Locale;
+}) {
+  const t = dict.contactPage;
   return (
     <>
       <BreadcrumbsJsonLd
         items={[
-          { name: "Home", url: SITE },
-          { name: "Contact", url: `${SITE}/contact` },
+          { name: "Home", url: `${SITE}${pathFor("home", locale)}` },
+          { name: dict.nav.contact, url: `${SITE}${pathFor("contact", locale)}` },
         ]}
       />
       <PageHero
-        eyebrow="Laten we praten"
+        eyebrow={t.pageHero.eyebrow}
         title={
           <>
-            Een{" "}
-            <span className="italic gold-gradient-text">conceptvoorstel</span>{" "}
-            binnen 5 werkdagen
+            {t.pageHero.titleA}{" "}
+            <span className="italic gold-gradient-text">{t.pageHero.titleAccent}</span>
+            {t.pageHero.titleEnd ?? ""}
           </>
         }
-        intro="Vertel ons over uw merk, uw doelgroep en wat u wilt bereiken. Wij komen met een concept dat past bij uw ambitie."
+        intro={t.pageHero.intro}
         image="/images/gm-tivoli.jpg"
       />
 
@@ -54,7 +39,7 @@ export default function ContactPage() {
             <Reveal>
               <div className="rounded-sm border border-white/10 bg-white/[0.02] p-8 md:p-10">
                 <h3 className="text-[11px] uppercase tracking-[0.32em] text-gold">
-                  Bezoekadres — De Proefklas
+                  {t.addressHeading}
                 </h3>
                 <p className="mt-5 font-display text-xl leading-snug text-cream">
                   De Groene Bark, Lokaal 207
@@ -69,7 +54,7 @@ export default function ContactPage() {
             <Reveal delay={0.1}>
               <div className="mt-6 rounded-sm border border-white/10 bg-white/[0.02] p-8 md:p-10">
                 <h3 className="text-[11px] uppercase tracking-[0.32em] text-gold">
-                  Direct contact
+                  {t.directHeading}
                 </h3>
                 <p className="mt-5 space-y-2 font-display text-xl leading-snug text-cream">
                   <a
@@ -89,16 +74,14 @@ export default function ContactPage() {
             </Reveal>
 
             <Reveal delay={0.2}>
-              <div className="mt-6 text-xs leading-relaxed text-cream/45">
-                Culinair AnnoNu B.V.
-                <br />
-                KVK 92064426 — BTW NL865871437B01
+              <div className="mt-6 whitespace-pre-line text-xs leading-relaxed text-cream/45">
+                {t.legal}
               </div>
             </Reveal>
           </div>
 
           <Reveal delay={0.1}>
-            <ContactForm />
+            <ContactForm dict={dict} />
           </Reveal>
         </div>
       </section>

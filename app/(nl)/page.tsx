@@ -7,35 +7,41 @@ import CasesStrip from "@/components/CasesStrip";
 import ServicesGrid from "@/components/ServicesGrid";
 import Cta from "@/components/Cta";
 import { OrganizationJsonLd } from "@/components/JsonLd";
+import { getDict } from "@/lib/dict";
 
 export const metadata: Metadata = {
-  title: {
-    absolute: "Culinair AnnoNu — High-End Brand Events Nederland",
-  },
+  title: { absolute: "Culinair AnnoNu — High-End Brand Events Nederland" },
   description:
     "De culinaire regisseur voor merken in Nederland. Wij produceren exclusieve brand events van 15 tot 2000 gasten — bewezen bij Penfolds, Gault & Millau, DPG Media en Gall & Gall.",
-  alternates: { canonical: "/" },
+  alternates: {
+    canonical: "/",
+    languages: { "nl-NL": "/", "en-GB": "/en", "x-default": "/" },
+  },
 };
 
-export default function Home() {
+export default function HomeNL() {
+  const dict = getDict("nl");
+  const c = dict.ctaHome;
   return (
     <>
       <OrganizationJsonLd />
-      <Hero />
+      <Hero dict={dict} locale="nl" />
       <Marquee />
-      <BrandEventsLead />
-      <CasesStrip />
-      <Manifesto />
-      <ServicesGrid />
+      <BrandEventsLead dict={dict} locale="nl" />
+      <CasesStrip dict={dict} locale="nl" />
+      <Manifesto dict={dict} />
+      <ServicesGrid dict={dict} locale="nl" />
       <Cta
+        eyebrow={c.eyebrow}
         title={
           <>
-            Klaar om uw merk{" "}
-            <span className="italic gold-gradient-text">culinair te laden?</span>
+            {c.titleA}{" "}
+            <span className="italic gold-gradient-text">{c.titleAccent}</span>
           </>
         }
-        body="Vertel ons over uw merk, uw doelgroep en wat u wilt bereiken. Wij komen met een concept dat past bij uw ambitie."
-        ctaLabel="Bespreek uw event"
+        body={c.body}
+        ctaLabel={c.ctaLabel}
+        ctaHref="/contact"
       />
     </>
   );

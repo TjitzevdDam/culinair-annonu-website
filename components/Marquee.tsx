@@ -1,12 +1,12 @@
 const clients = [
   "Penfolds",
-  "Gault & Millau",
-  "DPG Media",
-  "Gall & Gall",
+  "Gault & Millau",
+  "DPG Media",
+  "Gall & Gall",
   "Nestlé",
-  "JOE Radio",
-  "Landgoed de Salentein",
-  "24H Chefs",
+  "JOE Radio",
+  "Landgoed de Salentein",
+  "24H Chefs",
 ];
 
 export default function Marquee() {

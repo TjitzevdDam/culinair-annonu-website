@@ -1,97 +1,39 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
 import Cta from "@/components/Cta";
 import Marquee from "@/components/Marquee";
 import { ServiceJsonLd, BreadcrumbsJsonLd } from "@/components/JsonLd";
+import { type Dict, type Locale, pathFor, SITE } from "@/lib/dict";
 
-const SITE = "https://culinair-annonu.com";
-
-export const metadata: Metadata = {
-  title: "High-End Brand Events Nederland — Brand Dinners tot 2000 Gasten",
-  description:
-    "Wij produceren high-end brand events voor merken — van intieme chef's table voor 15 directieleden tot gastronomische festivals voor 2000 gasten. Concept, productie en regie onder één dak.",
-  keywords: [
-    "high-end brand events",
-    "brand events Nederland",
-    "luxury brand events",
-    "brand dinner organiseren",
-    "culinaire merkbeleving",
-    "chef's table event",
-    "gastronomisch festival",
-    "brand experience agency",
-  ],
-  alternates: { canonical: "/brand-events" },
-  openGraph: {
-    title: "High-End Brand Events — Culinair AnnoNu",
-    description:
-      "Van chef's table voor 15 gasten tot festivals voor 2000. Concept, productie en regie onder één dak.",
-    url: `${SITE}/brand-events`,
-    images: ["/images/24h-chefs.jpg"],
-  },
-};
-
-const formats = [
-  {
-    title: "Brand Dinner",
-    range: "15 – 60 gasten",
-    desc: "Intieme chef's table of meergangendiner waarbij uw merk persoonlijk wordt geladen via verhaal, smaak en sfeer. Ideaal voor relatiebeheer, productlanceringen en VIP-introducties.",
-  },
-  {
-    title: "Brand Experience",
-    range: "60 – 300 gasten",
-    desc: "Een immersive culinaire avond waarbij gasten meegenomen worden door een gecureerd parcours van smaken, momenten en activaties. Eén thema, één merk, één avond.",
-  },
-  {
-    title: "Grand Experience",
-    range: "300 – 2000 gasten",
-    desc: "Festival-formaat. Meerdere chefs, meerdere zones, één regie. Bewezen bij 100Chefs by Gault & Millau en 24H Chefs.",
-  },
-];
-
-const process = [
-  {
-    n: "01",
-    title: "Briefing & strategie",
-    text: "We beginnen niet bij het menu, maar bij uw merk. Wat moet de gast voelen? Wat moet hij doorvertellen? Welk merkverhaal moet centraal staan?",
-  },
-  {
-    n: "02",
-    title: "Concept & regie",
-    text: "Wij vertalen die merkstrategie naar een culinair concept met chef, locatie, decor, sommelier, entertainment en tafelschikking. Eén regisseur, één draaiboek.",
-  },
-  {
-    n: "03",
-    title: "Productie",
-    text: "Logistiek, vergunningen, leveranciers, decor, AV, personeel, content. Wij sturen het hele orkest aan zodat uw team zich op het merk kan richten.",
-  },
-  {
-    n: "04",
-    title: "Uitvoering & nazorg",
-    text: "Op de avond zelf staat onze regie ernaast u. Na afloop volgen content, evaluatie en — bij multi-event partnerships — een doorlopend programma.",
-  },
-];
-
-export default function BrandEventsPage() {
+export default function BrandEventsView({
+  dict,
+  locale,
+}: {
+  dict: Dict;
+  locale: Locale;
+}) {
+  const t = dict.brandEventsPage;
+  const homeLabel = locale === "nl" ? "Home" : "Home";
   return (
     <>
       <ServiceJsonLd />
       <BreadcrumbsJsonLd
         items={[
-          { name: "Home", url: SITE },
-          { name: "Brand Events", url: `${SITE}/brand-events` },
+          { name: homeLabel, url: `${SITE}${pathFor("home", locale)}` },
+          { name: dict.nav.brandEvents, url: `${SITE}${pathFor("brandEvents", locale)}` },
         ]}
       />
       <PageHero
-        eyebrow="Onze hoofddiscipline"
+        eyebrow={t.pageHero.eyebrow}
         title={
           <>
-            High-end <span className="italic gold-gradient-text">brand events</span>{" "}
-            van concept tot applaus
+            {t.pageHero.titleA}{" "}
+            <span className="italic gold-gradient-text">{t.pageHero.titleAccent}</span>
+            {t.pageHero.titleEnd ?? ""}
           </>
         }
-        intro="Wij zijn de culinaire regisseur voor merken die op het hoogste niveau willen spelen. Geen cateraar, geen eventbureau — een creatief partner met culinaire autoriteit, merkstrategie en totaalregie."
+        intro={t.pageHero.intro}
         image="/images/24h-chefs.jpg"
       />
 
@@ -105,27 +47,25 @@ export default function BrandEventsPage() {
                 <div className="flex items-center gap-3">
                   <span className="h-px w-10 bg-gold" />
                   <span className="text-[11px] uppercase tracking-[0.42em] text-gold">
-                    Formats
+                    {t.formats.eyebrow}
                   </span>
                 </div>
               </Reveal>
               <Reveal delay={0.1}>
                 <h2 className="mt-6 font-display text-4xl leading-[1.05] tracking-tight text-cream md:text-6xl text-balance">
-                  Drie schaalformaten,{" "}
-                  <span className="italic gold-gradient-text">één regie</span>
+                  {t.formats.titleA}{" "}
+                  <span className="italic gold-gradient-text">{t.formats.titleAccent}</span>
                 </h2>
               </Reveal>
               <Reveal delay={0.2}>
                 <p className="mt-6 max-w-md text-base leading-relaxed text-cream/65">
-                  Of het nu een diner voor 15 directieleden is of een festival
-                  voor 2000 gasten — onze werkwijze blijft dezelfde: één
-                  regisseur die het merk centraal stelt.
+                  {t.formats.body}
                 </p>
               </Reveal>
             </div>
 
             <div className="space-y-px">
-              {formats.map((f, i) => (
+              {t.formats.items.map((f, i) => (
                 <Reveal key={f.title} delay={i * 0.08}>
                   <div className="group relative overflow-hidden border-t border-white/10 py-8 transition-colors duration-500 last:border-b">
                     <div className="grid gap-6 md:grid-cols-[1fr_2fr] md:gap-12 md:items-baseline">
@@ -168,20 +108,20 @@ export default function BrandEventsPage() {
               <div className="flex items-center gap-3">
                 <span className="h-px w-10 bg-gold" />
                 <span className="text-[11px] uppercase tracking-[0.42em] text-gold">
-                  Werkwijze
+                  {t.process.eyebrow}
                 </span>
               </div>
             </Reveal>
             <Reveal delay={0.1}>
               <h2 className="mt-6 font-display text-4xl leading-[1.05] tracking-tight text-cream md:text-6xl text-balance">
-                Vier fases,{" "}
-                <span className="italic gold-gradient-text">één regisseur</span>
+                {t.process.titleA}{" "}
+                <span className="italic gold-gradient-text">{t.process.titleAccent}</span>
               </h2>
             </Reveal>
           </div>
 
           <div className="mt-16 grid gap-px bg-white/[0.08] sm:grid-cols-2">
-            {process.map((p, i) => (
+            {t.process.items.map((p, i) => (
               <Reveal key={p.n} delay={i * 0.06}>
                 <div className="group h-full bg-charcoal-light/80 p-10">
                   <div className="font-display text-5xl text-gold/40 transition-colors duration-500 group-hover:text-gold">
@@ -203,12 +143,13 @@ export default function BrandEventsPage() {
       <Cta
         title={
           <>
-            Een idee voor uw merk?{" "}
-            <span className="italic gold-gradient-text">Wij regisseren.</span>
+            {t.cta.titleA}{" "}
+            <span className="italic gold-gradient-text">{t.cta.titleAccent}</span>
           </>
         }
-        body="Vertel ons over uw merk, uw doelgroep en de gelegenheid. Binnen 5 werkdagen leveren wij een conceptvoorstel."
-        ctaLabel="Bespreek uw event"
+        body={t.cta.body}
+        ctaLabel={t.cta.ctaLabel}
+        ctaHref={pathFor("contact", locale)}
       />
     </>
   );

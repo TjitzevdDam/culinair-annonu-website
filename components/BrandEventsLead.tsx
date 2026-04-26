@@ -5,32 +5,24 @@ import Image from "next/image";
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
 import Reveal from "./Reveal";
+import type { Dict, Locale } from "@/lib/dict";
+import { pathFor } from "@/lib/dict";
 
-const pillars = [
-  {
-    n: "01",
-    title: "Concept",
-    text: "Wat moet uw gast voelen, onthouden, doorvertellen? Dat is het vertrekpunt — niet het menu.",
-  },
-  {
-    n: "02",
-    title: "Productie",
-    text: "Locatie, chef, decor, sommelier, entertainment, logistiek. Eén regisseur, één draaiboek.",
-  },
-  {
-    n: "03",
-    title: "Regie",
-    text: "Op de avond zelf staan wij naast u. Elk detail valt op zijn plek — u hoeft alleen te genieten.",
-  },
-];
-
-export default function BrandEventsLead() {
+export default function BrandEventsLead({
+  dict,
+  locale,
+}: {
+  dict: Dict;
+  locale: Locale;
+}) {
   const ref = useRef<HTMLElement | null>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"],
   });
   const bgY = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
+
+  const t = dict.brandEventsLead;
 
   return (
     <section
@@ -59,37 +51,34 @@ export default function BrandEventsLead() {
               <div className="flex items-center gap-3">
                 <span className="h-px w-10 bg-gold" />
                 <span className="text-[11px] uppercase tracking-[0.42em] text-gold">
-                  Onze hoofddiscipline
+                  {t.eyebrow}
                 </span>
               </div>
             </Reveal>
             <Reveal delay={0.1}>
               <h2 className="mt-6 font-display text-5xl leading-[1.02] tracking-tight text-cream md:text-7xl text-balance">
-                High-end{" "}
-                <span className="italic gold-gradient-text">brand events</span>
+                {t.titleA}{" "}
+                <span className="italic gold-gradient-text">{t.titleAccent}</span>
               </h2>
             </Reveal>
             <Reveal delay={0.2}>
               <p className="mt-8 text-base leading-relaxed text-cream/70 md:text-lg">
-                Van een chef's-table-diner voor 15 directieleden tot een
-                gastronomisch festival voor 2000 gasten. Wij produceren
-                culinaire merkmomenten waarmee u op het hoogste niveau
-                speelt — strategisch, creatief en operationeel.
+                {t.body}
               </p>
             </Reveal>
             <Reveal delay={0.3}>
               <Link
-                href="/brand-events"
+                href={pathFor("brandEvents", locale)}
                 className="mt-10 inline-flex items-center gap-3 text-sm uppercase tracking-[0.22em] text-gold-light transition-all hover:gap-4 hover:text-gold"
               >
-                Zo werken wij
+                {t.cta}
                 <span className="transition-transform">→</span>
               </Link>
             </Reveal>
           </div>
 
           <div className="space-y-8">
-            {pillars.map((p, i) => (
+            {t.pillars.map((p, i) => (
               <Reveal key={p.n} delay={0.15 + i * 0.1}>
                 <div className="group relative overflow-hidden rounded-sm border border-white/10 bg-charcoal/60 p-8 backdrop-blur-md transition-all duration-700 ease-soft hover:border-gold/60 hover:bg-charcoal">
                   <div className="absolute -top-12 -right-8 font-display text-[9rem] leading-none text-white/[0.04] transition-colors duration-700 group-hover:text-gold/15">

@@ -1,8 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
-import Nav from "@/components/Nav";
-import Footer from "@/components/Footer";
 import CursorGlow from "@/components/CursorGlow";
 
 const playfair = Playfair_Display({
@@ -36,7 +34,6 @@ export const metadata: Metadata = {
   publisher: "Culinair AnnoNu B.V.",
   generator: "Next.js",
   category: "Brand Events",
-  classification: "Event Planning, Brand Experience, Hospitality",
   keywords: [
     "high-end brand events",
     "brand events Nederland",
@@ -44,36 +41,24 @@ export const metadata: Metadata = {
     "culinaire brand events",
     "exclusieve events organiseren",
     "brand experience agency Nederland",
-    "gastronomisch event",
-    "brand dinner",
-    "wijnmakersdiner",
-    "chef's table evenement",
-    "culinaire merkbeleving",
-    "private chef Nederland",
-    "private chef thuis",
-    "corporate events Nederland",
-    "luxury events Amsterdam",
-    "culinair regisseur",
-    "Tjitze van der Dam",
     "Culinair AnnoNu",
-    "100Chefs Gault Millau",
-    "24H Chefs",
-    "merkactivatie culinair",
-    "premium events Zaandam",
-    "De Proefklas",
+    "Tjitze van der Dam",
   ],
   alternates: {
     canonical: SITE,
     languages: {
       "nl-NL": SITE,
+      "en-GB": `${SITE}/en`,
+      "x-default": SITE,
     },
   },
   openGraph: {
     title: "Culinair AnnoNu — High-End Brand Events voor Merken",
     description:
-      "De culinaire regisseur voor merken. Concept, productie en regie van exclusieve brand events — bewezen bij Penfolds, Gault & Millau, DPG Media en Gall & Gall.",
+      "De culinaire regisseur voor merken. Concept, productie en regie van exclusieve brand events.",
     type: "website",
     locale: "nl_NL",
+    alternateLocale: ["en_GB"],
     url: SITE,
     siteName: "Culinair AnnoNu",
     images: [
@@ -88,8 +73,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Culinair AnnoNu — High-End Brand Events Nederland",
-    description:
-      "De culinaire regisseur voor merken. Bewezen bij Penfolds, Gault & Millau, DPG Media en Gall & Gall.",
+    description: "De culinaire regisseur voor merken.",
     images: ["/images/24h-chefs.jpg"],
   },
   robots: {
@@ -103,15 +87,9 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  formatDetection: {
-    email: true,
-    address: true,
-    telephone: true,
-  },
+  formatDetection: { email: true, address: true, telephone: true },
   icons: {
-    icon: [
-      { url: "/icon.png", type: "image/png" },
-    ],
+    icon: [{ url: "/icon.png", type: "image/png" }],
     apple: [{ url: "/apple-icon.png" }],
   },
   manifest: "/manifest.webmanifest",
@@ -136,9 +114,7 @@ export default function RootLayout({
     <html lang="nl-NL" className={`${playfair.variable} ${inter.variable}`}>
       <body className="font-body bg-charcoal text-cream antialiased">
         <CursorGlow />
-        <Nav />
-        <main>{children}</main>
-        <Footer />
+        {children}
       </body>
     </html>
   );

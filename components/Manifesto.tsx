@@ -4,14 +4,17 @@ import Image from "next/image";
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
 import Reveal from "./Reveal";
+import type { Dict } from "@/lib/dict";
 
-export default function Manifesto() {
+export default function Manifesto({ dict }: { dict: Dict }) {
   const ref = useRef<HTMLElement | null>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"],
   });
   const imgY = useTransform(scrollYProgress, [0, 1], ["-8%", "8%"]);
+
+  const t = dict.manifesto;
 
   return (
     <section
@@ -24,7 +27,7 @@ export default function Manifesto() {
             <motion.div style={{ y: imgY }} className="absolute -inset-y-12 inset-x-0">
               <Image
                 src="/images/tjitze-portrait.jpg"
-                alt="Culinair regie — Tjitze van der Dam"
+                alt={t.portraitAlt}
                 fill
                 sizes="(min-width: 768px) 45vw, 90vw"
                 className="object-cover"
@@ -40,40 +43,32 @@ export default function Manifesto() {
             <div className="flex items-center gap-3">
               <span className="h-px w-10 bg-gold" />
               <span className="text-[11px] uppercase tracking-[0.42em] text-gold">
-                Wie wij zijn
+                {t.eyebrow}
               </span>
             </div>
           </Reveal>
           <Reveal delay={0.1}>
             <h2 className="mt-6 font-display text-4xl leading-[1.05] tracking-tight text-cream md:text-6xl text-balance">
-              Voor merken die{" "}
-              <span className="italic gold-gradient-text">
-                hoog mikken.
-              </span>
+              {t.titleA}{" "}
+              <span className="italic gold-gradient-text">{t.titleAccent}</span>
             </h2>
           </Reveal>
           <Reveal delay={0.2}>
             <p className="mt-8 max-w-xl text-base leading-relaxed text-cream/70 md:text-lg">
-              Culinair AnnoNu bedenkt, produceert en levert exclusieve culinaire
-              ervaringen waarmee merken hun relaties verrassen, hun merk laden en
-              hun netwerk activeren. Onder creatieve leiding van{" "}
-              <span className="text-cream">Tjitze van der Dam</span> combineren
-              wij culinaire autoriteit met merkstrategie en totaalregie.
+              {t.body1}
             </p>
           </Reveal>
           <Reveal delay={0.3}>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-cream/70 md:text-lg">
-              Wij werken met topchefs, regisseren de avond van tafelschikking
-              tot entertainment, en zorgen dat uw merk centraal staat. Niet als
-              leverancier, maar als creatief partner.
+              {t.body2}
             </p>
           </Reveal>
 
           <Reveal delay={0.4}>
             <div className="mt-14 grid grid-cols-3 gap-6 border-t border-white/10 pt-10">
-              <Stat number="25+" label="Jaar culinaire regie" />
-              <Stat number="100+" label="Brand events" />
-              <Stat number="50+" label="Premium merken" />
+              {t.stats.map((s) => (
+                <Stat key={s.label} number={s.number} label={s.label} />
+              ))}
             </div>
           </Reveal>
         </div>

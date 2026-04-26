@@ -4,39 +4,19 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "motion/react";
 import Reveal from "./Reveal";
+import type { Dict, Locale } from "@/lib/dict";
+import { pathFor } from "@/lib/dict";
 
-const cases = [
-  {
-    title: "Penfolds Grange Dinner",
-    tag: "Brand Dinner",
-    img: "/images/gerecht-tartaar.jpg",
-    blurb:
-      "Exclusief wijnmakers-diner rond de Penfolds Grange 2018. Een avond op het hoogste niveau voor relaties en pers.",
-  },
-  {
-    title: "100Chefs by Gault & Millau",
-    tag: "Grand Experience · 2000 gasten",
-    img: "/images/100chefs.jpg",
-    blurb:
-      "100 chefs, 2000 gasten, 2 dagen Miele Experience Center. Het grootste gastronomische brand event van Nederland.",
-  },
-  {
-    title: "Wijnmakersdiner",
-    tag: "Brand Dinner",
-    img: "/images/dinner-tafel.jpg",
-    blurb:
-      "Exclusief diner met de wijnmaker aan tafel. Het verhaal achter elke fles, vertaald in een gastronomisch parcours dat het merk laadt en relaties verrast.",
-  },
-  {
-    title: "24H Chefs",
-    tag: "Signature Event",
-    img: "/images/24h-chefs-table.jpg",
-    blurb:
-      "Ons eigen signature event: 24 uur non-stop koken met de top van Nederland. Het bewijs van onze slagkracht.",
-  },
-];
+export default function CasesStrip({
+  dict,
+  locale,
+}: {
+  dict: Dict;
+  locale: Locale;
+}) {
+  const t = dict.casesStrip;
+  const cases = dict.cases.slice(0, 4);
 
-export default function CasesStrip() {
   return (
     <section className="relative bg-charcoal py-28 md:py-40">
       <div className="mx-auto max-w-[1320px] px-6 md:px-10">
@@ -46,25 +26,23 @@ export default function CasesStrip() {
               <div className="flex items-center gap-3">
                 <span className="h-px w-10 bg-gold" />
                 <span className="text-[11px] uppercase tracking-[0.42em] text-gold">
-                  Cases
+                  {t.eyebrow}
                 </span>
               </div>
             </Reveal>
             <Reveal delay={0.1}>
               <h2 className="mt-6 max-w-2xl font-display text-4xl leading-[1.05] tracking-tight text-cream md:text-6xl text-balance">
-                Bewezen bij{" "}
-                <span className="italic gold-gradient-text">
-                  premium merken
-                </span>
+                {t.titleA}{" "}
+                <span className="italic gold-gradient-text">{t.titleAccent}</span>
               </h2>
             </Reveal>
           </div>
           <Reveal delay={0.2}>
             <Link
-              href="/cases"
+              href={pathFor("cases", locale)}
               className="inline-flex items-center gap-3 rounded-full border border-white/15 px-6 py-3 text-xs uppercase tracking-[0.22em] text-cream transition-all duration-500 hover:border-gold hover:text-gold-light"
             >
-              Alle cases
+              {t.cta}
               <span>→</span>
             </Link>
           </Reveal>
@@ -113,9 +91,7 @@ function CaseCard({
       </motion.div>
       <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/30 to-transparent" />
       <motion.div
-        variants={{
-          hover: { opacity: 0.4 },
-        }}
+        variants={{ hover: { opacity: 0.4 } }}
         initial={{ opacity: 0 }}
         className="absolute inset-0 bg-gold/30 mix-blend-overlay"
       />
@@ -128,9 +104,7 @@ function CaseCard({
           {title}
         </h3>
         <motion.p
-          variants={{
-            hover: { opacity: 1, y: 0 },
-          }}
+          variants={{ hover: { opacity: 1, y: 0 } }}
           initial={{ opacity: 0, y: 12 }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="mt-4 max-w-md text-sm leading-relaxed text-cream/80"

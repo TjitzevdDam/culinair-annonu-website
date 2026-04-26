@@ -4,16 +4,16 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
+import type { Dict, Locale } from "@/lib/dict";
+import { pathFor } from "@/lib/dict";
 
-const rotatingWords = [
-  "verrassen",
-  "raken",
-  "verbinden",
-  "verbluffen",
-  "laden",
-];
-
-export default function Hero() {
+export default function Hero({
+  dict,
+  locale,
+}: {
+  dict: Dict;
+  locale: Locale;
+}) {
   const ref = useRef<HTMLElement | null>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -21,6 +21,8 @@ export default function Hero() {
   });
   const y = useTransform(scrollYProgress, [0, 1], [0, 200]);
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1.08]);
+
+  const t = dict.hero;
 
   return (
     <section
@@ -48,47 +50,44 @@ export default function Hero() {
         <div className="fade-up flex items-center gap-4">
           <span className="h-px w-12 bg-gold" />
           <span className="text-[11px] uppercase tracking-[0.42em] text-gold">
-            High-End Brand Events
+            {t.eyebrow}
           </span>
         </div>
 
         <h1 className="fade-up fade-up-delay-1 mt-8 max-w-5xl font-display text-[clamp(2.6rem,7vw,6.4rem)] font-medium leading-[1.02] tracking-tightest text-cream text-balance">
-          Culinaire ervaringen
+          {t.titleStart}
           <br />
-          die uw merk
+          {t.titleMid}
           <br />
-          <RotatingWord words={rotatingWords} />
+          <RotatingWord words={t.rotatingWords} />
         </h1>
 
         <p className="fade-up fade-up-delay-3 mt-10 max-w-xl text-base leading-relaxed text-cream/70 md:text-lg">
-          Concept, productie en regie — onder één dak. Wij ontwerpen culinaire
-          merkmomenten waarmee u uw relaties verrast en uw merk op het hoogste
-          niveau presenteert. Bewezen bij Penfolds, Gault&amp;Millau, DPG Media en
-          Gall&amp;Gall.
+          {t.body}
         </p>
 
         <div className="fade-up fade-up-delay-4 mt-12 flex flex-wrap items-center gap-4">
           <Link
-            href="/contact"
+            href={pathFor("contact", locale)}
             className="group relative inline-flex items-center gap-3 rounded-full bg-gold px-7 py-4 text-sm font-medium uppercase tracking-[0.18em] text-charcoal transition-all duration-500 ease-soft hover:bg-gold-light"
           >
-            Bespreek uw event
+            {t.ctaPrimary}
             <span className="transition-transform duration-500 ease-soft group-hover:translate-x-1">
               →
             </span>
           </Link>
           <Link
-            href="/cases"
+            href={pathFor("cases", locale)}
             className="group inline-flex items-center gap-3 rounded-full border border-white/15 px-7 py-4 text-sm uppercase tracking-[0.18em] text-cream transition-all duration-500 ease-soft hover:border-gold hover:text-gold-light"
           >
-            Bekijk cases
+            {t.ctaSecondary}
           </Link>
         </div>
       </div>
 
       <div className="fade-up fade-up-delay-6 absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-3 md:flex">
         <span className="text-[10px] uppercase tracking-[0.42em] text-cream/50">
-          Scroll
+          {t.scroll}
         </span>
         <span className="block h-10 w-px animate-pulse bg-gradient-to-b from-gold via-gold/30 to-transparent" />
       </div>

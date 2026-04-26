@@ -5,16 +5,16 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import type { Dict, Locale } from "@/lib/dict";
+import { pathFor, paths } from "@/lib/dict";
 
-const links = [
-  { href: "/brand-events", label: "Brand Events" },
-  { href: "/cases", label: "Cases" },
-  { href: "/diensten", label: "Diensten" },
-  { href: "/over-ons", label: "Over Ons" },
-  { href: "/contact", label: "Contact" },
-];
-
-export default function Nav() {
+export default function Nav({
+  dict,
+  locale,
+}: {
+  dict: Dict;
+  locale: Locale;
+}) {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
@@ -30,6 +30,25 @@ export default function Nav() {
     setOpen(false);
   }, [pathname]);
 
+  const links = [
+    { href: pathFor("brandEvents", locale), label: dict.nav.brandEvents },
+    { href: pathFor("cases", locale), label: dict.nav.cases },
+    { href: pathFor("services", locale), label: dict.nav.services },
+    { href: pathFor("about", locale), label: dict.nav.about },
+    { href: pathFor("contact", locale), label: dict.nav.contact },
+  ];
+
+  // Build the equivalent path in the OTHER locale for the language switcher
+  const otherLocale: Locale = locale === "nl" ? "en" : "nl";
+  const switchHref = (() => {
+    if (!pathname) return pathFor("home", otherLocale);
+    for (const key in paths) {
+      const k = key as keyof typeof paths;
+      if (paths[k][locale] === pathname) return paths[k][otherLocale];
+    }
+    return pathFor("home", otherLocale);
+  })();
+
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ease-soft ${
@@ -39,7 +58,11 @@ export default function Nav() {
       }`}
     >
       <div className="mx-auto flex max-w-[1320px] items-center justify-between px-6 md:px-10">
-        <Link href="/" className="flex items-center group" aria-label="Culinair AnnoNu">
+        <Link
+          href={pathFor("home", locale)}
+          className="flex items-center group"
+          aria-label="Culinair AnnoNu"
+        >
           <Image
             src="/images/logo-gold.png"
             alt="Culinair AnnoNu"
@@ -52,9 +75,7 @@ export default function Nav() {
 
         <nav className="hidden items-center gap-8 lg:flex">
           {links.map((link) => {
-            const active =
-              pathname === link.href ||
-              (link.href !== "/" && pathname?.startsWith(link.href));
+            const active = pathname === link.href;
             return (
               <Link
                 key={link.href}
@@ -72,12 +93,21 @@ export default function Nav() {
           })}
         </nav>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3">
           <Link
-            href="/contact"
+            href={switchHref}
+            aria-label={dict.switchTo.aria}
+            hrefLang={otherLocale}
+            className="hidden h-10 w-10 items-center justify-center rounded-full border border-white/15 text-[11px] uppercase tracking-[0.18em] text-cream/80 transition-all duration-500 ease-soft hover:border-gold hover:text-gold-light lg:inline-flex"
+          >
+            {dict.switchTo.label}
+          </Link>
+
+          <Link
+            href={pathFor("contact", locale)}
             className="hidden rounded-full border border-gold/50 px-5 py-2.5 text-[12px] uppercase tracking-[0.22em] text-gold-light transition-all duration-500 ease-soft hover:bg-gold hover:text-charcoal hover:border-gold lg:inline-block"
           >
-            Plan een gesprek
+            {dict.nav.cta}
           </Link>
 
           <button
@@ -121,6 +151,15 @@ export default function Nav() {
                     </Link>
                   </li>
                 ))}
+                <li className="mt-2 border-t border-white/10 pt-4">
+                  <Link
+                    href={switchHref}
+                    hrefLang={otherLocale}
+                    className="block text-xs uppercase tracking-[0.32em] text-gold-light"
+                  >
+                    {dict.switchTo.label}
+                  </Link>
+                </li>
               </ul>
             </div>
           </motion.div>

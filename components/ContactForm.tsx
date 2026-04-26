@@ -1,17 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import type { Dict } from "@/lib/dict";
 
-const eventTypes = [
-  { value: "", label: "Selecteer een dienst..." },
-  { value: "brand-event", label: "Brand Event" },
-  { value: "private-chef", label: "Private Chef" },
-  { value: "proefklas", label: "De Proefklas" },
-  { value: "multi-event", label: "Multi-Event Partnership" },
-  { value: "anders", label: "Anders / Weet ik nog niet" },
-];
-
-export default function ContactForm() {
+export default function ContactForm({ dict }: { dict: Dict }) {
+  const t = dict.contactPage.form;
   const [submitted, setSubmitted] = useState(false);
 
   function onSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -23,12 +16,9 @@ export default function ContactForm() {
     return (
       <div className="flex h-full flex-col items-center justify-center rounded-sm border border-gold/40 bg-gradient-to-br from-gold/10 to-transparent p-12 text-center">
         <div className="font-display text-4xl text-cream md:text-5xl">
-          Bedankt voor uw bericht.
+          {t.thankTitle}
         </div>
-        <p className="mt-6 max-w-md text-cream/70">
-          Wij nemen binnen 24 uur contact met u op met een eerste reactie en —
-          indien passend — een conceptvoorstel binnen 5 werkdagen.
-        </p>
+        <p className="mt-6 max-w-md text-cream/70">{t.thankBody}</p>
       </div>
     );
   }
@@ -36,37 +26,37 @@ export default function ContactForm() {
   return (
     <form onSubmit={onSubmit} className="space-y-6">
       <div className="grid gap-6 md:grid-cols-2">
-        <Field label="Voornaam" name="firstName" required />
-        <Field label="Achternaam" name="lastName" required />
+        <Field label={t.firstName} name="firstName" required />
+        <Field label={t.lastName} name="lastName" required />
       </div>
       <div className="grid gap-6 md:grid-cols-2">
-        <Field label="E-mailadres" name="email" type="email" required />
-        <Field label="Bedrijf / Merk" name="company" />
+        <Field label={t.email} name="email" type="email" required />
+        <Field label={t.company} name="company" />
       </div>
       <div>
         <label className="mb-3 block text-[11px] uppercase tracking-[0.28em] text-cream/60">
-          Type event
+          {t.eventType}
         </label>
         <select
           name="eventType"
           className="w-full rounded-sm border border-white/10 bg-white/[0.02] px-4 py-3.5 text-cream outline-none transition-colors focus:border-gold/60"
         >
-          {eventTypes.map((t) => (
-            <option key={t.value} value={t.value} className="bg-charcoal">
-              {t.label}
+          {t.eventTypeOptions.map((opt) => (
+            <option key={opt.value} value={opt.value} className="bg-charcoal">
+              {opt.label}
             </option>
           ))}
         </select>
       </div>
       <div>
         <label className="mb-3 block text-[11px] uppercase tracking-[0.28em] text-cream/60">
-          Vertel ons over uw plannen <span className="text-gold">*</span>
+          {t.message} <span className="text-gold">*</span>
         </label>
         <textarea
           name="message"
           required
           rows={5}
-          placeholder="Uw merk, het gewenste aantal gasten, de gelegenheid…"
+          placeholder={t.messagePlaceholder}
           className="w-full resize-none rounded-sm border border-white/10 bg-white/[0.02] px-4 py-3.5 text-cream placeholder:text-cream/30 outline-none transition-colors focus:border-gold/60"
         />
       </div>
@@ -75,7 +65,7 @@ export default function ContactForm() {
         type="submit"
         className="group inline-flex items-center gap-3 rounded-full bg-gold px-8 py-4 text-sm font-medium uppercase tracking-[0.18em] text-charcoal transition-all duration-500 ease-soft hover:bg-gold-light"
       >
-        Verstuur aanvraag
+        {t.submit}
         <span className="transition-transform duration-500 group-hover:translate-x-1">
           →
         </span>
