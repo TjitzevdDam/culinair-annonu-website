@@ -292,6 +292,28 @@ const dictNL = {
       body2: "Hij combineert culinaire autoriteit met een scherp oog voor merkstrategie. Daarnaast is hij auteur van de kookboeken Spijs en Hollandse Klassiekers AnnoNu, bedenker van het signature event 24H Chefs en samenwerker bij 100Chefs by Gault & Millau.",
       portraitAlt: "Tjitze van der Dam — Culinair Regisseur",
     },
+    team: {
+      eyebrow: "Het team",
+      titleA: "Achter de schermen,",
+      titleAccent: "vóór uw merk",
+      intro: "Tjitze geeft creatieve leiding, maar de productie staat of valt met het team. Twee gezichten die u op locatie of in voorbereiding tegenkomt.",
+      members: [
+        {
+          name: "Ellen",
+          initial: "E",
+          role: "Team Culinair AnnoNu",
+          bio: "Bio volgt — vraag het Tjitze persoonlijk tijdens een kennismaking.",
+          photo: "",
+        },
+        {
+          name: "Flora",
+          initial: "F",
+          role: "Team Culinair AnnoNu",
+          bio: "Bio volgt — vraag het Tjitze persoonlijk tijdens een kennismaking.",
+          photo: "",
+        },
+      ],
+    },
     principles: {
       eyebrow: "Onze principes",
       titleA: "Vier principes,",
@@ -549,6 +571,28 @@ const dictEN: typeof dictNL = {
       body1: "Tjitze van der Dam is the founder and culinary director of Culinair AnnoNu. With 25+ years of experience at the top of Dutch gastronomy, he has organised events for thousands of guests — for Penfolds, Gault & Millau, DPG Media, Gall & Gall and Landgoed de Salentein, among others.",
       body2: "He combines culinary authority with a sharp eye for brand strategy. He is also the author of the cookbooks Spijs and Hollandse Klassiekers AnnoNu, the creator of the signature event 24H Chefs and a collaborator at 100Chefs by Gault & Millau.",
       portraitAlt: "Tjitze van der Dam — Culinary Director",
+    },
+    team: {
+      eyebrow: "The team",
+      titleA: "Behind the scenes,",
+      titleAccent: "for your brand",
+      intro: "Tjitze leads creatively, but production rises and falls with the team. Two faces you will meet on location or during preparation.",
+      members: [
+        {
+          name: "Ellen",
+          initial: "E",
+          role: "Team Culinair AnnoNu",
+          bio: "Bio coming soon — ask Tjitze in person during an introduction.",
+          photo: "",
+        },
+        {
+          name: "Flora",
+          initial: "F",
+          role: "Team Culinair AnnoNu",
+          bio: "Bio coming soon — ask Tjitze in person during an introduction.",
+          photo: "",
+        },
+      ],
     },
     principles: {
       eyebrow: "Our principles",
