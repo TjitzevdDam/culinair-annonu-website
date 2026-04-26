@@ -4,11 +4,32 @@ import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
 import Cta from "@/components/Cta";
 import Marquee from "@/components/Marquee";
+import { ServiceJsonLd, BreadcrumbsJsonLd } from "@/components/JsonLd";
+
+const SITE = "https://culinair-annonu.com";
 
 export const metadata: Metadata = {
-  title: "High-End Brand Events",
+  title: "High-End Brand Events Nederland — Brand Dinners tot 2000 Gasten",
   description:
-    "Wij produceren high-end brand events voor merken in Nederland. Van intieme chef's table voor 15 gasten tot festivals voor 2000 bezoekers — onze hoofddiscipline.",
+    "Wij produceren high-end brand events voor merken — van intieme chef's table voor 15 directieleden tot gastronomische festivals voor 2000 gasten. Concept, productie en regie onder één dak.",
+  keywords: [
+    "high-end brand events",
+    "brand events Nederland",
+    "luxury brand events",
+    "brand dinner organiseren",
+    "culinaire merkbeleving",
+    "chef's table event",
+    "gastronomisch festival",
+    "brand experience agency",
+  ],
+  alternates: { canonical: "/brand-events" },
+  openGraph: {
+    title: "High-End Brand Events — Culinair AnnoNu",
+    description:
+      "Van chef's table voor 15 gasten tot festivals voor 2000. Concept, productie en regie onder één dak.",
+    url: `${SITE}/brand-events`,
+    images: ["/images/24h-chefs.jpg"],
+  },
 };
 
 const formats = [
@@ -55,6 +76,13 @@ const process = [
 export default function BrandEventsPage() {
   return (
     <>
+      <ServiceJsonLd />
+      <BreadcrumbsJsonLd
+        items={[
+          { name: "Home", url: SITE },
+          { name: "Brand Events", url: `${SITE}/brand-events` },
+        ]}
+      />
       <PageHero
         eyebrow="Onze hoofddiscipline"
         title={

@@ -2,16 +2,39 @@ import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
 import ContactForm from "@/components/ContactForm";
+import { BreadcrumbsJsonLd } from "@/components/JsonLd";
+
+const SITE = "https://culinair-annonu.com";
 
 export const metadata: Metadata = {
-  title: "Contact",
+  title: "Contact — Plan een Kennismaking",
   description:
-    "Plan een kennismaking met Culinair AnnoNu. Vertel ons over uw merk, uw doelgroep en wat u wilt bereiken — wij komen met een concept dat past bij uw ambitie.",
+    "Plan een kennismaking met Culinair AnnoNu. Conceptvoorstel binnen 5 werkdagen. Bezoekadres De Proefklas Zaandam, info@culinair-annonu.com, +31 6 19 15 09 28.",
+  keywords: [
+    "Culinair AnnoNu contact",
+    "brand events offerte",
+    "De Proefklas Zaandam",
+    "kennismaking brand event",
+    "conceptvoorstel brand events",
+  ],
+  alternates: { canonical: "/contact" },
+  openGraph: {
+    title: "Contact — Culinair AnnoNu",
+    description: "Plan een kennismaking. Conceptvoorstel binnen 5 werkdagen.",
+    url: `${SITE}/contact`,
+    images: ["/images/gm-tivoli.jpg"],
+  },
 };
 
 export default function ContactPage() {
   return (
     <>
+      <BreadcrumbsJsonLd
+        items={[
+          { name: "Home", url: SITE },
+          { name: "Contact", url: `${SITE}/contact` },
+        ]}
+      />
       <PageHero
         eyebrow="Laten we praten"
         title={

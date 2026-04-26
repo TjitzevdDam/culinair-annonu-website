@@ -3,11 +3,31 @@ import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
 import Cta from "@/components/Cta";
+import { BreadcrumbsJsonLd } from "@/components/JsonLd";
+
+const SITE = "https://culinair-annonu.com";
 
 export const metadata: Metadata = {
-  title: "Diensten",
+  title: "Diensten — Brand Events, Private Chef, De Proefklas",
   description:
-    "Brand events, private chef, De Proefklas en multi-event partnerships. De diensten van Culinair AnnoNu — de culinaire regisseur voor merken.",
+    "Brand events, private chef vanaf 6 personen, De Proefklas Zaandam en multi-event partnerships. Vier diensten, één regisseur — voor merken die culinair willen laden.",
+  keywords: [
+    "brand events Nederland",
+    "private chef thuis",
+    "private chef Amsterdam",
+    "De Proefklas Zaandam",
+    "chef's table workshop",
+    "multi-event partnership",
+    "culinaire diensten merken",
+  ],
+  alternates: { canonical: "/diensten" },
+  openGraph: {
+    title: "Diensten — Culinair AnnoNu",
+    description:
+      "Vier diensten, één regisseur: Brand Events, Private Chef, De Proefklas en Multi-Event Partnership.",
+    url: `${SITE}/diensten`,
+    images: ["/images/portret-3.jpg"],
+  },
 };
 
 const services = [
@@ -49,6 +69,12 @@ const services = [
 export default function DienstenPage() {
   return (
     <>
+      <BreadcrumbsJsonLd
+        items={[
+          { name: "Home", url: SITE },
+          { name: "Diensten", url: `${SITE}/diensten` },
+        ]}
+      />
       <PageHero
         eyebrow="Wat wij leveren"
         title={

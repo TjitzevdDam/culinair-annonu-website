@@ -3,6 +3,9 @@ import PageHero from "@/components/PageHero";
 
 export const metadata: Metadata = {
   title: "Privacy",
+  description: "Privacy-beleid van Culinair AnnoNu B.V.",
+  alternates: { canonical: "/privacy" },
+  robots: { index: false, follow: true },
 };
 
 export default function PrivacyPage() {

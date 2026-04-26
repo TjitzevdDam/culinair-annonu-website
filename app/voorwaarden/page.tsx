@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 
 export const metadata: Metadata = {
-  title: "Voorwaarden",
+  title: "Algemene voorwaarden",
+  description: "Algemene voorwaarden van Culinair AnnoNu B.V.",
+  alternates: { canonical: "/voorwaarden" },
+  robots: { index: false, follow: true },
 };
 
 export default function VoorwaardenPage() {

@@ -3,11 +3,30 @@ import Image from "next/image";
 import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
 import Cta from "@/components/Cta";
+import { PersonJsonLd, BreadcrumbsJsonLd } from "@/components/JsonLd";
+
+const SITE = "https://culinair-annonu.com";
 
 export const metadata: Metadata = {
-  title: "Over Ons",
+  title: "Over Ons — Tjitze van der Dam, Culinair Regisseur",
   description:
-    "Culinair AnnoNu is de culinaire regisseur voor merken in Nederland, onder leiding van Tjitze van der Dam. Wij combineren culinaire autoriteit met merkstrategie en totaalregie.",
+    "Culinair AnnoNu wordt geleid door Tjitze van der Dam. 25+ jaar culinaire regie, honderden brand events voor premium merken. Auteur van Spijs en Hollandse Klassiekers AnnoNu.",
+  keywords: [
+    "Tjitze van der Dam",
+    "culinair regisseur",
+    "Culinair AnnoNu over",
+    "chef Tjitze",
+    "kookboek Spijs",
+    "Hollandse Klassiekers AnnoNu",
+  ],
+  alternates: { canonical: "/over-ons" },
+  openGraph: {
+    title: "Over Tjitze van der Dam — Culinair AnnoNu",
+    description:
+      "25+ jaar culinaire regie, honderden brand events voor premium merken in Nederland.",
+    url: `${SITE}/over-ons`,
+    images: ["/images/tjitze-portrait.jpg"],
+  },
 };
 
 const principles = [
@@ -32,6 +51,13 @@ const principles = [
 export default function OverOnsPage() {
   return (
     <>
+      <PersonJsonLd />
+      <BreadcrumbsJsonLd
+        items={[
+          { name: "Home", url: SITE },
+          { name: "Over Ons", url: `${SITE}/over-ons` },
+        ]}
+      />
       <PageHero
         eyebrow="Wie wij zijn"
         title={

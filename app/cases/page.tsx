@@ -3,11 +3,32 @@ import Image from "next/image";
 import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
 import Cta from "@/components/Cta";
+import { CasesJsonLd, BreadcrumbsJsonLd } from "@/components/JsonLd";
+
+const SITE = "https://culinair-annonu.com";
 
 export const metadata: Metadata = {
-  title: "Cases — Premium Brand Events",
+  title: "Cases — Penfolds, Gault & Millau, DPG Media, Gall & Gall",
   description:
-    "Van Penfolds Grange Dinners tot exclusieve wijnmakersdiners. De culinaire brand events die Culinair AnnoNu produceerde voor premium merken.",
+    "Bewezen bij premium merken. Bekijk onze cases: Penfolds Grange Dinner, 100Chefs by Gault & Millau, 24H Chefs, wijnmakersdiners en Gault & Millau gidslancering.",
+  keywords: [
+    "brand event cases Nederland",
+    "Penfolds Grange Dinner",
+    "100Chefs Gault Millau",
+    "24H Chefs",
+    "Gault Millau Gidslancering",
+    "wijnmakersdiner",
+    "DPG Media culinair",
+    "premium brand events",
+  ],
+  alternates: { canonical: "/cases" },
+  openGraph: {
+    title: "Brand Event Cases — Culinair AnnoNu",
+    description:
+      "Bewezen bij Penfolds, Gault & Millau, DPG Media, Gall & Gall en meer.",
+    url: `${SITE}/cases`,
+    images: ["/images/gm-zaal.jpg"],
+  },
 };
 
 const cases = [
@@ -58,6 +79,13 @@ const cases = [
 export default function CasesPage() {
   return (
     <>
+      <CasesJsonLd />
+      <BreadcrumbsJsonLd
+        items={[
+          { name: "Home", url: SITE },
+          { name: "Cases", url: `${SITE}/cases` },
+        ]}
+      />
       <PageHero
         eyebrow="Ons werk"
         title={
