@@ -65,7 +65,7 @@ export default function Manifesto({ dict }: { dict: Dict }) {
           </Reveal>
 
           <Reveal delay={0.4}>
-            <div className="mt-14 grid grid-cols-3 gap-6 border-t border-white/10 pt-10">
+            <div className="mt-14 grid grid-cols-2 gap-8 border-t border-white/10 pt-10 sm:gap-12">
               {t.stats.map((s) => (
                 <Stat key={s.label} number={s.number} label={s.label} />
               ))}

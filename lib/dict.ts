@@ -76,7 +76,6 @@ const dictNL = {
     portraitAlt: "Culinair regie — Tjitze van der Dam",
     stats: [
       { number: "25+", label: "Jaar culinaire regie" },
-      { number: "100+", label: "Brand events" },
       { number: "50+", label: "Premium merken" },
     ],
   },
@@ -387,7 +386,6 @@ const dictEN: typeof dictNL = {
     portraitAlt: "Culinary direction — Tjitze van der Dam",
     stats: [
       { number: "25+", label: "Years of culinary direction" },
-      { number: "100+", label: "Brand events" },
       { number: "50+", label: "Premium brands" },
     ],
   },
