@@ -106,42 +106,44 @@ export default function AboutView({
           <div className="mt-16 grid gap-6 sm:grid-cols-2 md:gap-10 md:mt-20">
             {t.team.members.map((m, i) => (
               <Reveal key={m.name} delay={i * 0.1}>
-                <div className="group relative overflow-hidden rounded-sm border border-white/10 bg-charcoal-light/40 p-8 backdrop-blur-md transition-all duration-700 ease-soft hover:border-gold/40 hover:bg-charcoal-light/70 md:p-10">
+                <div className="group relative flex flex-col items-center overflow-hidden rounded-sm border border-white/10 bg-charcoal-light/40 px-8 py-12 text-center backdrop-blur-md transition-all duration-700 ease-soft hover:border-gold/40 hover:bg-charcoal-light/70 md:px-10 md:py-14">
                   <div className="absolute -top-32 -right-32 h-64 w-64 rounded-full bg-gold/[0.04] blur-3xl transition-opacity duration-700 group-hover:bg-gold/[0.10]" />
 
-                  <div className="relative flex items-center gap-6">
-                    {m.photo ? (
-                      <div className="relative h-24 w-24 overflow-hidden rounded-full border-2 border-gold/40 md:h-28 md:w-28">
-                        <Image
-                          src={m.photo}
-                          alt={m.name}
-                          fill
-                          sizes="112px"
-                          className="object-cover"
-                        />
-                      </div>
-                    ) : (
-                      <div className="relative flex h-24 w-24 items-center justify-center rounded-full border-2 border-gold/50 bg-gradient-to-br from-gold/15 via-transparent to-transparent md:h-28 md:w-28">
-                        <span className="font-display text-4xl italic gold-gradient-text md:text-5xl">
-                          {m.initial}
-                        </span>
-                        <span className="absolute -inset-1.5 rounded-full border border-gold/15" />
-                      </div>
-                    )}
-
-                    <div>
-                      <h3 className="font-display text-3xl text-cream md:text-4xl">
-                        {m.name}
-                      </h3>
-                      <div className="mt-1 text-[11px] uppercase tracking-[0.32em] text-gold">
-                        {m.role}
-                      </div>
+                  {m.photo ? (
+                    <div className="relative h-32 w-32 overflow-hidden rounded-full border-2 border-gold/40 md:h-36 md:w-36">
+                      <Image
+                        src={m.photo}
+                        alt={m.name}
+                        fill
+                        sizes="144px"
+                        className="object-cover"
+                      />
                     </div>
-                  </div>
+                  ) : (
+                    <div className="relative flex h-32 w-32 items-center justify-center rounded-full border-2 border-gold/50 bg-gradient-to-br from-gold/15 via-transparent to-transparent md:h-36 md:w-36">
+                      <span className="font-display text-5xl italic gold-gradient-text md:text-6xl">
+                        {m.initial}
+                      </span>
+                      <span className="absolute -inset-1.5 rounded-full border border-gold/15" />
+                      <span className="absolute -inset-3 rounded-full border border-gold/[0.08]" />
+                    </div>
+                  )}
 
-                  <p className="relative mt-8 text-sm leading-relaxed text-cream/65 md:text-base">
-                    {m.bio}
-                  </p>
+                  <h3 className="relative mt-7 font-display text-4xl leading-none text-cream md:text-5xl">
+                    {m.name}
+                  </h3>
+
+                  {m.role && (
+                    <div className="relative mt-3 text-[11px] uppercase tracking-[0.32em] text-gold">
+                      {m.role}
+                    </div>
+                  )}
+
+                  {m.bio && (
+                    <p className="relative mt-5 max-w-xs text-sm leading-relaxed text-cream/65 md:text-base">
+                      {m.bio}
+                    </p>
+                  )}
                 </div>
               </Reveal>
             ))}

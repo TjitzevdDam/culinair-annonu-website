@@ -294,24 +294,12 @@ const dictNL = {
     },
     team: {
       eyebrow: "Het team",
-      titleA: "Achter de schermen,",
-      titleAccent: "vóór uw merk",
-      intro: "Tjitze geeft creatieve leiding, maar de productie staat of valt met het team. Twee gezichten die u op locatie of in voorbereiding tegenkomt.",
+      titleA: "Ellen en Flora",
+      titleAccent: "ontzorgen u.",
+      intro: "Volledig — van de communicatie vooraf tot de volledige uitvoering op de avond zelf.",
       members: [
-        {
-          name: "Ellen",
-          initial: "E",
-          role: "Team Culinair AnnoNu",
-          bio: "Bio volgt — vraag het Tjitze persoonlijk tijdens een kennismaking.",
-          photo: "",
-        },
-        {
-          name: "Flora",
-          initial: "F",
-          role: "Team Culinair AnnoNu",
-          bio: "Bio volgt — vraag het Tjitze persoonlijk tijdens een kennismaking.",
-          photo: "",
-        },
+        { name: "Ellen", initial: "E", role: "", bio: "", photo: "" },
+        { name: "Flora", initial: "F", role: "", bio: "", photo: "" },
       ],
     },
     principles: {
@@ -574,24 +562,12 @@ const dictEN: typeof dictNL = {
     },
     team: {
       eyebrow: "The team",
-      titleA: "Behind the scenes,",
-      titleAccent: "for your brand",
-      intro: "Tjitze leads creatively, but production rises and falls with the team. Two faces you will meet on location or during preparation.",
+      titleA: "Ellen and Flora",
+      titleAccent: "take care of you.",
+      intro: "End to end — from communication beforehand to the full execution on the night itself.",
       members: [
-        {
-          name: "Ellen",
-          initial: "E",
-          role: "Team Culinair AnnoNu",
-          bio: "Bio coming soon — ask Tjitze in person during an introduction.",
-          photo: "",
-        },
-        {
-          name: "Flora",
-          initial: "F",
-          role: "Team Culinair AnnoNu",
-          bio: "Bio coming soon — ask Tjitze in person during an introduction.",
-          photo: "",
-        },
+        { name: "Ellen", initial: "E", role: "", bio: "", photo: "" },
+        { name: "Flora", initial: "F", role: "", bio: "", photo: "" },
       ],
     },
     principles: {
