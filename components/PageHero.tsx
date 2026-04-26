@@ -5,7 +5,7 @@ export default function PageHero({
   eyebrow,
   title,
   intro,
-  image = "/images/private-dinner.jpg",
+  image = "/images/gm-zaal.jpg",
 }: {
   eyebrow: string;
   title: React.ReactNode;

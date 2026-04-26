@@ -9,28 +9,28 @@ const cases = [
   {
     title: "Penfolds Grange Dinner",
     tag: "Brand Dinner",
-    img: "/images/hero-action.jpg",
+    img: "/images/gerecht-tartaar.jpg",
     blurb:
       "Exclusief wijnmakers-diner rond de Penfolds Grange 2018. Een avond op het hoogste niveau voor relaties en pers.",
   },
   {
     title: "100Chefs by Gault & Millau",
     tag: "Grand Experience · 2000 gasten",
-    img: "/images/private-dinner.jpg",
+    img: "/images/100chefs.jpg",
     blurb:
       "100 chefs, 2000 gasten, 2 dagen Miele Experience Center. Het grootste gastronomische brand event van Nederland.",
   },
   {
     title: "Wijnmakersdiner",
     tag: "Brand Dinner",
-    img: "/images/culiquiz-event.jpg",
+    img: "/images/dinner-tafel.jpg",
     blurb:
       "Exclusief diner met de wijnmaker aan tafel. Het verhaal achter elke fles, vertaald in een gastronomisch parcours dat het merk laadt en relaties verrast.",
   },
   {
     title: "24H Chefs",
     tag: "Signature Event",
-    img: "/images/tjitze-portrait2.jpg",
+    img: "/images/24h-chefs-table.jpg",
     blurb:
       "Ons eigen signature event: 24 uur non-stop koken met de top van Nederland. Het bewijs van onze slagkracht.",
   },

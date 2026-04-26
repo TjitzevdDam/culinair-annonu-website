@@ -58,7 +58,7 @@ export default function DienstenPage() {
           </>
         }
         intro="Wij bedenken het concept, regisseren de avond, en zorgen dat elk detail bijdraagt aan uw merkbeleving. Vier diensten, één regisseur."
-        image="/images/private-chef.jpg"
+        image="/images/portret-3.jpg"
       />
 
       <section className="bg-charcoal py-20 md:py-28">

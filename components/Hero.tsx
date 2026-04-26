@@ -33,7 +33,7 @@ export default function Hero() {
         aria-hidden
       >
         <Image
-          src="/images/private-dinner.jpg"
+          src="/images/24h-chefs.jpg"
           alt=""
           fill
           priority

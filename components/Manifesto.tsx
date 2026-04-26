@@ -23,7 +23,7 @@ export default function Manifesto() {
           <div className="relative aspect-[4/5] overflow-hidden rounded-sm">
             <motion.div style={{ y: imgY }} className="absolute -inset-y-12 inset-x-0">
               <Image
-                src="/images/private-chef.jpg"
+                src="/images/tjitze-portrait.jpg"
                 alt="Culinair regie — Tjitze van der Dam"
                 fill
                 sizes="(min-width: 768px) 45vw, 90vw"

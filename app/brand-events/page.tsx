@@ -64,7 +64,7 @@ export default function BrandEventsPage() {
           </>
         }
         intro="Wij zijn de culinaire regisseur voor merken die op het hoogste niveau willen spelen. Geen cateraar, geen eventbureau — een creatief partner met culinaire autoriteit, merkstrategie en totaalregie."
-        image="/images/private-dinner.jpg"
+        image="/images/24h-chefs.jpg"
       />
 
       <Marquee />
@@ -125,7 +125,7 @@ export default function BrandEventsPage() {
       <section className="relative isolate overflow-hidden bg-charcoal-light/40 py-28 md:py-40">
         <div className="absolute inset-0 -z-10 opacity-25">
           <Image
-            src="/images/hero-action.jpg"
+            src="/images/gm-zaal-tivoli.jpg"
             alt=""
             fill
             sizes="100vw"

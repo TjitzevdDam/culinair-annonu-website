@@ -43,7 +43,7 @@ export default function BrandEventsLead() {
         className="absolute inset-0 -z-10 opacity-30"
       >
         <Image
-          src="/images/hero-action.jpg"
+          src="/images/gm-zaal.jpg"
           alt=""
           fill
           sizes="100vw"

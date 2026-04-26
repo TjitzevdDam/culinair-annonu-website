@@ -41,7 +41,7 @@ export default function OverOnsPage() {
           </>
         }
         intro="Culinair AnnoNu bedenkt, produceert en levert exclusieve culinaire ervaringen voor merken die op het hoogste niveau willen spelen."
-        image="/images/private-chef.jpg"
+        image="/images/tjitze-portrait.jpg"
       />
 
       <section className="bg-charcoal py-28 md:py-40">
@@ -49,7 +49,7 @@ export default function OverOnsPage() {
           <Reveal>
             <div className="relative aspect-[4/5] overflow-hidden rounded-sm">
               <Image
-                src="/images/private-chef.jpg"
+                src="/images/tjitze-portrait.jpg"
                 alt="Tjitze van der Dam — Culinair Regisseur"
                 fill
                 sizes="(min-width: 768px) 45vw, 100vw"

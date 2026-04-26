@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "nl_NL",
     url: "https://culinair-annonu.com",
-    images: ["/images/hero-action.jpg"],
+    images: ["/images/24h-chefs.jpg"],
   },
   twitter: {
     card: "summary_large_image",

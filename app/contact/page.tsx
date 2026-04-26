@@ -22,7 +22,7 @@ export default function ContactPage() {
           </>
         }
         intro="Vertel ons over uw merk, uw doelgroep en wat u wilt bereiken. Wij komen met een concept dat past bij uw ambitie."
-        image="/images/private-dinner.jpg"
+        image="/images/gm-tivoli.jpg"
       />
 
       <section className="bg-charcoal py-20 md:py-28">
