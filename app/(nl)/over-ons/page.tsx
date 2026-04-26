@@ -5,7 +5,7 @@ import { getDict } from "@/lib/dict";
 export const metadata: Metadata = {
   title: "Over Ons — Tjitze van der Dam, Culinair Regisseur",
   description:
-    "Culinair AnnoNu wordt geleid door Tjitze van der Dam. 25+ jaar culinaire regie, honderden brand events voor premium merken. Auteur van Spijs en Hollandse Klassiekers AnnoNu.",
+    "Culinair AnnoNu wordt geleid door Tjitze van der Dam. 25+ jaar culinaire regie, brand events voor duizenden gasten bij premium merken. Auteur van Spijs en Hollandse Klassiekers AnnoNu.",
   keywords: [
     "Tjitze van der Dam",
     "culinair regisseur",
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Over Tjitze van der Dam — Culinair AnnoNu",
     description:
-      "25+ jaar culinaire regie, honderden brand events voor premium merken in Nederland.",
+      "25+ jaar culinaire regie. Events voor duizenden gasten bij premium merken in Nederland.",
     images: ["/images/tjitze-portrait.jpg"],
   },
 };

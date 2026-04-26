@@ -5,7 +5,7 @@ import { getDict } from "@/lib/dict";
 export const metadata: Metadata = {
   title: "About — Tjitze van der Dam, Culinary Director",
   description:
-    "Culinair AnnoNu is led by Tjitze van der Dam. 25+ years of culinary direction, hundreds of brand events for premium brands. Author of Spijs and Hollandse Klassiekers AnnoNu.",
+    "Culinair AnnoNu is led by Tjitze van der Dam. 25+ years of culinary direction. Events for thousands of guests at premium brands. Author of Spijs and Hollandse Klassiekers AnnoNu.",
   keywords: [
     "Tjitze van der Dam",
     "culinary director Netherlands",
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "About Tjitze van der Dam — Culinair AnnoNu",
     description:
-      "25+ years of culinary direction, hundreds of brand events for premium brands.",
+      "25+ years of culinary direction. Events for thousands of guests at premium brands in the Netherlands.",
     locale: "en_GB",
     images: ["/images/tjitze-portrait.jpg"],
   },
