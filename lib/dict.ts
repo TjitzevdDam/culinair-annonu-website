@@ -298,8 +298,8 @@ const dictNL = {
       titleAccent: "ontzorgen u.",
       intro: "Volledig — van de communicatie vooraf tot de volledige uitvoering op de avond zelf.",
       members: [
-        { name: "Ellen", initial: "E", role: "", bio: "", photo: "" },
-        { name: "Flora", initial: "F", role: "", bio: "", photo: "" },
+        { name: "Ellen", initial: "E", role: "", bio: "", photo: "", email: "ellen@culinair-annonu.com" },
+        { name: "Flora", initial: "F", role: "", bio: "", photo: "", email: "flora@culinair-annonu.com" },
       ],
     },
     principles: {
@@ -566,8 +566,8 @@ const dictEN: typeof dictNL = {
       titleAccent: "take care of you.",
       intro: "End to end — from communication beforehand to the full execution on the night itself.",
       members: [
-        { name: "Ellen", initial: "E", role: "", bio: "", photo: "" },
-        { name: "Flora", initial: "F", role: "", bio: "", photo: "" },
+        { name: "Ellen", initial: "E", role: "", bio: "", photo: "", email: "ellen@culinair-annonu.com" },
+        { name: "Flora", initial: "F", role: "", bio: "", photo: "", email: "flora@culinair-annonu.com" },
       ],
     },
     principles: {

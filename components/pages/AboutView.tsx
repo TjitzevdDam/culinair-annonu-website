@@ -104,49 +104,71 @@ export default function AboutView({
           </div>
 
           <div className="mt-16 grid gap-6 sm:grid-cols-2 md:gap-10 md:mt-20">
-            {t.team.members.map((m, i) => (
-              <Reveal key={m.name} delay={i * 0.1}>
-                <div className="group relative flex flex-col items-center overflow-hidden rounded-sm border border-white/10 bg-charcoal-light/40 px-8 py-12 text-center backdrop-blur-md transition-all duration-700 ease-soft hover:border-gold/40 hover:bg-charcoal-light/70 md:px-10 md:py-14">
-                  <div className="absolute -top-32 -right-32 h-64 w-64 rounded-full bg-gold/[0.04] blur-3xl transition-opacity duration-700 group-hover:bg-gold/[0.10]" />
+            {t.team.members.map((m, i) => {
+              const Wrapper: React.ElementType = m.email ? "a" : "div";
+              const wrapperProps = m.email
+                ? {
+                    href: `mailto:${m.email}`,
+                    "aria-label": `Mail ${m.name}`,
+                  }
+                : {};
+              return (
+                <Reveal key={m.name} delay={i * 0.1}>
+                  <Wrapper
+                    {...wrapperProps}
+                    className="group relative flex flex-col items-center overflow-hidden rounded-sm border border-white/10 bg-charcoal-light/40 px-8 py-12 text-center backdrop-blur-md transition-all duration-700 ease-soft hover:border-gold/50 hover:bg-charcoal-light/70 md:px-10 md:py-14"
+                  >
+                    <div className="absolute -top-32 -right-32 h-64 w-64 rounded-full bg-gold/[0.04] blur-3xl transition-opacity duration-700 group-hover:bg-gold/[0.10]" />
 
-                  {m.photo ? (
-                    <div className="relative h-32 w-32 overflow-hidden rounded-full border-2 border-gold/40 md:h-36 md:w-36">
-                      <Image
-                        src={m.photo}
-                        alt={m.name}
-                        fill
-                        sizes="144px"
-                        className="object-cover"
-                      />
-                    </div>
-                  ) : (
-                    <div className="relative flex h-32 w-32 items-center justify-center rounded-full border-2 border-gold/50 bg-gradient-to-br from-gold/15 via-transparent to-transparent md:h-36 md:w-36">
-                      <span className="font-display text-5xl italic gold-gradient-text md:text-6xl">
-                        {m.initial}
+                    {m.photo ? (
+                      <div className="relative h-32 w-32 overflow-hidden rounded-full border-2 border-gold/40 transition-transform duration-700 ease-soft group-hover:scale-105 md:h-36 md:w-36">
+                        <Image
+                          src={m.photo}
+                          alt={m.name}
+                          fill
+                          sizes="144px"
+                          className="object-cover"
+                        />
+                      </div>
+                    ) : (
+                      <div className="relative flex h-32 w-32 items-center justify-center rounded-full border-2 border-gold/50 bg-gradient-to-br from-gold/15 via-transparent to-transparent transition-transform duration-700 ease-soft group-hover:scale-105 md:h-36 md:w-36">
+                        <span className="font-display text-5xl italic gold-gradient-text md:text-6xl">
+                          {m.initial}
+                        </span>
+                        <span className="absolute -inset-1.5 rounded-full border border-gold/15" />
+                        <span className="absolute -inset-3 rounded-full border border-gold/[0.08]" />
+                      </div>
+                    )}
+
+                    <h3 className="relative mt-7 font-display text-4xl leading-none text-cream transition-colors duration-500 ease-soft group-hover:text-gold-light md:text-5xl">
+                      {m.name}
+                    </h3>
+
+                    {m.role && (
+                      <div className="relative mt-3 text-[11px] uppercase tracking-[0.32em] text-gold">
+                        {m.role}
+                      </div>
+                    )}
+
+                    {m.bio && (
+                      <p className="relative mt-5 max-w-xs text-sm leading-relaxed text-cream/65 md:text-base">
+                        {m.bio}
+                      </p>
+                    )}
+
+                    {m.email && (
+                      <span className="relative mt-6 inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.28em] text-cream/45 transition-colors duration-500 group-hover:text-gold-light">
+                        <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="1.5">
+                          <rect x="3" y="5" width="18" height="14" rx="2" />
+                          <path d="m3 7 9 6 9-6" />
+                        </svg>
+                        {m.email}
                       </span>
-                      <span className="absolute -inset-1.5 rounded-full border border-gold/15" />
-                      <span className="absolute -inset-3 rounded-full border border-gold/[0.08]" />
-                    </div>
-                  )}
-
-                  <h3 className="relative mt-7 font-display text-4xl leading-none text-cream md:text-5xl">
-                    {m.name}
-                  </h3>
-
-                  {m.role && (
-                    <div className="relative mt-3 text-[11px] uppercase tracking-[0.32em] text-gold">
-                      {m.role}
-                    </div>
-                  )}
-
-                  {m.bio && (
-                    <p className="relative mt-5 max-w-xs text-sm leading-relaxed text-cream/65 md:text-base">
-                      {m.bio}
-                    </p>
-                  )}
-                </div>
-              </Reveal>
-            ))}
+                    )}
+                  </Wrapper>
+                </Reveal>
+              );
+            })}
           </div>
         </div>
       </section>
