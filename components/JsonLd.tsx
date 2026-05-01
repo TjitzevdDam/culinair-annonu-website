@@ -31,7 +31,7 @@ const ORG_BASE = {
   areaServed: { "@type": "Country", name: "Nederland" },
   sameAs: [
     "https://www.instagram.com/culinairannonu",
-    "https://www.linkedin.com/company/culinairannonu",
+    "https://www.linkedin.com/company/culinair-annonu/",
     "https://www.facebook.com/culinairannonu",
   ],
 };
@@ -127,7 +127,7 @@ export function PersonJsonLd() {
     image: `${SITE}/images/tjitze-portrait.jpg`,
     worksFor: { "@id": `${SITE}/#org` },
     sameAs: [
-      "https://www.linkedin.com/company/culinairannonu",
+      "https://www.linkedin.com/company/culinair-annonu/",
       "https://www.instagram.com/culinairannonu",
     ],
   };

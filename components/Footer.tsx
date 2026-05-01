@@ -16,7 +16,7 @@ const socials = [
     ),
   },
   {
-    href: "https://www.linkedin.com/company/culinairannonu",
+    href: "https://www.linkedin.com/company/culinair-annonu/",
     label: "LinkedIn",
     icon: (
       <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.5">
