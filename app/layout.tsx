@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
 import CursorGlow from "@/components/CursorGlow";
+import CookieBanner from "@/components/CookieBanner";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -115,6 +116,7 @@ export default function RootLayout({
       <body className="font-body bg-charcoal text-cream antialiased">
         <CursorGlow />
         {children}
+        <CookieBanner />
       </body>
     </html>
   );
