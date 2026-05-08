@@ -33,7 +33,6 @@
         color: #faf6f1;
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
-        padding: 0;
         display: flex;
         align-items: flex-start;
         justify-content: center;
@@ -44,14 +43,14 @@
         height: 297mm;
         background: #0e0e0e;
         overflow: hidden;
+        display: grid;
+        grid-template-rows: 158mm 1fr;
       }
       /* Hero photo */
       .hero {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 178mm; /* ~60% */
+        position: relative;
+        width: 100%;
+        height: 100%;
         background-image: url("/images/gm-zaal.jpg");
         background-size: cover;
         background-position: center;
@@ -64,8 +63,8 @@
         background: linear-gradient(
           to bottom,
           rgba(14, 14, 14, 0.05) 0%,
-          rgba(14, 14, 14, 0) 35%,
-          rgba(14, 14, 14, 0.45) 70%,
+          rgba(14, 14, 14, 0) 30%,
+          rgba(14, 14, 14, 0.5) 75%,
           #0e0e0e 100%
         );
       }
@@ -78,40 +77,25 @@
         height: 18mm;
         z-index: 2;
       }
-      /* Optional small marker at top right */
-      .top-marker {
-        position: absolute;
-        top: 14mm;
-        right: 14mm;
-        font-size: 7.5pt;
-        letter-spacing: 0.32em;
-        text-transform: uppercase;
-        color: rgba(250, 246, 241, 0.85);
-        text-shadow: 0 1px 4px rgba(0, 0, 0, 0.45);
-        z-index: 2;
-      }
-      .top-marker .gold {
-        color: #d4ad84;
-      }
       /* Editorial content panel */
       .content {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        padding: 0 14mm 14mm;
+        position: relative;
+        padding: 4mm 14mm 14mm;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
       }
       .eyebrow {
         display: inline-flex;
         align-items: center;
         gap: 10px;
         font-family: "Inter", sans-serif;
-        font-size: 8.5pt;
+        font-size: 8pt;
         font-weight: 500;
         letter-spacing: 0.42em;
         color: #c4956a;
         text-transform: uppercase;
-        margin-bottom: 7mm;
+        margin-bottom: 5mm;
       }
       .eyebrow::before {
         content: "";
@@ -123,11 +107,11 @@
       h1 {
         font-family: "Playfair Display", Georgia, serif;
         font-weight: 500;
-        font-size: 56pt;
-        line-height: 0.96;
+        font-size: 48pt;
+        line-height: 0.98;
         letter-spacing: -0.025em;
         color: #faf6f1;
-        margin-bottom: 7mm;
+        margin-bottom: 6mm;
       }
       h1 em {
         font-style: italic;
@@ -143,57 +127,32 @@
         color: transparent;
       }
       .lead {
-        font-size: 11pt;
+        font-size: 10.5pt;
         line-height: 1.55;
-        color: rgba(245, 240, 232, 0.78);
-        max-width: 138mm;
-        margin-bottom: 9mm;
+        color: rgba(245, 240, 232, 0.8);
+        max-width: 142mm;
+        margin-bottom: 7mm;
       }
       .clients {
         font-size: 7.5pt;
-        letter-spacing: 0.32em;
+        letter-spacing: 0.3em;
         text-transform: uppercase;
         color: rgba(245, 240, 232, 0.55);
-        margin-bottom: 8mm;
+        margin-bottom: 7mm;
         word-spacing: 0.15em;
       }
       .footer {
         display: flex;
-        align-items: flex-end;
+        align-items: center;
         justify-content: space-between;
         gap: 10mm;
         border-top: 1px solid rgba(196, 149, 106, 0.3);
         padding-top: 6mm;
       }
-      .footer-left {
-        display: flex;
-        align-items: center;
-        gap: 7mm;
-      }
       .footer-logo {
-        width: 17mm;
-        height: 17mm;
+        width: 18mm;
+        height: 18mm;
         flex-shrink: 0;
-      }
-      .footer-credit {
-        font-size: 8.5pt;
-        line-height: 1.5;
-        color: rgba(245, 240, 232, 0.85);
-      }
-      .footer-credit .label {
-        display: block;
-        color: rgba(196, 149, 106, 0.85);
-        font-size: 7pt;
-        letter-spacing: 0.28em;
-        text-transform: uppercase;
-        margin-bottom: 1.5mm;
-      }
-      .footer-credit strong {
-        font-weight: 600;
-      }
-      .footer-credit .role {
-        color: rgba(245, 240, 232, 0.55);
-        font-size: 8pt;
       }
       .footer-right {
         text-align: right;
@@ -210,14 +169,18 @@
         font-family: "Inter", sans-serif;
         font-weight: 500;
         font-size: 9pt;
-        letter-spacing: 0.24em;
+        letter-spacing: 0.22em;
         text-transform: uppercase;
         color: #faf6f1;
+      }
+      .footer-right .url .dot {
+        color: rgba(196, 149, 106, 0.7);
+        margin: 0 4px;
       }
       /* Subtle gold ring decoration upper right */
       .gold-ring {
         position: absolute;
-        top: 100mm;
+        top: 90mm;
         right: -50mm;
         width: 120mm;
         height: 120mm;
@@ -228,58 +191,53 @@
           rgba(196, 149, 106, 0) 60%
         );
         z-index: 1;
+        pointer-events: none;
       }
-      /* Bleed-safe area visualization (off in print) */
     </style>
   </head>
   <body>
     <article class="page">
-      <div class="hero"></div>
-      <div class="gold-ring"></div>
-
-      <img
-        src="/images/logo-gold.png"
-        alt="Culinair AnnoNu"
-        class="hero-logo"
-      />
-      <div class="top-marker">
-        <span class="gold">A presentation by</span> Culinair AnnoNu
+      <div class="hero">
+        <img
+          src="/images/logo-gold.png"
+          alt="Culinair AnnoNu"
+          class="hero-logo"
+        />
       </div>
 
       <div class="content">
-        <div class="eyebrow">De culinaire regisseur voor merken</div>
-        <h1>
-          Voor merken die<br />
-          <em>hoog mikken.</em>
-        </h1>
-        <p class="lead">
-          Wij produceren high-end brand events — concept, productie en regie
-          onder één dak. Van een intieme chef’s table voor 15 directieleden tot
-          een gastronomisch festival voor 2.000 gasten. Eén regisseur,
-          eindverantwoordelijk voor elk detail.
-        </p>
-        <p class="clients">
-          Penfolds &nbsp;·&nbsp; Gault &amp; Millau &nbsp;·&nbsp; DPG Media
-          &nbsp;·&nbsp; Gall &amp; Gall &nbsp;·&nbsp; Nestlé &nbsp;·&nbsp;
-          Landgoed de Salentein &nbsp;·&nbsp; JOE Radio &nbsp;·&nbsp; 24H Chefs
-        </p>
+        <div class="gold-ring"></div>
+
+        <div>
+          <div class="eyebrow">De culinaire regisseur voor brands</div>
+          <h1>
+            Voor brands die<br />
+            <em>hoog mikken.</em>
+          </h1>
+          <p class="lead">
+            Wij produceren high-end brand events. Concept, productie en regie
+            onder één dak. Van een intieme chef’s table voor 15 directieleden
+            tot een gastronomisch festival voor 2.000 gasten.
+          </p>
+          <p class="clients">
+            Penfolds &nbsp;·&nbsp; Gault &amp; Millau &nbsp;·&nbsp; DPG Media
+            &nbsp;·&nbsp; Gall &amp; Gall &nbsp;·&nbsp; Nestlé &nbsp;·&nbsp;
+            JOE Radio &nbsp;·&nbsp; 24H Chefs
+          </p>
+        </div>
+
         <div class="footer">
-          <div class="footer-left">
-            <img
-              src="/images/logo-gold.png"
-              alt="Culinair AnnoNu"
-              class="footer-logo"
-            />
-            <div class="footer-credit">
-              <span class="label">Onder leiding van</span>
-              <strong>Tjitze van der Dam</strong>
-              <span class="role">— Culinair regisseur &amp; oprichter</span>
-            </div>
-          </div>
+          <img
+            src="/images/logo-gold.png"
+            alt="Culinair AnnoNu"
+            class="footer-logo"
+          />
           <div class="footer-right">
             <div class="cta">Plan een gesprek</div>
             <div class="url">
-              info@culinair-annonu.com &nbsp;·&nbsp; culinair-annonu.com
+              info@culinair-annonu.com
+              <span class="dot">·</span>
+              culinair-annonu.com
             </div>
           </div>
         </div>
