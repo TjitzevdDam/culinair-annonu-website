@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8" />
+    <title>Culinair AnnoNu — A4 advertentie · 24H Chef magazine</title>
+    <meta name="robots" content="noindex,nofollow" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      @page {
+        size: A4 portrait;
+        margin: 0;
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html,
+      body {
+        width: 210mm;
+        height: 297mm;
+        background: #1c1c1c;
+      }
+      body {
+        font-family: "Inter", -apple-system, sans-serif;
+        color: #faf6f1;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        padding: 0;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+      }
+      .page {
+        position: relative;
+        width: 210mm;
+        height: 297mm;
+        background: #0e0e0e;
+        overflow: hidden;
+      }
+      /* Hero photo */
+      .hero {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 178mm; /* ~60% */
+        background-image: url("/images/gm-zaal.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to bottom,
+          rgba(14, 14, 14, 0.05) 0%,
+          rgba(14, 14, 14, 0) 35%,
+          rgba(14, 14, 14, 0.45) 70%,
+          #0e0e0e 100%
+        );
+      }
+      /* Top-left logo on hero */
+      .hero-logo {
+        position: absolute;
+        top: 12mm;
+        left: 14mm;
+        width: 18mm;
+        height: 18mm;
+        z-index: 2;
+      }
+      /* Optional small marker at top right */
+      .top-marker {
+        position: absolute;
+        top: 14mm;
+        right: 14mm;
+        font-size: 7.5pt;
+        letter-spacing: 0.32em;
+        text-transform: uppercase;
+        color: rgba(250, 246, 241, 0.85);
+        text-shadow: 0 1px 4px rgba(0, 0, 0, 0.45);
+        z-index: 2;
+      }
+      .top-marker .gold {
+        color: #d4ad84;
+      }
+      /* Editorial content panel */
+      .content {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 0 14mm 14mm;
+      }
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-family: "Inter", sans-serif;
+        font-size: 8.5pt;
+        font-weight: 500;
+        letter-spacing: 0.42em;
+        color: #c4956a;
+        text-transform: uppercase;
+        margin-bottom: 7mm;
+      }
+      .eyebrow::before {
+        content: "";
+        display: inline-block;
+        width: 28px;
+        height: 1px;
+        background: #c4956a;
+      }
+      h1 {
+        font-family: "Playfair Display", Georgia, serif;
+        font-weight: 500;
+        font-size: 56pt;
+        line-height: 0.96;
+        letter-spacing: -0.025em;
+        color: #faf6f1;
+        margin-bottom: 7mm;
+      }
+      h1 em {
+        font-style: italic;
+        background: linear-gradient(
+          120deg,
+          #d4ad84 0%,
+          #e8c89c 35%,
+          #c4956a 70%,
+          #a67b52 100%
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .lead {
+        font-size: 11pt;
+        line-height: 1.55;
+        color: rgba(245, 240, 232, 0.78);
+        max-width: 138mm;
+        margin-bottom: 9mm;
+      }
+      .clients {
+        font-size: 7.5pt;
+        letter-spacing: 0.32em;
+        text-transform: uppercase;
+        color: rgba(245, 240, 232, 0.55);
+        margin-bottom: 8mm;
+        word-spacing: 0.15em;
+      }
+      .footer {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 10mm;
+        border-top: 1px solid rgba(196, 149, 106, 0.3);
+        padding-top: 6mm;
+      }
+      .footer-left {
+        display: flex;
+        align-items: center;
+        gap: 7mm;
+      }
+      .footer-logo {
+        width: 17mm;
+        height: 17mm;
+        flex-shrink: 0;
+      }
+      .footer-credit {
+        font-size: 8.5pt;
+        line-height: 1.5;
+        color: rgba(245, 240, 232, 0.85);
+      }
+      .footer-credit .label {
+        display: block;
+        color: rgba(196, 149, 106, 0.85);
+        font-size: 7pt;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        margin-bottom: 1.5mm;
+      }
+      .footer-credit strong {
+        font-weight: 600;
+      }
+      .footer-credit .role {
+        color: rgba(245, 240, 232, 0.55);
+        font-size: 8pt;
+      }
+      .footer-right {
+        text-align: right;
+      }
+      .footer-right .cta {
+        font-family: "Playfair Display", serif;
+        font-style: italic;
+        font-weight: 500;
+        font-size: 14pt;
+        color: #d4ad84;
+        margin-bottom: 1.5mm;
+      }
+      .footer-right .url {
+        font-family: "Inter", sans-serif;
+        font-weight: 500;
+        font-size: 9pt;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+        color: #faf6f1;
+      }
+      /* Subtle gold ring decoration upper right */
+      .gold-ring {
+        position: absolute;
+        top: 100mm;
+        right: -50mm;
+        width: 120mm;
+        height: 120mm;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(196, 149, 106, 0.18) 0%,
+          rgba(196, 149, 106, 0) 60%
+        );
+        z-index: 1;
+      }
+      /* Bleed-safe area visualization (off in print) */
+    </style>
+  </head>
+  <body>
+    <article class="page">
+      <div class="hero"></div>
+      <div class="gold-ring"></div>
+
+      <img
+        src="/images/logo-gold.png"
+        alt="Culinair AnnoNu"
+        class="hero-logo"
+      />
+      <div class="top-marker">
+        <span class="gold">A presentation by</span> Culinair AnnoNu
+      </div>
+
+      <div class="content">
+        <div class="eyebrow">De culinaire regisseur voor merken</div>
+        <h1>
+          Voor merken die<br />
+          <em>hoog mikken.</em>
+        </h1>
+        <p class="lead">
+          Wij produceren high-end brand events — concept, productie en regie
+          onder één dak. Van een intieme chef’s table voor 15 directieleden tot
+          een gastronomisch festival voor 2.000 gasten. Eén regisseur,
+          eindverantwoordelijk voor elk detail.
+        </p>
+        <p class="clients">
+          Penfolds &nbsp;·&nbsp; Gault &amp; Millau &nbsp;·&nbsp; DPG Media
+          &nbsp;·&nbsp; Gall &amp; Gall &nbsp;·&nbsp; Nestlé &nbsp;·&nbsp;
+          Landgoed de Salentein &nbsp;·&nbsp; JOE Radio &nbsp;·&nbsp; 24H Chefs
+        </p>
+        <div class="footer">
+          <div class="footer-left">
+            <img
+              src="/images/logo-gold.png"
+              alt="Culinair AnnoNu"
+              class="footer-logo"
+            />
+            <div class="footer-credit">
+              <span class="label">Onder leiding van</span>
+              <strong>Tjitze van der Dam</strong>
+              <span class="role">— Culinair regisseur &amp; oprichter</span>
+            </div>
+          </div>
+          <div class="footer-right">
+            <div class="cta">Plan een gesprek</div>
+            <div class="url">
+              info@culinair-annonu.com &nbsp;·&nbsp; culinair-annonu.com
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </body>
+</html>
