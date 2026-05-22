@@ -15,6 +15,7 @@ export const paths = {
   contact: { nl: "/contact", en: "/en/contact" },
   privacy: { nl: "/privacy", en: "/en/privacy" },
   terms: { nl: "/voorwaarden", en: "/en/terms" },
+  bestellen: { nl: "/bestellen", en: "/en/order" },
 } as const;
 
 export type PathKey = keyof typeof paths;
@@ -32,6 +33,7 @@ const dictNL = {
     about: "Over Ons",
     contact: "Contact",
     cta: "Plan een gesprek",
+    cookbook: "Kookboek",
   },
   hero: {
     eyebrow: "High-End Brand Events",
@@ -361,6 +363,94 @@ const dictNL = {
       thankBody: "Wij nemen binnen 24 uur contact met u op met een eerste reactie en — indien passend — een conceptvoorstel binnen 5 werkdagen.",
     },
   },
+  shop: {
+    callout: {
+      eyebrow: "Het kookboek",
+      titleA: "Spijs.",
+      titleAccent: "Voor wie thuis échte stappen wil zetten.",
+      body: "Wat in een professionele keuken vanzelfsprekend is, helder uitgelegd voor thuis. Hardcover, uitgegeven 2024 — wordt door heel Nederland verzonden.",
+      cta: "Bestel Spijs",
+      note: "Veilig betalen via iDEAL · verzending NL",
+    },
+    page: {
+      metaTitle: "Bestel Spijs — het kookboek van Tjitze van der Dam",
+      metaDescription:
+        "Bestel het kookboek Spijs. Veilig betalen via Mollie (iDEAL, creditcard en meer). Verzending door heel Nederland.",
+      eyebrow: "Bestellen",
+      titleA: "Bestel",
+      titleAccent: "Spijs",
+      pricePerCopy: "per exemplaar",
+    },
+    form: {
+      heading: "Verzendgegevens",
+      intro:
+        "Vul je gegevens in — daarna reken je veilig af via Mollie. Zodra de betaling binnen is, versturen we je boek zo snel mogelijk.",
+      labels: {
+        name: "Naam",
+        email: "E-mailadres",
+        phone: "Telefoon",
+        street: "Straat en huisnummer",
+        postalCode: "Postcode",
+        city: "Woonplaats",
+        country: "Land",
+        quantity: "Aantal",
+        note: "Opmerking",
+      },
+      placeholders: {
+        name: "Voor- en achternaam",
+        email: "naam@voorbeeld.nl",
+        phone: "Optioneel",
+        street: "Straatnaam 12",
+        postalCode: "1234 AB",
+        city: "Plaatsnaam",
+        note: "Bijvoorbeeld een persoonlijke wens of een cadeau-opdracht (optioneel)",
+      },
+      qtySuffix: { singular: "exemplaar", plural: "exemplaren" },
+      defaultCountry: "Nederland",
+      summary: {
+        shipping: "Verzendkosten",
+        free: "Gratis",
+        total: "Totaal",
+      },
+      submit: "Naar betaling",
+      submitting: "Betaling starten…",
+      securityNote:
+        "Veilig betalen via Mollie — iDEAL, creditcard, Bancontact en meer. Je gegevens worden alleen gebruikt om je bestelling te versturen.",
+      errors: {
+        generic: "Er ging iets mis. Probeer het opnieuw.",
+        network: "Kon geen verbinding maken. Controleer je internet en probeer opnieuw.",
+      },
+    },
+    thanks: {
+      metaTitle: "Bedankt voor je bestelling",
+      paid: {
+        kicker: "Gelukt",
+        titleA: "Bedankt voor je",
+        titleAccent: "bestelling.",
+        body: "Je betaling is gelukt en je bestelling is bij ons binnen. Je ontvangt een bevestiging per e-mail en we versturen je boek zo snel mogelijk.",
+      },
+      pending: {
+        kicker: "In behandeling",
+        titleA: "Je betaling wordt",
+        titleAccent: "verwerkt.",
+        body: "Zodra je betaling is bevestigd, ontvang je een e-mail en versturen we je boek. Dit kan een paar minuten duren.",
+      },
+      failed: {
+        kicker: "Niet afgerond",
+        titleA: "De betaling is",
+        titleAccent: "niet voltooid.",
+        body: "Er is niets afgeschreven. Wil je het opnieuw proberen?",
+      },
+      unknown: {
+        kicker: "Bedankt",
+        titleA: "Bedankt voor je",
+        titleAccent: "interesse.",
+        body: "Heb je een bestelling geplaatst, dan ontvang je per e-mail een bevestiging zodra de betaling rond is.",
+      },
+      retry: "Opnieuw proberen",
+      home: "Terug naar home",
+    },
+  },
 };
 
 const dictEN: typeof dictNL = {
@@ -372,6 +462,7 @@ const dictEN: typeof dictNL = {
     about: "About",
     contact: "Contact",
     cta: "Book a call",
+    cookbook: "Cookbook",
   },
   hero: {
     eyebrow: "High-End Brand Events",
@@ -635,6 +726,94 @@ const dictEN: typeof dictNL = {
       submit: "Send enquiry",
       thankTitle: "Thank you for your message.",
       thankBody: "We will get back to you within 24 hours with a first response — and, where appropriate, a concept proposal within 5 working days.",
+    },
+  },
+  shop: {
+    callout: {
+      eyebrow: "The cookbook",
+      titleA: "Spijs.",
+      titleAccent: "For anyone taking real steps in their own kitchen.",
+      body: "What is second nature in a professional kitchen, laid out clearly for home cooks. Hardcover, published 2024 — ships throughout the Netherlands.",
+      cta: "Order Spijs",
+      note: "Secure payment via iDEAL · ships to NL",
+    },
+    page: {
+      metaTitle: "Order Spijs — the cookbook by Tjitze van der Dam",
+      metaDescription:
+        "Order the Spijs cookbook. Secure payment via Mollie (iDEAL, credit card and more). Ships throughout the Netherlands.",
+      eyebrow: "Order",
+      titleA: "Order",
+      titleAccent: "Spijs",
+      pricePerCopy: "per copy",
+    },
+    form: {
+      heading: "Shipping details",
+      intro:
+        "Fill in your details — you'll then pay securely via Mollie. As soon as the payment comes in, we'll ship your book.",
+      labels: {
+        name: "Name",
+        email: "Email",
+        phone: "Phone",
+        street: "Street and number",
+        postalCode: "Postal code",
+        city: "City",
+        country: "Country",
+        quantity: "Quantity",
+        note: "Note",
+      },
+      placeholders: {
+        name: "First and last name",
+        email: "name@example.com",
+        phone: "Optional",
+        street: "Street 12",
+        postalCode: "1234 AB",
+        city: "City",
+        note: "For example a personal wish or a gift note (optional)",
+      },
+      qtySuffix: { singular: "copy", plural: "copies" },
+      defaultCountry: "Netherlands",
+      summary: {
+        shipping: "Shipping",
+        free: "Free",
+        total: "Total",
+      },
+      submit: "Proceed to payment",
+      submitting: "Starting payment…",
+      securityNote:
+        "Secure payment via Mollie — iDEAL, credit card, Bancontact and more. Your details are only used to ship your order.",
+      errors: {
+        generic: "Something went wrong. Please try again.",
+        network: "Couldn't connect. Check your internet and try again.",
+      },
+    },
+    thanks: {
+      metaTitle: "Thank you for your order",
+      paid: {
+        kicker: "Success",
+        titleA: "Thank you for your",
+        titleAccent: "order.",
+        body: "Your payment was successful and your order is in. You'll receive a confirmation by email and we'll ship your book as soon as possible.",
+      },
+      pending: {
+        kicker: "Processing",
+        titleA: "Your payment is",
+        titleAccent: "being processed.",
+        body: "As soon as your payment is confirmed, you'll receive an email and we'll ship your book. This can take a few minutes.",
+      },
+      failed: {
+        kicker: "Not completed",
+        titleA: "The payment was",
+        titleAccent: "not completed.",
+        body: "Nothing has been charged. Would you like to try again?",
+      },
+      unknown: {
+        kicker: "Thank you",
+        titleA: "Thank you for your",
+        titleAccent: "interest.",
+        body: "If you placed an order, you'll receive a confirmation by email as soon as the payment is settled.",
+      },
+      retry: "Try again",
+      home: "Back to home",
     },
   },
 };

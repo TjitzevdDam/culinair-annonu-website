@@ -6,6 +6,7 @@ import Manifesto from "@/components/Manifesto";
 import CasesStrip from "@/components/CasesStrip";
 import ServicesGrid from "@/components/ServicesGrid";
 import Cta from "@/components/Cta";
+import BookCallout from "@/components/BookCallout";
 import { OrganizationJsonLd } from "@/components/JsonLd";
 import { getDict, pathFor } from "@/lib/dict";
 
@@ -57,6 +58,7 @@ export default function HomeEN() {
       <CasesStrip dict={dict} locale="en" />
       <Manifesto dict={dict} />
       <ServicesGrid dict={dict} locale="en" />
+      <BookCallout dict={dict} locale="en" />
       <Cta
         eyebrow={c.eyebrow}
         title={

@@ -35,6 +35,7 @@ export default function Nav({
     { href: pathFor("cases", locale), label: dict.nav.cases },
     { href: pathFor("services", locale), label: dict.nav.services },
     { href: pathFor("about", locale), label: dict.nav.about },
+    { href: pathFor("bestellen", locale), label: dict.nav.cookbook },
     { href: pathFor("contact", locale), label: dict.nav.contact },
   ];
 

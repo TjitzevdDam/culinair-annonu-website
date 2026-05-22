@@ -10,6 +10,7 @@ const config: { key: PathKey; priority: number; changeFreq: "daily" | "weekly" |
   { key: "services", priority: 0.85, changeFreq: "monthly" },
   { key: "about", priority: 0.7, changeFreq: "yearly" },
   { key: "contact", priority: 0.8, changeFreq: "yearly" },
+  { key: "bestellen", priority: 0.75, changeFreq: "monthly" },
   { key: "privacy", priority: 0.2, changeFreq: "yearly" },
   { key: "terms", priority: 0.2, changeFreq: "yearly" },
 ];
