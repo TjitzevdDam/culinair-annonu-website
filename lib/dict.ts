@@ -376,10 +376,57 @@ const dictNL = {
       metaTitle: "Bestel Spijs — het kookboek van Tjitze van der Dam",
       metaDescription:
         "Bestel het kookboek Spijs. Veilig betalen via Mollie (iDEAL, creditcard en meer). Verzending door heel Nederland.",
-      eyebrow: "Bestellen",
-      titleA: "Bestel",
-      titleAccent: "Spijs",
+      eyebrow: "Het kookboek",
+      titleA: "Spijs.",
+      titleAccent: "Het kookboek voor wie thuis verder wil.",
       pricePerCopy: "per exemplaar",
+    },
+    intro: {
+      eyebrow: "Over het boek",
+      titleA: "Wat een chef in jaren leert,",
+      titleAccent: "gebundeld in één hardcover.",
+      body1:
+        "Spijs is geen verzameling recepten. Het is een boek over wat een professionele keuken vanzelfsprekend vindt, en wat de thuiskok zelden geleerd krijgt: de keuzes, de techniek en de redenering áchter een gerecht.",
+      body2:
+        "Geschreven voor wie thuis échte stappen wil zetten — voorbij het kookblok, voorbij de minuten op de timer.",
+    },
+    pillars: {
+      eyebrow: "Wat het boek biedt",
+      titleA: "Drie lagen,",
+      titleAccent: "één boek",
+      items: [
+        {
+          n: "01",
+          title: "Techniek",
+          text: "De stappen die een professional automatisch doet, helder uitgelegd voor thuis. Geen aannames, geen overgeslagen schakels.",
+        },
+        {
+          n: "02",
+          title: "Seizoen",
+          text: "Recepten met een verantwoording: waarom dít ingrediënt, in dít seizoen, in dít gerecht — niet omdat het kan, maar omdat het klopt.",
+        },
+        {
+          n: "03",
+          title: "Verhaal",
+          text: "Elk gerecht heeft een herkomst en een keuze. Die staan erbij, zodat u niet alleen kookt — u begrijpt.",
+        },
+      ],
+    },
+    quote: {
+      text: "Wat u kookt vertelt iets — over uw aandacht, uw tempo, uw smaak.",
+      author: "Uit Spijs",
+    },
+    aboutAuthor: {
+      eyebrow: "Over de auteur",
+      titleA: "Tjitze",
+      titleAccent: "van der Dam",
+      body: "Chef en culinair regisseur. Tjitze leerde het vak in keukens als Waldorf Astoria, Ron Blaauw en De Vrienden van Jacob. Vandaag is hij oprichter van Culinair AnnoNu, initiatiefnemer van 24H Chefs en bouwer van het educatieve platform CuliQuiz. Spijs is zijn boek voor de thuiskok die voorbij het recept wil.",
+      portraitAlt: "Tjitze van der Dam",
+    },
+    orderSection: {
+      eyebrow: "Bestellen",
+      titleA: "Direct te",
+      titleAccent: "bestellen.",
     },
     form: {
       heading: "Verzendgegevens",
@@ -741,10 +788,57 @@ const dictEN: typeof dictNL = {
       metaTitle: "Order Spijs — the cookbook by Tjitze van der Dam",
       metaDescription:
         "Order the Spijs cookbook. Secure payment via Mollie (iDEAL, credit card and more). Ships throughout the Netherlands.",
-      eyebrow: "Order",
-      titleA: "Order",
-      titleAccent: "Spijs",
+      eyebrow: "The cookbook",
+      titleA: "Spijs.",
+      titleAccent: "A cookbook for those ready to go further.",
       pricePerCopy: "per copy",
+    },
+    intro: {
+      eyebrow: "About the book",
+      titleA: "What a chef learns over years,",
+      titleAccent: "bound in one hardcover.",
+      body1:
+        "Spijs isn't a collection of recipes. It's a book about what a professional kitchen takes for granted, and what the home cook is rarely taught: the choices, the technique and the reasoning behind a dish.",
+      body2:
+        "Written for anyone who wants to take real steps at home — beyond the stove, beyond the minutes on the timer.",
+    },
+    pillars: {
+      eyebrow: "What's inside",
+      titleA: "Three layers,",
+      titleAccent: "one book",
+      items: [
+        {
+          n: "01",
+          title: "Technique",
+          text: "The steps professionals do automatically, laid out clearly for home. No assumptions, no skipped stages.",
+        },
+        {
+          n: "02",
+          title: "Season",
+          text: "Recipes with a reason: why this ingredient, in this season, in this dish — not because it can be, but because it should be.",
+        },
+        {
+          n: "03",
+          title: "Story",
+          text: "Every dish has an origin and a choice. They sit alongside the recipe — so you don't just cook, you understand.",
+        },
+      ],
+    },
+    quote: {
+      text: "What you cook says something — about your attention, your pace, your taste.",
+      author: "From Spijs",
+    },
+    aboutAuthor: {
+      eyebrow: "About the author",
+      titleA: "Tjitze",
+      titleAccent: "van der Dam",
+      body: "Chef and culinary director. Tjitze learned his craft in kitchens like Waldorf Astoria, Ron Blaauw and De Vrienden van Jacob. Today he is the founder of Culinair AnnoNu, the initiator of 24H Chefs and the builder of the educational platform CuliQuiz. Spijs is his book for home cooks ready to go beyond the recipe.",
+      portraitAlt: "Tjitze van der Dam",
+    },
+    orderSection: {
+      eyebrow: "Order now",
+      titleA: "Available to",
+      titleAccent: "order.",
     },
     form: {
       heading: "Shipping details",
