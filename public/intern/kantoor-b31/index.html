@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<script src="/intern/kantoor-b31/support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+  <title>Unit B31 · 3D visualisatie</title>
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.184.0/build/three.module.js",
+      "three/addons/controls/OrbitControls.js": "https://unpkg.com/three@0.184.0/examples/jsm/controls/OrbitControls.js",
+      "three/addons/exporters/OBJExporter.js": "https://unpkg.com/three@0.184.0/examples/jsm/exporters/OBJExporter.js",
+      "three/addons/exporters/GLTFExporter.js": "https://unpkg.com/three@0.184.0/examples/jsm/exporters/GLTFExporter.js"
+    },
+    "integrity": {
+      "https://unpkg.com/three@0.184.0/build/three.module.js": "sha384-8FCZ1eVO6it4+pbec2aDtnTrwjWXZLJRC+MAGCIPDgsYnUrl/E0A2YlF8ioMKI/J",
+      "https://unpkg.com/three@0.184.0/build/three.core.js": "sha384-dw2ooPewaEIrAgl6oFDBmmBWCE9oW9LxRGcfwZ0hLvEprzo202wXl7vCYHRlSnOT",
+      "https://unpkg.com/three@0.184.0/examples/jsm/controls/OrbitControls.js": "sha384-4rziNxOBZKQ69i+w+f89KJ55TCYquwchVbByQwmaOeIOXdOU2PLDn3kOfXHwIJC9",
+      "https://unpkg.com/three@0.184.0/examples/jsm/exporters/OBJExporter.js": "sha384-nbwtoZENJD3Vq+ACK0CuGQdPMuDWHkamC2KJD70EV5nfg6jQjfppKOea07YJN+N3",
+      "https://unpkg.com/three@0.184.0/examples/jsm/exporters/GLTFExporter.js": "sha384-VofkvpG6HERhFCYbsUOHeNXBCqID2nfqkQqnVzE1jc/oPcz+qJ13ADdXH08hE+cQ"
+    }
+  }
+  </script>
+  <style>
+    body{margin:0;background:#f9f9f7;font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+    three-d-stage:not(:defined){visibility:hidden}
+  </style>
+  <script src="/intern/kantoor-b31/three-d-stage.js"></script>
+</helmet>
+<div style="max-width:1100px;margin:0 auto;padding:30px 18px 60px;color:#0b0b0b">
+  <h1 style="font-size:24px;font-weight:650;letter-spacing:-.01em;margin:0 0 4px">Unit B31, 3D visualisatie</h1>
+  <p style="color:#52514e;font-size:14px;margin:0 0 22px;max-width:640px">Realistische render van de indeling. Sleep om te draaien, scroll om te zoomen.</p>
+
+  <div style="background:#fcfcfb;border:1px solid rgba(11,11,11,.10);border-radius:12px;padding:18px 20px 22px">
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px">
+      <button onClick="{{ setFloorGround }}" style="{{ floorGroundStyle }}">Begane grond</button>
+      <button onClick="{{ setFloorUpper }}" style="{{ floorUpperStyle }}">Verdieping</button>
+      <button onClick="{{ setFloorBoth }}" style="{{ floorBothStyle }}">Beide</button>
+    </div>
+    <div style="width:100%;height:640px;border-radius:10px;overflow:hidden;background:#eceae4">
+      <three-d-stage ref="{{ stageRef }}" id="stage" name="unit-b31-kantoor" background="#eceae4" style="width:100%;height:100%;display:block"></three-d-stage>
+    </div>
+    <p style="color:#898781;font-size:13px;margin:12px 0 0">Ook beschikbaar: <a href="/intern/kantoor-b31/plattegrond.html" style="color:#2a78d6">2D-plattegrond</a></p>
+  </div>
+
+  <h2 style="font-size:19px;font-weight:650;letter-spacing:-.01em;margin:36px 0 4px">Sfeerimpressies</h2>
+  <p style="color:#52514e;font-size:14px;margin:0 0 16px;max-width:640px">Vier beelden van hoe het kantoor gaat aanvoelen.</p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px">
+    <figure style="margin:0;background:#fcfcfb;border:1px solid rgba(11,11,11,.10);border-radius:12px;padding:10px">
+      <img src="/intern/kantoor-b31/moodboard/01-keuken.png" alt="Keuken" style="width:100%;border-radius:8px;display:block">
+      <figcaption style="color:#52514e;font-size:13px;padding:8px 4px 2px">De keuken</figcaption>
+    </figure>
+    <figure style="margin:0;background:#fcfcfb;border:1px solid rgba(11,11,11,.10);border-radius:12px;padding:10px">
+      <img src="/intern/kantoor-b31/moodboard/02-verdieping.png" alt="Verdieping" style="width:100%;border-radius:8px;display:block">
+      <figcaption style="color:#52514e;font-size:13px;padding:8px 4px 2px">De verdieping</figcaption>
+    </figure>
+    <figure style="margin:0;background:#fcfcfb;border:1px solid rgba(11,11,11,.10);border-radius:12px;padding:10px">
+      <img src="/intern/kantoor-b31/moodboard/03-kantoor.png" alt="Kantoor" style="width:100%;border-radius:8px;display:block">
+      <figcaption style="color:#52514e;font-size:13px;padding:8px 4px 2px">De kantoorruimte</figcaption>
+    </figure>
+    <figure style="margin:0;background:#fcfcfb;border:1px solid rgba(11,11,11,.10);border-radius:12px;padding:10px">
+      <img src="/intern/kantoor-b31/moodboard/04-overzicht.png" alt="Overzicht" style="width:100%;border-radius:8px;display:block">
+      <figcaption style="color:#52514e;font-size:13px;padding:8px 4px 2px">Het overzicht</figcaption>
+    </figure>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { floor: 'both', preset: 'vogelvlucht' };
+
+  constructor(props) {
+    super(props);
+    this.stageRef = React.createRef();
+  }
+
+  async componentDidMount() {
+    const stage = this.stageRef.current;
+    if (!stage) return;
+    const { THREE } = await stage.ready;
+    const { buildScene, PRESETS } = await import('/intern/kantoor-b31/office-model.js');
+    this._THREE = THREE;
+    this._PRESETS = PRESETS;
+    const scene = buildScene(THREE);
+    this._scene = scene;
+    stage.setObject(scene.group);
+    this._applyFloor('both');
+    this._goPreset('vogelvlucht');
+  }
+
+  _applyFloor(floor) {
+    const scene = this._scene;
+    if (!scene) return;
+    scene.ground.visible = floor === 'ground' || floor === 'both';
+    scene.upper.visible = floor === 'upper' || floor === 'both';
+    scene.slab.visible = floor === 'both';
+    const stage = this.stageRef.current;
+    const views = {
+      ground: { pos: [6.5, 7.5, 8], target: [-0.5, 0.8, 0] },
+      upper: { pos: [6, 10, 8], target: [0, 4, 0] },
+      both: { pos: [6.2, 10.5, 8.8], target: [0.4, 2.4, -0.3] },
+    };
+    const v = views[floor];
+    if (stage && stage._camera && v) {
+      stage._camera.position.set(...v.pos);
+      stage._controls.target.set(...v.target);
+      stage._controls.update();
+    }
+  }
+
+  _goPreset(name) {
+    const stage = this.stageRef.current;
+    const p = this._PRESETS && this._PRESETS[name];
+    if (!stage || !stage._camera || !p) return;
+    stage._camera.position.set(...p.pos);
+    stage._controls.target.set(...p.target);
+    stage._controls.update();
+  }
+
+  _btnStyle(on, accent) {
+    return `font:inherit;font-size:13px;font-weight:600;padding:6px 14px;border-radius:7px;cursor:pointer;border:1px solid ${on ? accent : '#c3c2b7'};background:${on ? accent : 'transparent'};color:${on ? '#fff' : '#52514e'}`;
+  }
+
+  renderVals() {
+    const floor = this.state.floor, preset = this.state.preset;
+    const setFloor = (f) => { this.setState({ floor: f }); this._applyFloor(f); };
+    const goPreset = (p) => { this.setState({ preset: p }); this._goPreset(p); };
+    return {
+      stageRef: this.stageRef,
+      setFloorGround: () => setFloor('ground'),
+      setFloorUpper: () => setFloor('upper'),
+      setFloorBoth: () => setFloor('both'),
+      floorGroundStyle: this._btnStyle(floor === 'ground', '#2a78d6'),
+      floorUpperStyle: this._btnStyle(floor === 'upper', '#2a78d6'),
+      floorBothStyle: this._btnStyle(floor === 'both', '#2a78d6'),
+    };
+  }
+}
+</script>
+</body>
+</html>

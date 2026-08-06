@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Unit B31 · plattegrond en 3D</title>
+<style>
+  :root{
+    color-scheme:light;
+    --surface:#fcfcfb; --page:#f9f9f7;
+    --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+    --grid:#e1e0d9; --base:#c3c2b7; --border:rgba(11,11,11,.10);
+    --blue:#2a78d6; --orange:#eb6834; --aqua:#1baf7a; --yellow:#eda100; --violet:#4a3aa7;
+    --wall:#52514e; --fill:#f0efec;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:where(:not([data-theme="light"])){
+      color-scheme:dark;
+      --surface:#1a1a19; --page:#0d0d0d;
+      --ink:#fff; --ink2:#c3c2b7; --muted:#898781;
+      --grid:#2c2c2a; --base:#383835; --border:rgba(255,255,255,.10);
+      --blue:#3987e5; --orange:#d95926; --aqua:#199e70; --yellow:#c98500; --violet:#9085e9;
+      --wall:#c3c2b7; --fill:#232322;
+    }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;padding:30px 18px 60px;background:var(--page);color:var(--ink);
+       font-family:system-ui,-apple-system,"Segoe UI",sans-serif;font-size:15px;line-height:1.55}
+  .wrap{max-width:1000px;margin:0 auto}
+  h1{font-size:25px;font-weight:650;margin:0 0 4px;letter-spacing:-.01em}
+  .sub{color:var(--ink2);margin:0 0 24px;font-size:14px}
+  h2{font-size:16px;font-weight:620;margin:0 0 2px}
+  .cap{color:var(--muted);font-size:13px;margin:0 0 14px}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px 22px;margin-bottom:20px}
+  .plans{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  @media(max-width:820px){.plans{grid-template-columns:1fr}}
+  svg{width:100%;height:auto;display:block}
+  .legend{margin-top:16px;display:flex;flex-wrap:wrap;gap:9px 18px;font-size:12.5px;color:var(--ink2)}
+  .legend span{display:flex;align-items:center;gap:7px}
+  .keylist{margin-top:10px;font-size:12px;color:var(--ink2);line-height:1.75}
+  .keylist b{display:inline-block;min-width:15px;height:15px;line-height:15px;text-align:center;border-radius:50%;background:var(--orange);color:#fff;font-size:10px;font-weight:700;margin-right:5px}
+  .dot{width:11px;height:11px;border-radius:3px;display:inline-block}
+  #view{width:100%;height:600px;border-radius:10px;overflow:hidden;background:var(--fill);cursor:grab;touch-action:none}
+  #view.drag{cursor:grabbing}
+  .bar{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}
+  button{font:inherit;font-size:13px;font-weight:600;padding:6px 14px;border-radius:7px;cursor:pointer;
+         border:1px solid var(--base);background:transparent;color:var(--ink2)}
+  button.on{background:var(--blue);border-color:var(--blue);color:#fff}
+  ul{margin:8px 0 0;padding-left:18px} li{margin-bottom:8px}
+  strong{font-weight:620}
+  .note{color:var(--muted);font-size:12.5px;margin-top:20px}
+  table{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:6px}
+  th{text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);
+     padding:0 0 7px;border-bottom:1px solid var(--grid);font-weight:600}
+  th.r,td.r{text-align:right;font-variant-numeric:tabular-nums;padding-right:22px;white-space:nowrap}
+  td{padding:7px 0;border-bottom:1px solid var(--grid);color:var(--ink2)}
+  tr:last-child td{border-bottom:none}
+  td.n{color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>Unit B31, indeling</h1>
+  <p class="sub">Einsteinstraat 3-J Purmerend. Uitgegaan van 6,0 bij 8,5 meter per laag, samen 102 m² tegenover de 101 m² VVO uit het taxatierapport. Zodra je de bouwtekening hebt, pas ik de maten aan.</p>
+
+  <div class="card">
+    <h2>Plattegronden</h2>
+    <p class="cap">Voorgevel met de overheaddeur onderaan. Maatlijn per meter.</p>
+    <div class="plans">
+      <div>
+        <h2 style="font-size:14px">Begane grond</h2>
+        <p class="cap">U opent naar rechts. Toilet onder de trap. Opslag blokkeert de trap niet.</p>
+        <div id="svg0"></div>
+        <div id="key0" class="keylist"></div>
+      </div>
+      <div>
+        <h2 style="font-size:14px">Verdieping</h2>
+        <p class="cap">Zes werkplekken in een bench, kleiner kantoor, koffie rechts.</p>
+        <div id="svg1"></div>
+      </div>
+    </div>
+    <div class="legend">
+      <span><i class="dot" style="background:var(--orange)"></i>Keuken</span>
+      <span><i class="dot" style="background:var(--blue)"></i>Tafels en bureaus</span>
+      <span><i class="dot" style="background:var(--violet)"></i>Opslag</span>
+      <span><i class="dot" style="background:var(--aqua)"></i>Lattenpanelen</span>
+      <span><i class="dot" style="background:var(--yellow)"></i>Prik- en schrijfwand</span>
+      <span><i class="dot" style="background:var(--wall)"></i>Vast: trap, toilet, kantoor</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>3D</h2>
+    <p class="cap">Slepen draait, scrollen zoomt. Zet "Materialen" uit voor de kleurcodes van de plattegrond. Bij "Beide" zweeft de verdieping los boven de begane grond. De figuurtjes zijn 1,75 meter.</p>
+    <div class="bar">
+      <button id="b0">Begane grond</button>
+      <button id="b1">Verdieping</button>
+      <button id="b2" class="on">Beide</button>
+    </div>
+    <div class="bar">
+      <button id="p1">Vogelvlucht</button>
+      <button id="p2">Vanaf de deur</button>
+      <button id="p3">Studio-shot</button>
+      <button id="tr">Draaien</button>
+      <button id="tm" class="on">Materialen</button>
+      <button id="tl">Labels</button>
+      <button id="ts">Showlicht</button>
+    </div>
+    <div id="view"></div>
+  </div>
+
+  <div class="card">
+    <h2>Wat erin past</h2>
+    <table>
+      <thead><tr><th>Onderdeel</th><th class="r">Maat</th><th class="r">Oppervlak</th><th>Opmerking</th></tr></thead>
+      <tbody>
+        <tr><td class="n">Keuken U-vorm</td><td class="r">3,4 &times; 3,0 m</td><td class="r">5,5 m&sup2;</td><td>opening naar rechts, presentatiekant naar de ruimte</td></tr>
+        <tr><td class="n">Werktafel, hoog en verplaatsbaar</td><td class="r">2,8 &times; 0,9 m</td><td class="r">2,5 m&sup2;</td><td>tegen de presentatiekant, zit zes, kijkt op de keuken</td></tr>
+        <tr><td class="n">Trap met toilet eronder</td><td class="r">1,3 &times; 3,2 m</td><td class="r">4,2 m&sup2;</td><td>toilet in het hoge deel achterin</td></tr>
+        <tr><td class="n">4 stellingrekken (heb je al)</td><td class="r">0,45 &times; 3,60 m</td><td class="r">1,6 m&sup2;</td><td>90 x 45 x 180, 20 planken samen, 8,1 m&sup2; plank</td></tr>
+        <tr><td class="n">RVS stellingkast (heb je al)</td><td class="r">0,45 &times; 1,20 m</td><td class="r">0,5 m&sup2;</td><td>naast de keuken, pannen en mise en place</td></tr>
+        <tr><td class="n">KALLAX beneden (heb je al)</td><td class="r">0,39 &times; 0,77 m</td><td class="r">0,3 m&sup2;</td><td>servies voor de fotografie, op grijphoogte bij de tafel</td></tr>
+        <tr><td class="n">KALLAX boven (heb je al)</td><td class="r">0,77 &times; 0,39 m</td><td class="r">0,3 m&sup2;</td><td>administratie, tegen de achterwand van je kantoor</td></tr>
+        <tr><td class="n">Kastenwand boven</td><td class="r">0,65 &times; 2,1 m</td><td class="r">1,4 m&sup2;</td><td>lichte spullen en archief, 3,0 m&sup3;</td></tr>
+        <tr><td class="n">Jouw kantoor</td><td class="r">3,0 &times; 2,8 m</td><td class="r">8,4 m&sup2;</td><td>latten op de twee dichte wanden, glas naar de kantoortuin</td></tr>
+        <tr><td class="n">Zes werkplekken, bench</td><td class="r">3,6 &times; 1,6 m</td><td class="r">5,8 m&sup2;</td><td>drie tegenover drie, 1,2 m per plek</td></tr>
+        <tr><td class="n">Koffieblok boven</td><td class="r">1,8 &times; 0,65 m</td><td class="r">1,2 m&sup2;</td><td>IKEA, bij het afvoerpunt dat je al hebt besteld</td></tr>
+      </tbody>
+    </table>
+    <ul>
+      <li><strong>De U opent naar rechts.</strong> Je loopt er aan de zijkant in en uit, en de voorste poot is je presentatiekant. Daar staat de hoge werktafel tegenaan, zodat mensen aan tafel op de keuken kijken en de camera vanaf de laadzone recht op je werkvlak kan.</li>
+      <li><strong>De trap is vrij.</strong> De gestippelde pijl is je looproute vanaf de loopdeur naar de trapvoet, zonder iets te passeren. Het toilet zit onder de trap in het achterste deel, waar de hoogte het toelaat.</li><li><strong>De opslag kost bijna geen ruimte meer.</strong> Je stellingrekken zijn 45 cm diep in plaats van de meter die ik eerst had getekend. De hele linkerwand is nu een strook van 45 cm: RVS-rek bij de keuken, KALLAX met servies bij de fototafel, daarna vier rekken naast elkaar. Dat scheelt 55 cm loopruimte over de volle lengte, en de doorloop naast de werktafel gaat van 0,42 naar 0,97 meter.</li>
+      <li><strong>Alles wat je al hebt staat erin.</strong> Vier stellingrekken, de RVS-kast, twee KALLAX-en, de zwarte kratten en de kookboeken. Nieuw te kopen opslag: niets. De kookboeken gaan deels op de open plankjes in de keukenhoek (nummer 1), de rest op twee planken boven je zijblad in het kantoor.</li>
+      <li><strong>Zes plekken in een bench.</strong> Drie tegenover drie in plaats van rijen naar de muur. Ruimte eromheen: 0,9 m links, 1,5 m rechts, 2,1 m naar de gevel toe.</li>
+      <li><strong>Twee wanden met een functie.</strong> Prik- en schrijfwand op de linkerwand, vier meter lang. Lattenpanelen bij de trapopkomst en naast de trap, en in je eigen kantoor op de twee dichte wanden (achter en links). De twee glazen wanden blijven vrij, zodat je vanaf het hoekbureau op de kantoortuin kijkt.</li>
+    </ul>
+  </div>
+
+  <p class="note">Alle maten zijn aannames tot de bouwtekening er is. De verhouding klopt, de precieze positie van de trap, de meterkast en de twee vuilwaterpunten niet. Die drie bepalen uiteindelijk of de keuken links of rechts komt.</p>
+
+</div>
+
+<script>
+const W=6.0, D=8.5, H0=3.2, H1=2.6, SLAB=0.25;
+const C={orange:"#eb6834",blue:"#2a78d6",violet:"#4a3aa7",aqua:"#1baf7a",yellow:"#eda100",wall:"#7a7974",wall2:"#9d9c96"};
+const CQ={teal:"#26A8B0",rood:"#A91917",geel:"#EAB600",oranje:"#E15E17",grijs:"#C3CBD0"};
+
+const ITEMS=[
+ {f:0,x:0,   z:0,    w:0.62,d:0.62,h:2.10,c:C.orange,k:1,kt:"open plankjes in de hoek, kookboeken en styling, geen deur die klemt"},
+ {f:0,x:0.62,z:0,    w:0.60,d:0.62,h:2.10,c:C.orange,k:2,kt:"hoge kast met oven, 0,60 m"},
+ {f:0,x:1.22,z:0,    w:1.58,d:0.62,h:0.90,c:C.orange,k:3,kt:"werkblad met spoelbak, 1,58 m"},
+ {f:0,x:2.80,z:0,    w:0.60,d:0.62,h:2.10,c:C.orange,k:4,kt:"hoge kast met koeling, 0,60 m"},
+ {f:0,x:0,   z:0.62, w:0.62,d:1.20,h:0.90,c:C.orange,k:5,kt:"middenstuk met inductie, 1,20 m werkruimte"},
+ {f:0,x:0,   z:1.85, w:2.8, d:0.65,h:0.90,c:C.orange,l:"presentatiekant",dim:"2,8 x 0,65"},
+ {f:0,x:1.90,z:2.62, w:0.90,d:2.60,h:1.05,c:C.blue,  l:"werktafel dwars",dim:"0,9 x 2,6"},
+ {f:0,x:3.85,z:2.10, w:0.85,d:0.80,h:2.00,c:C.wall2, k:6,kt:"professionele koelkast tegen de trapflank"},
+ {f:0,x:3.85,z:2.95, w:0.85,d:0.80,h:2.00,c:C.wall2, k:7,kt:"vriezer, zelfde plek"},
+ {f:0,x:5.62,z:4.60, w:0.38,d:0.90,h:2.10,c:C.wall,  k:8,kt:"meterkast, tussen de loopdeur en de trap"},
+ {f:0,x:4.7, z:0.60, w:1.3, d:1.60,h:1.00,c:C.wall2, l:"toilet",         dim:"onder de trap", sub:true},
+ {f:0,x:4.7, z:2.20, w:1.3, d:1.60,h:1.10,c:C.wall,  l:"trap",           dim:"1,3 x 3,2"},
+ {f:0,x:0,   z:2.60, w:0.45,d:1.20,h:1.80,c:C.violet,k:10,kt:"RVS stellingkast die je al hebt, 1,20 breed"},
+ {f:0,x:0,   z:3.90, w:0.39,d:0.77,h:1.47,c:C.violet,k:11,kt:"KALLAX met serviesgoed voor de fotografie"},
+ {f:0,x:0,   z:4.75, w:0.45,d:3.60,h:1.80,c:C.violet,l:"4 stellingrekken", dim:"0,45 x 3,60"},
+ {f:0,x:4.74,z:0.04, w:1.22,d:0.54,h:2.00,c:"#232326",k:9,kt:"zwarte kratten achter de trap, 2 rijen van 6 hoog"},
+ {f:1,x:0,   z:0,    w:3.0, d:2.80,h:2.50,c:C.wall,  l:"kantoor",        dim:"3,0 x 2,8", glass:true},
+ {f:1,x:0.9, z:4.80, w:3.6, d:1.60,h:0.74,c:C.blue,  l:"6 werkplekken",  dim:"3,6 x 1,6"},
+ {f:1,x:5.35,z:3.90, w:0.65,d:2.10,h:2.20,c:C.violet,l:"kast",           dim:"0,65 x 2,1"},
+ {f:1,x:5.35,z:6.20, w:0.65,d:1.80,h:0.90,c:C.orange,l:"koffie",         dim:"0,65 x 1,8"},
+ {f:1,x:4.10,z:0.06, w:0.90,d:0.26,h:0.30,c:C.aqua,  l:"airco",          dim:"0,9 breed"},
+ {f:1,x:2.05,z:0.15, w:0.77,d:0.39,h:1.47,c:C.violet},
+];
+const LAT=[
+ {f:1,x:3.10,z:0,    w:2.9, d:0.06,lab:"latten bij de trapopkomst"},
+ {f:1,x:5.94,z:0.60, w:0.06,d:3.20,lab:"latten naast de trap"},
+ {f:1,x:0.06,z:0.06, w:2.82,d:0.06,lab:"latten kantoor achter"},
+ {f:1,x:0.02,z:0.14, w:0.06,d:2.56,lab:"latten kantoor links"},
+];
+const VOID={x:4.7,z:0.6,w:1.3,d:3.2};
+
+/* ================= 2D ================= */
+const S=46, PAD=36;
+function txt(o,x,y,t,size,col,weight,rot){return o+`<text x="${x}" y="${y}" font-size="${size}" font-weight="${weight}" fill="${col}" text-anchor="middle"${rot?` transform="rotate(-90 ${x} ${y})"`:""}>${t}</text>`;}
+function svg(floor){
+ const ww=W*S,dd=D*S; let o=`<svg viewBox="0 0 ${ww+PAD*2} ${dd+PAD*2}" xmlns="http://www.w3.org/2000/svg">`;
+ o+=`<rect x="${PAD}" y="${PAD}" width="${ww}" height="${dd}" fill="var(--fill)" stroke="var(--wall)" stroke-width="4"/>`;
+ for(let m=1;m<W;m++)o+=`<line x1="${PAD+m*S}" y1="${PAD}" x2="${PAD+m*S}" y2="${PAD-7}" stroke="var(--base)"/>`;
+ for(let m=1;m<D;m++)o+=`<line x1="${PAD}" y1="${PAD+m*S}" x2="${PAD-7}" y2="${PAD+m*S}" stroke="var(--base)"/>`;
+ o=txt(o,PAD+ww/2,PAD-15,"6,0 m",10,"var(--muted)",400,false);
+ o=txt(o,PAD-15,PAD+dd/2,"8,5 m",10,"var(--muted)",400,true);
+ if(floor===0){
+  o+=`<rect x="${PAD}" y="${PAD+6.6*S}" width="${ww}" height="${1.9*S}" fill="${C.aqua}" opacity=".13" stroke="${C.aqua}" stroke-width="1.4" stroke-dasharray="5 4"/>`;
+  o=txt(o,PAD+2.2*S,PAD+7.6*S,"laden en lossen",11,"var(--ink)",600,false);
+ } else {
+  o+=`<rect x="${PAD+VOID.x*S}" y="${PAD+VOID.z*S}" width="${VOID.w*S}" height="${VOID.d*S}" fill="#ffffff" opacity=".55" stroke="var(--wall)" stroke-width="2" stroke-dasharray="6 4"/>`;
+  for(let i=0;i<11;i++) o+=`<line x1="${PAD+4.72*S}" y1="${PAD+(3.75-i*0.26)*S}" x2="${PAD+5.98*S}" y2="${PAD+(3.75-i*0.26)*S}" stroke="var(--base)" stroke-width="1"/>`;
+  o+=`<path d="M ${PAD+5.35*S} ${PAD+3.55*S} L ${PAD+5.35*S} ${PAD+1.15*S}" stroke="var(--wall)" stroke-width="1.6"/>`;
+  o+=`<path d="M ${PAD+5.35*S} ${PAD+1.0*S} l -4 8 l 8 0 z" fill="var(--wall)"/>`;
+  o+=`<line x1="${PAD+4.66*S}" y1="${PAD+0.60*S}" x2="${PAD+4.66*S}" y2="${PAD+3.80*S}" stroke="var(--ink)" stroke-width="3"/>`;
+  o+=`<line x1="${PAD+4.70*S}" y1="${PAD+3.77*S}" x2="${PAD+6.00*S}" y2="${PAD+3.77*S}" stroke="var(--ink)" stroke-width="3"/>`;
+  o=txt(o,PAD+(VOID.x+VOID.w/2)*S,PAD+(VOID.z+VOID.d/2)*S+34,"trapgat",10,"var(--muted)",400,true);
+  o=txt(o,PAD+4.40*S,PAD+2.2*S,"balustrade",9,"var(--ink2)",600,true);
+ }
+ LAT.filter(i=>i.f===floor).forEach(i=>{o+=`<rect x="${PAD+i.x*S}" y="${PAD+i.z*S}" width="${Math.max(i.w*S,4)}" height="${Math.max(i.d*S,4)}" fill="${C.aqua}" rx="1"/>`;});
+ o+=floor===1?`<rect x="${PAD+0*S}" y="${PAD+3.6*S}" width="4" height="${4.0*S}" fill="${C.yellow}"/>`:"";
+ if(floor===1){
+  o+=`<path d="M ${PAD+0.30*S} ${PAD+2.20*S} h ${1.98*S} v ${0.70*S} h -${1.98*S} z" fill="none" stroke="var(--ink2)" stroke-width="1.3"/>`;
+  o+=`<path d="M ${PAD+0.30*S} ${PAD+0.55*S} h ${0.66*S} v ${0.95*S} h -${0.66*S} z" fill="none" stroke="var(--ink2)" stroke-width="1.3"/>`;
+  o+=`<circle cx="${PAD+1.29*S}" cy="${PAD+1.24*S}" r="${0.24*S}" fill="none" stroke="var(--ink2)" stroke-width="1.3"/>`;
+  o+=`<path d="M ${PAD+1.29*S} ${PAD+1.55*S} L ${PAD+1.29*S} ${PAD+2.95*S}" stroke="${C.aqua}" stroke-width="1.6" stroke-dasharray="4 3"/>`;
+  o+=`<path d="M ${PAD+1.29*S} ${PAD+3.10*S} l -5 -9 l 10 0 z" fill="${C.aqua}"/>`;
+  o=txt(o,PAD+0.72*S,PAD+1.95*S,"hoekbureau",8.5,"var(--ink2)",600,false);
+ }
+ ITEMS.filter(i=>i.f===floor).forEach(i=>{
+  const op=i.glass?.24:(i.sub?.95:.88), dash=i.sub?' stroke="#fff" stroke-width="1.5" stroke-dasharray="4 3"':'';
+  o+=`<rect x="${PAD+i.x*S}" y="${PAD+i.z*S}" width="${i.w*S}" height="${i.d*S}" fill="${i.c}" opacity="${op}" rx="2"${dash}/>`;
+  if(i.k){const kx=PAD+(i.x+i.w/2)*S, ky=PAD+(i.z+i.d/2)*S;
+   o+=`<circle cx="${kx}" cy="${ky}" r="9.5" fill="#ffffff" stroke="${i.c==="#232326"?"#8f8f96":i.c}" stroke-width="2"/>`;
+   o=txt(o,kx,ky+4,String(i.k),11.5,"#0b0b0b",700,false); return;}
+  if(!i.l)return;
+  const cx=PAD+(i.x+i.w/2)*S, cy=PAD+(i.z+i.d/2)*S, vert=i.d>i.w*1.5, col=i.glass?"var(--ink)":"#fff";
+  const off=(i.l==="6 werkplekken")?-18:(i.l==="kantoor"?16:(i.l==="airco"?9:(i.l==="trap"?30:(i.l==="kratten"?-16:0))));
+  if(vert){o=txt(o,cx-6,cy,i.l,10.5,col,600,true); if(i.dim)o=txt(o,cx+7,cy,i.dim,9,col,400,true);}
+  else{const xo=(i.l==="kantoor")?0.68*S:0; o=txt(o,cx+xo,cy-1+off,i.l,10.5,col,600,false); if(i.dim)o=txt(o,cx+xo,cy+11+off,i.dim,9,col,400,false);}
+ });
+ if(floor===0){
+  o+=`<rect x="${PAD+4.7*S}" y="${PAD+0.6*S}" width="${1.3*S}" height="${3.2*S}" fill="none" stroke="var(--wall)" stroke-width="1.5" stroke-dasharray="3 3"/>`;
+  
+  o+=`<rect x="${PAD+4.80*S}" y="${PAD+0.68*S}" width="${0.40*S}" height="${0.62*S}" fill="#fff" stroke="var(--base)" rx="3"/>`;
+  o+=`<path d="M ${PAD+4.64*S} ${PAD+1.14*S} a ${0.84*S} ${0.84*S} 0 0 0 ${-0.84*S} ${0.84*S}" fill="none" stroke="var(--base)"/>`;
+  o+=`<path d="M ${PAD+4.30*S} ${PAD+8.1*S} L ${PAD+4.30*S} ${PAD+4.3*S} L ${PAD+5.10*S} ${PAD+4.0*S}" stroke="${C.aqua}" stroke-width="2" stroke-dasharray="4 4" fill="none"/>`;
+  o+=`<path d="M ${PAD+5.22*S} ${PAD+3.94*S} l -10 0 l 5 9 z" fill="${C.aqua}"/>`;
+  for(let i=0;i<11;i++) o+=`<line x1="${PAD+4.72*S}" y1="${PAD+(3.75-i*0.26)*S}" x2="${PAD+5.98*S}" y2="${PAD+(3.75-i*0.26)*S}" stroke="rgba(255,255,255,.55)" stroke-width="1"/>`;
+  o+=`<path d="M ${PAD+5.35*S} ${PAD+3.55*S} L ${PAD+5.35*S} ${PAD+1.15*S}" stroke="#fff" stroke-width="1.6"/>`;
+  o+=`<path d="M ${PAD+5.35*S} ${PAD+1.0*S} l -4 8 l 8 0 z" fill="#fff"/>`;
+  o+=`<rect x="${PAD+0.4*S}" y="${PAD+dd-3}" width="${3.0*S}" height="7" fill="${C.aqua}"/>`;
+  o=txt(o,PAD+1.9*S,PAD+dd+19,"overheaddeur 3,0 m",10,"var(--muted)",400,false);
+  o+=`<rect x="${PAD+3.7*S}" y="${PAD+dd-3}" width="${0.9*S}" height="7" fill="var(--wall)"/>`;
+  o=txt(o,PAD+4.9*S,PAD+dd+19,"loopdeur",10,"var(--muted)",400,false);
+ } else {
+  o+=`<line x1="${PAD+0.9*S}" y1="${PAD+5.6*S}" x2="${PAD+4.5*S}" y2="${PAD+5.6*S}" stroke="#fff" stroke-width="1.5" stroke-dasharray="4 3"/>`;
+  o=txt(o,PAD+0.55*S,PAD+5.6*S,"prik- en schrijfwand 4,0 m",9.5,C.yellow,600,true);
+  o=txt(o,PAD+3.15*S,PAD+0.40*S,"lattenwand",9,C.aqua,600,false);
+  o=txt(o,PAD+2.42*S,PAD+0.66*S,"KALLAX admin",8,"var(--ink2)",600,false);
+  o=txt(o,PAD+0.80*S,PAD+0.42*S,"latten",8,C.aqua,700,false);
+  o=txt(o,PAD+0.30*S,PAD+2.55*S,"latten",8,C.aqua,700,true);
+  o=txt(o,PAD+6.28*S,PAD+2.2*S,"lattenwand",9,C.aqua,600,true);
+  o+=`<line x1="${PAD+0.3*S}" y1="${PAD+dd-2}" x2="${PAD+4.2*S}" y2="${PAD+dd-2}" stroke="var(--base)" stroke-width="4"/>`;
+  o=txt(o,PAD+2.2*S,PAD+dd+19,"raampartij",10,"var(--muted)",400,false);
+ }
+ return o+"</svg>";
+}
+document.getElementById("svg0").innerHTML=svg(0);
+document.getElementById("key0").innerHTML = ITEMS.filter(i=>i.k).sort((a,b)=>a.k-b.k).map(i=>`<b>${i.k}</b>${i.kt}`).join("<br>");
+document.getElementById("svg1").innerHTML=svg(1);
+
+/* ================= 3D ================= */
+const host=document.getElementById("view");
+const cv=document.createElement("canvas");
+cv.style.width="100%";cv.style.height="100%";cv.style.display="block";
+host.appendChild(cv);
+const ctx=cv.getContext("2d");
+const prefersDark=matchMedia("(prefers-color-scheme: dark)").matches;
+let show0=true,show1=true,spin=false,labelsOn=false,showLight=false,matOn=true;
+let rot=0.78,tilt=0.44,dist=24,tgt=[0,3.6,0];
+const LIGHT=[-0.42,-1,-0.35];
+
+const M={
+ betonvloer:"#b6b2a9", houtvloer:"#c49a63", plafond:"#cbc8c0", wand:"#dcdad3",
+ kastCorpus:"#cfccc4", kastFront:"#efeee9", blad:"#3b3935", rvs:"#b9bcbe",
+ latten:"#c08a4e", lattenDiep:"#7d5734", staal:"#3f3f3d", stof:"#59636e",
+ hout:"#b98a52", wit:"#f4f3ef", glas:"#b7cdd4", scherm:"#23262a", plant:"#3f7a4a",
+ krat:"#232326", boek:"#9a5b46", huid:"#c9a68b", broek:"#4a4340", trui:"#5d6b7a", schrijf:"#e9e7df"
+};
+const PARTS=[];
+function P(x,z,w,d,h,y,mat,dia,fl,opt){
+ PARTS.push(Object.assign({x0:x-W/2,x1:x-W/2+w,y0:y,y1:y+h,z0:z-D/2,z1:z-D/2+d,m:mat,dia:dia,fl:fl},opt||{}));
+}
+function slatWall(x,z,w,d,h,y,fl,ox,oz){
+ P(x,z,w,d,h,y,"lattenDiep",C.aqua,fl);
+ const pitch=0.088, sw=0.058, t=0.024;
+ if(w>=d){ for(let u=0.03;u+sw<w;u+=pitch) P(x+u, z+(oz>0?d:-t), sw, t, h-0.08, y+0.04,"latten",C.aqua,fl); }
+ else    { for(let u=0.03;u+sw<d;u+=pitch) P(x+(ox>0?w:-t), z+u, t, sw, h-0.08, y+0.04,"latten",C.aqua,fl); }
+}
+const LOGOS=[];
+function logoPanel(x,z,w,d,h,y,fl,face,text){
+ P(x,z,w,d,h,y,"teal",CQ.teal,fl,{tealC:CQ.teal});
+ LOGOS.push({x0:x-W/2,x1:x-W/2+w,y0:y,y1:y+h,z0:z-D/2,z1:z-D/2+d,face:face,text:text,fl:fl});
+}
+M.teal=CQ.teal;
+
+/* ---- vloeren, plafonds ---- */
+P(0,0,W,D,0.14,-0.14,"betonvloer","#cfcec7",0,{floor:1});
+P(0,0,4.70,D,0.16,H0,"houtvloer","#c9ab86",1,{floor:1});
+P(4.70,0,1.30,0.60,0.16,H0,"houtvloer","#c9ab86",1,{floor:1});
+P(4.70,3.80,1.30,4.70,0.16,H0,"houtvloer","#c9ab86",1,{floor:1});
+P(4.64,0.60,0.06,3.20,0.98,H0+0.16,"staal",C.wall,1);
+P(4.64,0.60,0.10,3.20,0.05,H0+1.14,"hout",C.wall,1);
+for(let i=0;i<8;i++) P(4.66,0.72+i*0.42,0.03,0.03,0.98,H0+0.16,"staal",C.wall,1);
+P(4.70,3.74,1.30,0.06,0.98,H0+0.16,"staal",C.wall,1);
+P(0,0,4.70,D,0.10,H0-0.10,"plafond","#c2c0b8",0,{floor:1,ceil:1});
+P(4.70,0,1.30,0.60,0.10,H0-0.10,"plafond","#c2c0b8",0,{floor:1,ceil:1});
+P(4.70,3.80,1.30,4.70,0.10,H0-0.10,"plafond","#c2c0b8",0,{floor:1,ceil:1});
+
+/* ---- BEGANE GROND ---- */
+// U-keuken: corpus + fronten + blad
+function kast(x,z,w,d,fl){
+ P(x,z,w,d,0.80,0.06,"kastCorpus",C.orange,fl);
+ P(x,z,w,d+0.02,0.04,0.86,"blad",C.orange,fl);          // werkblad
+ const n=Math.max(1,Math.round((w>d?w:d)/0.6));
+ for(let i=0;i<n;i++){
+  if(w>d){const cw=w/n-0.03; P(x+i*(w/n)+0.015, z+d, cw,0.02,0.70,0.11,"kastFront",C.orange,fl);
+          P(x+i*(w/n)+0.015+cw*0.35, z+d+0.02, cw*0.3,0.02,0.02,0.74,"rvs",C.orange,fl);}
+  else    {const cd=d/n-0.03; P(x+w, z+i*(d/n)+0.015, 0.02,cd,0.70,0.11,"kastFront",C.orange,fl);
+          P(x+w+0.02, z+i*(d/n)+0.015+cd*0.35, 0.02,cd*0.3,0.02,0.74,"rvs",C.orange,fl);}
+ }
+}
+// hoek: open plankjes, geen deur die klemt
+P(0.00,0.00,0.03,0.60,2.10,0,"kastCorpus",C.orange,0);
+P(0.59,0.00,0.03,0.60,2.10,0,"kastCorpus",C.orange,0);
+[0.34,0.74,1.14,1.54,1.94].forEach(yy=>P(0,0,0.62,0.60,0.03,yy,"hout",C.orange,0));
+P(0.12,0.16,0.14,0.14,0.20,0.77,"wit",C.orange,0);
+P(0.32,0.14,0.10,0.10,0.26,0.77,"rvs",C.orange,0);
+P(0.14,0.18,0.22,0.16,0.16,1.17,"hout",C.orange,0);
+P(0.34,0.16,0.12,0.12,0.22,1.57,"wit",C.orange,0);
+// hoge kast links: oven
+P(0.62,0.02,0.60,0.62,2.10,0,"kastCorpus",C.orange,0);
+P(0.65,0.64,0.55,0.02,0.92,0.05,"kastFront",C.orange,0);
+P(0.65,0.64,0.55,0.02,0.52,1.53,"kastFront",C.orange,0);
+P(0.66,0.65,0.52,0.03,0.52,0.99,"staal",C.orange,0);
+P(0.70,0.67,0.43,0.02,0.28,1.11,"glas",C.orange,0);
+P(0.68,0.66,0.03,0.03,0.03,1.46,"rvs",C.orange,0);
+// werkblad met spoelbak
+kast(1.22,0,1.58,0.62,0);
+P(1.60,0.10,0.62,0.42,0.02,0.885,"rvs",C.orange,0);
+P(1.86,0.30,0.03,0.03,0.24,0.90,"rvs",C.orange,0);
+// hoge kast rechts: koeling
+P(2.80,0.02,0.60,0.62,2.10,0,"kastCorpus",C.orange,0);
+P(2.83,0.64,0.55,0.02,1.32,0.05,"kastFront",C.orange,0);
+P(2.83,0.64,0.55,0.02,0.62,1.43,"kastFront",C.orange,0);
+P(2.86,0.66,0.03,0.03,0.60,0.70,"rvs",C.orange,0);
+P(2.86,0.66,0.03,0.03,0.40,1.55,"rvs",C.orange,0);
+// middenstuk met inductie
+kast(0,0.62,0.62,1.20,0);
+P(0.05,0.90,0.52,0.58,0.015,0.89,"staal",C.orange,0);
+// presentatiekant, vrij werkblad
+kast(0,1.85,2.80,0.62,0);
+logoPanel(1.10,0.07,1.55,0.04,0.54,1.55,0,"z+","CULIQUIZ");
+
+// werktafel dwars + krukken
+P(1.90,2.62,0.90,2.60,0.06,0.99,"hout",C.blue,0);
+[[1.97,2.68],[1.97,5.10],[2.72,2.68],[2.72,5.10]].forEach(q=>P(q[0],q[1],0.07,0.07,0.99,0,"staal",C.blue,0));
+for(let i=0;i<3;i++){ // krukken links en rechts
+ [1.42,2.92].forEach(cx=>{ const cz=2.97+i*0.85;
+  P(cx,cz,0.36,0.36,0.05,0.70,"hout",C.blue,0); P(cx+0.14,cz+0.14,0.08,0.08,0.70,0,"staal",C.blue,0);});
+}
+// trap: treden
+// open trap: 13 treden naar 3,45 m
+for(let i=0;i<13;i++){const zz=0.65+i*0.246, hh=0.265*(13-i);
+ P(4.72,zz,1.26,0.246,0.05,hh-0.05,"hout",C.wall,0,{stair:1});
+ P(4.72,zz,1.26,0.03,0.265,hh-0.265,"kastCorpus",C.wall,0,{stair:1});}
+// toilethok onder de trap
+P(4.66,0.60,0.05,0.52,2.10,0,"wand",C.wall2,0);
+P(4.66,1.98,0.05,0.24,2.10,0,"wand",C.wall2,0);
+P(4.63,1.14,0.04,0.84,2.02,0,"kastFront",C.wall2,0);
+P(4.60,1.88,0.04,0.06,0.03,0.98,"rvs",C.wall2,0);
+P(4.71,2.16,1.27,0.05,2.05,0,"wand",C.wall2,0);
+P(4.80,0.68,0.40,0.62,0.42,0,"wit",C.wall2,0);
+P(4.80,0.64,0.40,0.14,0.86,0,"wit",C.wall2,0);
+P(5.58,0.68,0.34,0.26,0.12,0.78,"wit",C.wall2,0);
+// zwarte kratten onder het lage deel van de trap, naast de toiletdeur
+for(let c=0;c<2;c++)for(let r=0;r<6;r++) P(4.76+c*0.61,0.08,0.58,0.40,0.30,r*0.325,"krat","#1e1e20",0);
+// opslag: 4 losse stellingrekken die je al hebt (90 x 45 x 180, 5 planken)
+for(let r=0;r<4;r++){const z0=4.75+r*0.90;
+ for(let sh=0;sh<5;sh++) P(0.02,z0,0.45,0.88,0.025,0.06+sh*0.43,"staal",C.violet,0);
+ [[0.03,z0+0.01],[0.40,z0+0.01],[0.03,z0+0.83],[0.40,z0+0.83]].forEach(q=>P(q[0],q[1],0.035,0.035,1.80,0,"staal",C.violet,0));}
+[[4.86,0.09],[4.86,0.95],[5.78,0.52],[5.78,1.38],[6.68,0.09],[6.68,0.95],[7.58,0.52],[7.58,1.38]]
+ .forEach(q=>P(0.05,q[0],0.38,0.62,0.31,q[1],"krat","#1e1e20",0));
+// RVS stellingkast die je al hebt, 1,20 breed
+for(let sh=0;sh<5;sh++) P(0.02,2.60,0.45,1.18,0.03,0.08+sh*0.42,"rvs",C.wall2,0);
+[[0.03,2.61],[0.40,2.61],[0.03,3.73],[0.40,3.73]].forEach(q=>P(q[0],q[1],0.035,0.035,1.78,0,"rvs",C.wall2,0));
+[[2.72,0.53],[2.72,1.37],[3.28,0.11],[3.28,0.95]].forEach(q=>P(0.06,q[0],0.36,0.44,0.26,q[1],"wit",C.wall2,0));
+// KALLAX met servies voor de fotografie
+P(0.02,3.90,0.39,0.77,1.47,0,"kastCorpus","#efece6",0);
+for(let sh=1;sh<4;sh++) P(0.01,3.90,0.41,0.77,0.03,sh*0.365,"kastFront","#d8d4cc",0);
+P(0.01,4.275,0.41,0.03,1.47,0,"kastFront","#d8d4cc",0);
+[[3.96,0.05],[4.34,0.42],[3.96,0.78],[4.34,1.14]].forEach(q=>P(0.07,q[0],0.28,0.30,0.22,q[1]+0.04,"wit",C.wall2,0));
+// professionele koeling naast de trapvoet
+[[3.85,2.10],[3.85,2.95]].forEach(q=>{
+ P(q[0],q[1],0.85,0.80,2.00,0,"rvs",C.wall2,0);
+ P(q[0]-0.02,q[1]+0.02,0.02,0.76,1.92,0.04,"rvs",C.wall2,0);
+ P(q[0]-0.05,q[1]+0.08,0.04,0.06,0.95,0.72,"staal",C.wall2,0);
+ P(q[0]+0.08,q[1]+0.06,0.70,0.10,0.16,2.00,"staal",C.wall2,0);});
+// meterkast tegen de rechterwand, tussen de loopdeur en de trap
+P(5.62,4.60,0.38,0.90,2.10,0,"kastCorpus",C.wall,0);
+P(5.60,4.63,0.02,0.84,2.02,0.05,"kastFront",C.wall,0);
+P(5.58,4.98,0.03,0.14,0.03,1.10,"rvs",C.wall,0);
+// plant + overheaddeur
+// driefasen spotrails aan het plafond, want beneden is er nauwelijks daglicht
+[1.05,2.55,4.05].forEach(rx=>{ P(rx,0.60,0.05,7.20,0.05,H0-0.16,"staal",C.aqua,0);
+ for(let i=0;i<7;i++) P(rx-0.03,0.95+i*1.05,0.11,0.11,0.15,H0-0.31,"staal",C.aqua,0);});
+
+for(let i=0;i<6;i++) P(0.40,D-0.10,3.00,0.06,0.44,0.05+i*0.47,"rvs",C.aqua,0);
+
+/* ---- VERDIEPING ---- */
+const Y1=H0+SLAB;
+P(0,0,3.0,0.06,2.50,Y1,"wand",C.wall,1);
+P(2.94,0,0.06,2.80,2.50,Y1,"glas",C.wall,1,{glass:1});
+P(0,2.74,3.0,0.06,2.50,Y1,"glas",C.wall,1,{glass:1});
+slatWall(0.06,0.06,2.82,0.06,2.30,Y1+0.10,1,0,1);  // kantoor: achterwand
+slatWall(0.02,0.14,0.06,2.56,2.30,Y1+0.10,1,1,0);  // kantoor: linkerwand
+slatWall(3.10,0,2.90,0.06,2.30,Y1+0.10,1,0,1);  // trapopkomst
+slatWall(5.94,0.60,0.06,3.20,2.30,Y1+0.10,1,-1,0);// naast de trap
+logoPanel(3.95,0.07,1.45,0.04,0.50,Y1+1.30,1,"z+","CULIQUIZ");
+logoPanel(5.86,1.70,0.04,0.85,0.60,Y1+1.30,1,"x-","Q");
+P(0,3.60,0.05,4.00,2.30,Y1+0.10,"schrijf",C.yellow,1);
+// bureau bench + schermen + stoelen
+P(0.90,4.80,3.60,1.60,0.05,Y1+0.69,"hout",C.blue,1);
+[[0.96,4.86],[0.96,6.28],[4.38,4.86],[4.38,6.28]].forEach(q=>P(q[0],q[1],0.06,0.06,0.69,Y1,"staal",C.blue,1));
+for(let i=0;i<3;i++){
+ P(1.05+i*1.20,5.48,0.52,0.04,0.32,Y1+0.80,"scherm",C.blue,1); P(1.25+i*1.20,5.46,0.12,0.06,0.11,Y1+0.74,"staal",C.blue,1);
+ P(1.05+i*1.20,5.68,0.52,0.04,0.32,Y1+0.80,"scherm",C.blue,1); P(1.25+i*1.20,5.68,0.12,0.06,0.11,Y1+0.74,"staal",C.blue,1);
+ [4.28,6.52].forEach(cz=>{P(1.10+i*1.20,cz,0.46,0.46,0.05,Y1+0.44,"stof",C.blue,1);
+  P(1.10+i*1.20,cz+(cz<5?0:0.40),0.46,0.06,0.42,Y1+0.49,"stof",C.blue,1);
+  P(1.29+i*1.20,cz+0.19,0.08,0.08,0.44,Y1,"staal",C.blue,1);});
+}
+// kast + koffie
+P(5.35,3.90,0.65,2.10,2.15,Y1,"kastCorpus",C.violet,1);
+for(let i=0;i<4;i++) P(5.33,3.92+i*0.52,0.02,0.48,2.05,Y1+0.05,"kastFront",C.violet,1);
+P(5.35,6.20,0.65,1.80,0.80,Y1+0.06,"kastCorpus",C.orange,1);
+P(5.33,6.20,0.67,1.80,0.04,Y1+0.86,"blad",C.orange,1);
+P(5.35,7.30,0.60,0.60,0.85,Y1+0.06,"rvs",C.orange,1);
+P(5.45,6.30,0.50,1.20,0.03,Y1+1.45,"hout",C.orange,1);
+for(let i=0;i<5;i++) P(5.55+0*i,6.40+i*0.20,0.09,0.09,0.09,Y1+1.48,"wit",C.orange,1);
+// kantoor: hoekbureau met zicht op de kantoortuin
+P(0.30,1.50,1.98,0.70,0.05,Y1+0.69,"hout",C.wall,1);
+[[0.36,1.56],[0.36,2.13],[2.21,1.56],[2.21,2.13]].forEach(q=>P(q[0],q[1],0.06,0.06,0.69,Y1,"staal",C.wall,1));
+P(0.30,0.55,0.66,0.95,0.05,Y1+0.69,"hout",C.wall,1);
+P(0.36,0.61,0.06,0.06,0.69,Y1,"staal",C.wall,1);
+P(1.03,1.92,0.54,0.04,0.34,Y1+0.80,"scherm",C.wall,1);
+P(1.24,1.90,0.12,0.06,0.11,Y1+0.74,"staal",C.wall,1);
+P(1.05,1.00,0.48,0.48,0.05,Y1+0.44,"stof",C.wall,1);
+P(1.05,0.94,0.48,0.06,0.46,Y1+0.49,"stof",C.wall,1);
+P(1.25,1.19,0.09,0.09,0.44,Y1,"staal",C.wall,1);
+// KALLAX voor de administratie, tegen de achterwand
+P(2.05,0.15,0.77,0.39,1.47,Y1,"kastCorpus","#efece6",1);
+for(let sh=1;sh<4;sh++) P(2.05,0.14,0.77,0.41,0.03,Y1+sh*0.365,"kastFront","#d8d4cc",1);
+P(2.425,0.14,0.03,0.41,1.47,Y1,"kastFront","#d8d4cc",1);
+// kookboeken op twee planken boven het zijblad
+[1.16,1.52].forEach(yy=>P(0.13,0.55,0.26,0.94,0.035,Y1+yy,"hout",C.wall,1));
+for(let i=0;i<10;i++) P(0.16,0.60+i*0.085,0.20,0.062,0.26,Y1+1.195,"boek",C.orange,1);
+for(let i=0;i<8;i++)  P(0.16,0.60+i*0.085,0.20,0.062,0.24,Y1+1.555,"boek",C.orange,1);
+// airco, midden boven de lattenwand bij de trapopkomst
+P(4.10,0.06,0.90,0.26,0.30,Y1+1.98,"wit",C.aqua,1);
+P(4.14,0.30,0.82,0.03,0.05,Y1+2.00,"staal",C.aqua,1);
+// ramen voorgevel
+for(let i=0;i<3;i++) P(0.35+i*1.35,D-0.10,1.10,0.06,1.30,Y1+0.85,"glas",C.aqua,1,{glass:1});
+
+/* mensen */
+function person(x,z,f){const y=f===0?0:Y1;
+ P(x-0.17,z-0.12,0.34,0.24,0.82,y,"broek","#4a4340",f);
+ P(x-0.22,z-0.14,0.44,0.28,0.62,y+0.82,"trui","#5d6b7a",f);
+ P(x-0.10,z-0.10,0.20,0.20,0.24,y+1.44,"huid","#c9a68b",f);}
+
+
+const WALLS=[{n:[0,0,-1],x:0,z:-0.06,w:W,d:0.06},{n:[0,0,1],x:0,z:D,w:W,d:0.06},
+             {n:[-1,0,0],x:-0.06,z:0,w:0.06,d:D},{n:[1,0,0],x:W,z:0,w:0.06,d:D}];
+
+function rgbOf(hx){const h=hx.replace("#","");return[parseInt(h.slice(0,2),16),parseInt(h.slice(2,4),16),parseInt(h.slice(4,6),16)];}
+function shadeCol(hex,s,warm){let c=rgbOf(hex).map(v=>v*s);
+ if(showLight){c=c.map((v,i)=>Math.min(255,v*1.20+[26,20,10][i]));}
+ return `rgb(${Math.round(c[0])},${Math.round(c[1])},${Math.round(c[2])})`;}
+
+function render(){
+ const dpr=Math.min(window.devicePixelRatio||1,2), w=host.clientWidth, h=host.clientHeight;
+ if(!w||!h)return;
+ if(cv.width!==Math.round(w*dpr)||cv.height!==Math.round(h*dpr)){cv.width=Math.round(w*dpr);cv.height=Math.round(h*dpr);}
+ ctx.setTransform(dpr,0,0,dpr,0,0);
+ ctx.fillStyle= showLight?"#1c1b16":(prefersDark?"#232322":"#eceae4"); ctx.fillRect(0,0,w,h);
+ const EX=(show0&&show1)?2.4:0, yo=b=>(b.fl===1?EX:0);
+ const cp=[tgt[0]+dist*Math.cos(tilt)*Math.sin(rot),tgt[1]+dist*Math.sin(tilt),tgt[2]+dist*Math.cos(tilt)*Math.cos(rot)];
+ let fwd=[tgt[0]-cp[0],tgt[1]-cp[1],tgt[2]-cp[2]]; const fl2=Math.hypot(...fwd); fwd=fwd.map(v=>v/fl2);
+ let right=[-fwd[2],0,fwd[0]]; const rl=Math.hypot(...right)||1; right=right.map(v=>v/rl);
+ const up=[right[1]*fwd[2]-right[2]*fwd[1],right[2]*fwd[0]-right[0]*fwd[2],right[0]*fwd[1]-right[1]*fwd[0]];
+ const f=(h/2)/Math.tan(36*Math.PI/360);
+ function proj(p){const vx=p[0]-cp[0],vy=p[1]-cp[1],vz=p[2]-cp[2];
+  const z=vx*fwd[0]+vy*fwd[1]+vz*fwd[2]; if(z<0.30)return null;
+  return[w/2+f*(vx*right[0]+vy*right[1]+vz*right[2])/z, h/2-f*(vx*up[0]+vy*up[1]+vz*up[2])/z];}
+
+ const list=PARTS.filter(b=>(b.fl===1&&show1)||(b.fl===0&&show0)||(b.stair&&show1));
+ const draw=list.slice();
+ [[0,H0],[Y1,H1]].forEach((lv,li)=>{ if((li===0&&!show0)||(li===1&&!show1))return;
+  WALLS.forEach(wl=>{const cxw=wl.x-W/2+wl.w/2,czw=wl.z-D/2+wl.d/2;
+   if(wl.n[0]*(cxw-cp[0])+wl.n[2]*(czw-cp[2])<0)return;
+   draw.push({x0:wl.x-W/2,x1:wl.x-W/2+wl.w,y0:lv[0],y1:lv[0]+lv[1],z0:wl.z-D/2,z1:wl.z-D/2+wl.d,m:"wand",dia:"#c8c6bd",isWall:1,fl:li});});});
+
+ ctx.globalAlpha=showLight?.26:.13; ctx.fillStyle=showLight?"#000":"#55554e";
+ draw.forEach(b=>{ if(b.floor||b.isWall||(b.y1-b.y0)<0.25)return;
+  const o=yo(b), base=(b.fl===1?Y1:0)+o, k=(b.y1+o-base)/-LIGHT[1];
+  const dx=LIGHT[0]*k, dz=LIGHT[2]*k;
+  const pts=[[b.x0+dx,base+.01,b.z0+dz],[b.x1+dx,base+.01,b.z0+dz],[b.x1+dx,base+.01,b.z1+dz],[b.x0+dx,base+.01,b.z1+dz]].map(proj);
+  if(pts.some(p=>!p))return; ctx.beginPath(); ctx.moveTo(pts[0][0],pts[0][1]);
+  for(let i=1;i<4;i++)ctx.lineTo(pts[i][0],pts[i][1]); ctx.closePath(); ctx.fill();});
+ ctx.globalAlpha=1;
+
+ const faces=[];
+ draw.forEach(b=>{
+  const o=yo(b), ya=b.y0+o, yb=b.y1+o, layer=b.isWall?0:(b.floor?1:2);
+  const base=matOn?(M[b.m]||b.dia):b.dia;
+  const V=[[b.x0,ya,b.z0],[b.x1,ya,b.z0],[b.x1,ya,b.z1],[b.x0,ya,b.z1],[b.x0,yb,b.z0],[b.x1,yb,b.z0],[b.x1,yb,b.z1],[b.x0,yb,b.z1]];
+  const F=[{i:[4,5,6,7],n:[0,1,0]},{i:[0,3,2,1],n:[0,-1,0]},{i:[3,7,6,2],n:[0,0,1]},{i:[1,5,4,0],n:[0,0,-1]},{i:[2,6,5,1],n:[1,0,0]},{i:[0,4,7,3],n:[-1,0,0]}];
+  F.forEach(fc=>{let cx=0,cy=0,cz=0; fc.i.forEach(ix=>{cx+=V[ix][0]/4;cy+=V[ix][1]/4;cz+=V[ix][2]/4;});
+   const dx=cx-cp[0],dy=cy-cp[1],dz=cz-cp[2];
+   if(dx*fc.n[0]+dy*fc.n[1]+dz*fc.n[2]>0)return;
+   const lam=Math.max(0,-(fc.n[0]*LIGHT[0]+fc.n[1]*LIGHT[1]+fc.n[2]*LIGHT[2])/Math.hypot(...LIGHT));
+   const sh=(showLight?0.34:0.44)+(showLight?0.66:0.56)*lam;
+   const pts=fc.i.map(ix=>proj(V[ix])); if(pts.some(p=>!p))return;
+   faces.push({pts,base,sh,d:Math.hypot(dx,dy,dz),ghost:b.glass,wall:b.isWall,layer,top:fc.n[1]>0});});
+ });
+ faces.sort((a,b)=>a.layer!==b.layer?a.layer-b.layer:b.d-a.d);
+ faces.forEach(fc=>{
+  let ymin=1e9,ymax=-1e9; fc.pts.forEach(p=>{if(p[1]<ymin)ymin=p[1];if(p[1]>ymax)ymax=p[1];});
+  let fill;
+  if(ymax-ymin>3){const g=ctx.createLinearGradient(0,ymin,0,ymax);
+   g.addColorStop(0,shadeCol(fc.base,Math.min(1.15,fc.sh*1.10)));
+   g.addColorStop(1,shadeCol(fc.base,fc.sh*0.86)); fill=g;}
+  else fill=shadeCol(fc.base,fc.sh);
+  ctx.beginPath(); ctx.moveTo(fc.pts[0][0],fc.pts[0][1]);
+  for(let k=1;k<fc.pts.length;k++)ctx.lineTo(fc.pts[k][0],fc.pts[k][1]); ctx.closePath();
+  ctx.globalAlpha=fc.ghost?.26:(fc.wall?.95:1); ctx.fillStyle=fill; ctx.fill();
+  ctx.globalAlpha=fc.wall?.06:.10; ctx.strokeStyle="rgba(0,0,0,.6)"; ctx.lineWidth=.6; ctx.stroke();
+  ctx.globalAlpha=1;
+ });
+
+ // logo's op de panelen
+ LOGOS.forEach(lg=>{ if((lg.fl===1&&!show1)||(lg.fl===0&&!show0))return;
+  const o=lg.fl===1?EX:0, ya=lg.y0+o, yb=lg.y1+o;
+  let q;
+  if(lg.face==="z+") q=[[lg.x0,yb,lg.z1],[lg.x1,yb,lg.z1],[lg.x1,ya,lg.z1],[lg.x0,ya,lg.z1]];
+  else               q=[[lg.x0,yb,lg.z0],[lg.x0,yb,lg.z1],[lg.x0,ya,lg.z1],[lg.x0,ya,lg.z0]];
+  const n = lg.face==="z+"?[0,0,1]:[-1,0,0];
+  const cx=(lg.x0+lg.x1)/2, cy=(ya+yb)/2, cz=(lg.z0+lg.z1)/2;
+  if((cx-cp[0])*n[0]+(cz-cp[2])*n[2] > 0) return;
+  const pp=q.map(proj); if(pp.some(p=>!p))return;
+  const u=[pp[1][0]-pp[0][0],pp[1][1]-pp[0][1]], v=[pp[3][0]-pp[0][0],pp[3][1]-pp[0][1]];
+  ctx.save(); ctx.setTransform(1,0,0,1,0,0);
+  const dpr2=Math.min(window.devicePixelRatio||1,2); ctx.scale(dpr2,dpr2);
+  ctx.transform(u[0]/100,u[1]/100,v[0]/100,v[1]/100,pp[0][0],pp[0][1]);
+  ctx.fillStyle="#ffffff"; ctx.textAlign="center"; ctx.textBaseline="middle";
+  const two = lg.text==="CULIQUIZ";
+  ctx.font="900 100px Georgia, serif";
+  const wt=ctx.measureText(lg.text).width||1;
+  const fs=Math.min(100*84/wt, two?46:60);
+  ctx.font=`900 ${fs}px Georgia, serif`;
+  ctx.fillText(lg.text,50,two?42:52);
+  if(two){ctx.font=`600 ${fs*0.26}px system-ui,sans-serif`; ctx.fillText("JOUW CULINAIRE KENNIS",50,42+fs*0.72);}
+  ctx.restore(); ctx.setTransform(dpr2,0,0,dpr2,0,0);
+ });
+
+ if(labelsOn){
+  ctx.font="600 11.5px system-ui,-apple-system,sans-serif"; ctx.textAlign="center"; ctx.textBaseline="middle";
+  const placed=[];
+  ITEMS.forEach(i=>{ if(!i.l||i.sub)return;
+   if((i.f===0&&!show0)||(i.f===1&&!show1))return;
+   const y=(i.f===0?0:Y1+EX)+i.h+0.30;
+   const p=proj([i.x-W/2+i.w/2,y,i.z-D/2+i.d/2]); if(!p)return;
+   const tw=ctx.measureText(i.l).width;
+   const bx={a:p[0]-tw/2-9,b:p[0]+tw/2+9,c:p[1]-11,d:p[1]+11};
+   if(placed.some(q=>!(bx.b<q.a||bx.a>q.b||bx.d<q.c||bx.c>q.d)))return; placed.push(bx);
+   ctx.globalAlpha=.9; ctx.fillStyle=showLight?"rgba(20,20,15,.86)":"rgba(255,255,255,.92)";
+   ctx.beginPath(); ctx.roundRect(p[0]-tw/2-7,p[1]-9,tw+14,18,9); ctx.fill(); ctx.globalAlpha=1;
+   ctx.strokeStyle=i.c; ctx.lineWidth=1.6; ctx.beginPath(); ctx.roundRect(p[0]-tw/2-7,p[1]-9,tw+14,18,9); ctx.stroke();
+   ctx.fillStyle=showLight?"#f2efe8":"#0b0b0b"; ctx.fillText(i.l,p[0],p[1]);});
+ }
+}
+
+let down=false,px=0,py=0;
+function setOn(id,v){document.getElementById(id).classList.toggle("on",v);}
+host.addEventListener("pointerdown",e=>{down=true;spin=false;setOn("tr",false);px=e.clientX;py=e.clientY;host.classList.add("drag");host.setPointerCapture(e.pointerId)});
+host.addEventListener("pointerup",()=>{down=false;host.classList.remove("drag")});
+host.addEventListener("pointercancel",()=>{down=false;host.classList.remove("drag")});
+host.addEventListener("pointermove",e=>{if(!down)return;rot+=(e.clientX-px)*0.009;tilt=Math.max(0.04,Math.min(1.42,tilt+(e.clientY-py)*0.007));px=e.clientX;py=e.clientY;render();});
+host.addEventListener("wheel",e=>{e.preventDefault();dist=Math.max(3.5,Math.min(44,dist+e.deltaY*0.014));render()},{passive:false});
+const modes={b0:[true,false],b1:[false,true],b2:[true,true]};
+["b0","b1","b2"].forEach(id=>{document.getElementById(id).onclick=()=>{show0=modes[id][0];show1=modes[id][1];["b0","b1","b2"].forEach(k=>setOn(k,k===id));render();};});
+const PRE={p1:{rot:0.72,tilt:0.86,dist:25,tgt:[0,2.6,0]},
+           p2:{rot:0.00,tilt:0.10,dist:7.6,tgt:[0,1.55,-0.6]},
+           p3:{rot:0.08,tilt:0.13,dist:4.6,tgt:[-0.6,1.28,-2.2]}};
+["p1","p2","p3"].forEach(id=>{document.getElementById(id).onclick=()=>{const q=PRE[id];rot=q.rot;tilt=q.tilt;dist=q.dist;tgt=q.tgt.slice();
+ if(id==="p3"){show0=true;show1=false;["b0","b1","b2"].forEach(k=>setOn(k,k==="b0"));} render();};});
+document.getElementById("tr").onclick=()=>{spin=!spin;setOn("tr",spin);};
+document.getElementById("tm").onclick=()=>{matOn=!matOn;setOn("tm",matOn);render();};
+document.getElementById("tl").onclick=()=>{labelsOn=!labelsOn;setOn("tl",labelsOn);render();};
+document.getElementById("ts").onclick=()=>{showLight=!showLight;setOn("ts",showLight);render();};
+window.addEventListener("resize",render);
+(function loop(){if(spin){rot-=0.004;render();}requestAnimationFrame(loop);})();
+render();
+</script>
+</body>
+</html>
