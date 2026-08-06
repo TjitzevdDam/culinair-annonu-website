@@ -3,7 +3,7 @@ export type Locale = "nl" | "en";
 export const locales: Locale[] = ["nl", "en"];
 export const defaultLocale: Locale = "nl";
 
-export const SITE = "https://culinair-annonu.com";
+export const SITE = "https://www.culinair-annonu.com";
 
 // Path mapping per locale. Keys are stable IDs, values are URL paths per locale.
 export const paths = {

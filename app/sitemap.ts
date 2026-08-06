@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { paths, type PathKey } from "@/lib/dict";
 
-const SITE = "https://culinair-annonu.com";
+const SITE = "https://www.culinair-annonu.com";
 
 const config: { key: PathKey; priority: number; changeFreq: "daily" | "weekly" | "monthly" | "yearly" }[] = [
   { key: "home", priority: 1.0, changeFreq: "weekly" },

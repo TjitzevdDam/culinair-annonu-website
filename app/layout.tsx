@@ -19,7 +19,7 @@ const inter = Inter({
   weight: ["300", "400", "500", "600"],
 });
 
-const SITE = "https://culinair-annonu.com";
+const SITE = "https://www.culinair-annonu.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE),
