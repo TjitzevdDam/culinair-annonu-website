@@ -1,4 +1,5 @@
 import { formatPrice } from "./shop";
+import type { ChefpoolSignup } from "./chefpool";
 
 export type OrderDetails = {
   orderRef: string;
@@ -181,5 +182,47 @@ export async function sendCustomerConfirmation(o: OrderDetails): Promise<void> {
     to: { email: o.customer.email, name: o.customer.name },
     subject,
     html: wrap(inner),
+  });
+}
+
+function esc(s: string): string {
+  return s
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+/** Notificatie naar info@: een chef heeft zich aangemeld voor de chefpool. */
+export async function sendChefpoolNotification(c: ChefpoolSignup): Promise<void> {
+  const to =
+    process.env.CHEFPOOL_NOTIFICATION_EMAIL || "info@culinair-annonu.com";
+  const row = (label: string, value: string) => `
+    <tr>
+      <td style="padding:8px 16px 8px 0;vertical-align:top;color:#C4956A;font-size:11px;letter-spacing:0.25em;text-transform:uppercase;white-space:nowrap;">${label}</td>
+      <td style="padding:8px 0;color:#FAF6F1;">${value}</td>
+    </tr>`;
+  const website = c.website
+    ? `<a href="${esc(c.website)}" style="color:#C4956A;text-decoration:none;">${esc(c.website)}</a>`
+    : `<span style="color:rgba(245,240,232,0.45);">niet ingevuld</span>`;
+
+  const html = wrap(`
+    <p style="margin:0 0 8px;font-size:11px;letter-spacing:0.3em;text-transform:uppercase;color:#C4956A;">Chefpool private dinners</p>
+    <h1 style="margin:0 0 24px;font-size:26px;font-weight:400;color:#FAF6F1;letter-spacing:-0.01em;">Nieuwe aanmelding: ${esc(c.name)}</h1>
+    <table style="width:100%;border-collapse:collapse;font-size:14px;">
+      ${row("Naam", esc(c.name))}
+      ${row("E-mail", `<a href="mailto:${esc(c.email)}" style="color:#C4956A;text-decoration:none;">${esc(c.email)}</a>`)}
+      ${row("Website", website)}
+      ${row("Nu actief in", esc(c.activeRegions.join(", ")))}
+      ${row("Wil koken in", esc(c.wantedRegions.join(", ") || "geen extra regio's"))}
+    </table>
+    <p style="margin:24px 0 0;font-size:12px;color:rgba(245,240,232,0.55);">Beantwoorden gaat direct naar de chef. Bron: culinair-annonu.com/chefpool</p>
+  `);
+
+  await sendViaBrevo({
+    to: { email: to, name: "Culinair AnnoNu" },
+    replyTo: { email: c.email, name: c.name },
+    subject: `Chefpool: nieuwe aanmelding van ${c.name}`,
+    html,
   });
 }
