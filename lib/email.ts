@@ -202,9 +202,9 @@ export async function sendChefpoolNotification(c: ChefpoolSignup): Promise<void>
       <td style="padding:8px 16px 8px 0;vertical-align:top;color:#C4956A;font-size:11px;letter-spacing:0.25em;text-transform:uppercase;white-space:nowrap;">${label}</td>
       <td style="padding:8px 0;color:#FAF6F1;">${value}</td>
     </tr>`;
-  const website = c.website
-    ? `<a href="${esc(c.website)}" style="color:#C4956A;text-decoration:none;">${esc(c.website)}</a>`
-    : `<span style="color:rgba(245,240,232,0.45);">niet ingevuld</span>`;
+  const phone = c.whatsapp
+    ? `${esc(c.phone)} &middot; <a href="${esc(c.whatsapp)}" style="color:#C4956A;text-decoration:none;">WhatsApp</a>`
+    : esc(c.phone);
 
   const html = wrap(`
     <p style="margin:0 0 8px;font-size:11px;letter-spacing:0.3em;text-transform:uppercase;color:#C4956A;">Chefpool private dinners</p>
@@ -212,9 +212,9 @@ export async function sendChefpoolNotification(c: ChefpoolSignup): Promise<void>
     <table style="width:100%;border-collapse:collapse;font-size:14px;">
       ${row("Naam", esc(c.name))}
       ${row("E-mail", `<a href="mailto:${esc(c.email)}" style="color:#C4956A;text-decoration:none;">${esc(c.email)}</a>`)}
-      ${row("Website", website)}
-      ${row("Nu actief in", esc(c.activeRegions.join(", ")))}
-      ${row("Wil koken in", esc(c.wantedRegions.join(", ") || "geen extra regio's"))}
+      ${row("Telefoon", phone)}
+      ${row("Adres", `${esc(c.street)}<br/>${esc(c.postalCode)} ${esc(c.city)}`)}
+      ${row("Regio's", esc(c.regions.join(", ")))}
     </table>
     <p style="margin:24px 0 0;font-size:12px;color:rgba(245,240,232,0.55);">Beantwoorden gaat direct naar de chef. Bron: culinair-annonu.com/chefpool</p>
   `);

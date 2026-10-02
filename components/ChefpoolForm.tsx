@@ -16,48 +16,28 @@ function toggle(list: string[], region: string): string[] {
   return [...list.filter((r) => r !== NATIONWIDE), region];
 }
 
-function RegionPicker({
-  legend,
-  hint,
-  value,
-  onChange,
+function Field({
+  id,
+  label,
+  className = "",
+  ...input
 }: {
-  legend: string;
-  hint?: string;
-  value: string[];
-  onChange: (next: string[]) => void;
-}) {
+  id: string;
+  label: string;
+  className?: string;
+} & React.InputHTMLAttributes<HTMLInputElement>) {
   return (
-    <fieldset>
-      <legend className={labelClass}>{legend}</legend>
-      {hint && <p className="-mt-1 mb-3 text-xs text-cream/45">{hint}</p>}
-      <div className="flex flex-wrap gap-2">
-        {REGIONS.map((r) => {
-          const on = value.includes(r);
-          return (
-            <button
-              key={r}
-              type="button"
-              aria-pressed={on}
-              onClick={() => onChange(toggle(value, r))}
-              className={`rounded-full border px-4 py-2 text-sm transition-all duration-300 ${
-                on
-                  ? "border-gold bg-gold text-charcoal"
-                  : "border-white/15 text-cream/75 hover:border-gold/60 hover:text-cream"
-              } ${r === NATIONWIDE ? "font-medium" : ""}`}
-            >
-              {r}
-            </button>
-          );
-        })}
-      </div>
-    </fieldset>
+    <div className={className}>
+      <label htmlFor={id} className={labelClass}>
+        {label}
+      </label>
+      <input id={id} name={id} required className={inputClass} {...input} />
+    </div>
   );
 }
 
 export default function ChefpoolForm() {
-  const [active, setActive] = useState<string[]>([]);
-  const [wanted, setWanted] = useState<string[]>([]);
+  const [regions, setRegions] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [doneName, setDoneName] = useState<string | null>(null);
@@ -65,8 +45,8 @@ export default function ChefpoolForm() {
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setError(null);
-    if (active.length === 0) {
-      setError("Kies minimaal één regio waar je nu actief bent.");
+    if (regions.length === 0) {
+      setError("Kies minimaal één provincie waar je diners wilt verzorgen.");
       return;
     }
     setLoading(true);
@@ -78,11 +58,13 @@ export default function ChefpoolForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           name,
+          street: fd.get("street"),
+          postalCode: fd.get("postalCode"),
+          city: fd.get("city"),
           email: fd.get("email"),
-          website: fd.get("website"),
+          phone: fd.get("phone"),
           company: fd.get("company"),
-          activeRegions: active,
-          wantedRegions: wanted,
+          regions,
         }),
       });
       const data = await res.json();
@@ -108,73 +90,90 @@ export default function ChefpoolForm() {
           Dank je wel, <span className="italic gold-gradient-text">{doneName}.</span>
         </h3>
         <p className="mx-auto mt-4 max-w-sm text-sm leading-relaxed text-cream/65 md:text-base">
-          Je aanmelding is binnen. We nemen contact met je op voor een
-          kennismaking.
+          Je aanmelding is binnen. We nemen contact met je op.
         </p>
       </div>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-7" noValidate={false}>
-      <div>
-        <label htmlFor="name" className={labelClass}>
-          Naam *
-        </label>
-        <input
-          id="name"
-          name="name"
+    <form onSubmit={handleSubmit} className="space-y-6">
+      <Field
+        id="name"
+        label="Naam *"
+        type="text"
+        autoComplete="name"
+        placeholder="Voor- en achternaam"
+      />
+
+      <Field
+        id="street"
+        label="Adres *"
+        type="text"
+        autoComplete="street-address"
+        placeholder="Straat en huisnummer"
+      />
+
+      <div className="grid gap-4 sm:grid-cols-[2fr_3fr]">
+        <Field
+          id="postalCode"
+          label="Postcode *"
           type="text"
-          required
-          autoComplete="name"
-          placeholder="Voor- en achternaam"
-          className={inputClass}
+          autoComplete="postal-code"
+          placeholder="1234 AB"
+        />
+        <Field
+          id="city"
+          label="Woonplaats *"
+          type="text"
+          autoComplete="address-level2"
+          placeholder="Woonplaats"
         />
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2">
-        <div>
-          <label htmlFor="email" className={labelClass}>
-            E-mailadres *
-          </label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            required
-            autoComplete="email"
-            placeholder="naam@voorbeeld.nl"
-            className={inputClass}
-          />
-        </div>
-        <div>
-          <label htmlFor="website" className={labelClass}>
-            Website
-          </label>
-          <input
-            id="website"
-            name="website"
-            type="text"
-            inputMode="url"
-            autoComplete="url"
-            placeholder="www.jouwsite.nl of @instagram"
-            className={inputClass}
-          />
-        </div>
+        <Field
+          id="email"
+          label="E-mailadres *"
+          type="email"
+          autoComplete="email"
+          placeholder="naam@voorbeeld.nl"
+        />
+        <Field
+          id="phone"
+          label="Telefoonnummer *"
+          type="tel"
+          autoComplete="tel"
+          placeholder="06 12345678"
+        />
       </div>
 
-      <RegionPicker
-        legend="Waar ben je nu actief? *"
-        value={active}
-        onChange={setActive}
-      />
-
-      <RegionPicker
-        legend="Waar wil je (ook) koken?"
-        hint="Optioneel. Kies de regio's waar je naast je huidige werkgebied graag kookt."
-        value={wanted}
-        onChange={setWanted}
-      />
+      <fieldset>
+        <legend className={labelClass}>
+          In welke provincies wil je diners verzorgen? *
+        </legend>
+        <p className="-mt-1 mb-3 text-xs text-cream/45">Kies er zoveel als je wilt.</p>
+        <div className="flex flex-wrap gap-2">
+          {REGIONS.map((r) => {
+            const on = regions.includes(r);
+            return (
+              <button
+                key={r}
+                type="button"
+                aria-pressed={on}
+                onClick={() => setRegions((prev) => toggle(prev, r))}
+                className={`rounded-full border px-4 py-2 text-sm transition-all duration-300 ${
+                  on
+                    ? "border-gold bg-gold text-charcoal"
+                    : "border-white/15 text-cream/75 hover:border-gold/60 hover:text-cream"
+                } ${r === NATIONWIDE ? "font-medium" : ""}`}
+              >
+                {r}
+              </button>
+            );
+          })}
+        </div>
+      </fieldset>
 
       {/* Honeypot: onzichtbaar voor mensen */}
       <div aria-hidden className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
@@ -209,8 +208,8 @@ export default function ChefpoolForm() {
       </button>
 
       <p className="text-center text-[11px] leading-relaxed tracking-[0.12em] text-cream/45">
-        We gebruiken je gegevens alleen om contact met je op te nemen over de
-        chefpool.
+        We gebruiken je gegevens alleen voor de chefpool: om contact met je op te
+        nemen en diners met je af te stemmen via WhatsApp.
       </p>
     </form>
   );

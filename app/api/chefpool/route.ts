@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { REGIONS, type ChefpoolSignup } from "@/lib/chefpool";
+import { REGIONS, whatsappLink, type ChefpoolSignup } from "@/lib/chefpool";
 import { sendChefpoolNotification } from "@/lib/email";
 
 export const dynamic = "force-dynamic";
@@ -8,18 +8,6 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 function str(v: unknown, max = 200): string {
   return typeof v === "string" ? v.trim().slice(0, max) : "";
-}
-
-function regions(v: unknown): string[] {
-  if (!Array.isArray(v)) return [];
-  return REGIONS.filter((r) => v.includes(r));
-}
-
-function normalizeUrl(raw: string): string {
-  if (!raw) return "";
-  if (/^https?:\/\//i.test(raw)) return raw;
-  if (raw.startsWith("@")) return `https://www.instagram.com/${raw.slice(1)}`;
-  return `https://${raw}`;
 }
 
 // Google Sheet koppeling: een Apps Script web-app (zie
@@ -50,19 +38,29 @@ export async function POST(req: NextRequest) {
   // Honeypot: bots vullen dit verborgen veld in, mensen niet.
   if (str(body.company)) return NextResponse.json({ ok: true });
 
+  const phone = str(body.phone, 40);
   const signup: ChefpoolSignup = {
     name: str(body.name, 120),
+    street: str(body.street, 160),
+    postalCode: str(body.postalCode, 16).toUpperCase(),
+    city: str(body.city, 80),
     email: str(body.email, 160),
-    website: normalizeUrl(str(body.website, 200)),
-    activeRegions: regions(body.activeRegions),
-    wantedRegions: regions(body.wantedRegions),
+    phone,
+    whatsapp: whatsappLink(phone),
+    regions: Array.isArray(body.regions)
+      ? REGIONS.filter((r) => (body.regions as unknown[]).includes(r))
+      : [],
   };
 
   const errors: string[] = [];
   if (signup.name.length < 2) errors.push("Vul je naam in.");
+  if (signup.street.length < 4) errors.push("Vul je straat en huisnummer in.");
+  if (signup.postalCode.length < 4) errors.push("Vul je postcode in.");
+  if (signup.city.length < 2) errors.push("Vul je woonplaats in.");
   if (!EMAIL_RE.test(signup.email)) errors.push("Vul een geldig e-mailadres in.");
-  if (signup.activeRegions.length === 0)
-    errors.push("Kies minimaal één regio waar je nu actief bent.");
+  if (phone.replace(/\D/g, "").length < 9) errors.push("Vul een geldig telefoonnummer in.");
+  if (signup.regions.length === 0)
+    errors.push("Kies minimaal één provincie waar je diners wilt verzorgen.");
   if (errors.length > 0) {
     return NextResponse.json({ error: errors.join(" ") }, { status: 400 });
   }

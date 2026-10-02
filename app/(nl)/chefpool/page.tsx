@@ -27,8 +27,8 @@ const facts = [
 
 const steps = [
   "Meld je aan met het formulier.",
-  "We nemen contact met je op voor een kennismaking.",
-  "Klikt het, dan plannen we je in voor diners in jouw regio.",
+  "We nemen contact met je op.",
+  "Je komt in onze WhatsApp-groep, waarin we de diners in jouw regio uitvragen.",
 ];
 
 export default function ChefpoolPage() {
@@ -52,8 +52,8 @@ export default function ChefpoolPage() {
             <Reveal>
               <div className="grid grid-cols-2 gap-px overflow-hidden rounded-sm border border-white/10 bg-white/[0.06]">
                 {facts.map((f) => (
-                  <div key={f.value} className="bg-charcoal p-5 sm:p-6 md:p-7">
-                    <div className="whitespace-nowrap font-display text-[22px] text-gold sm:text-3xl md:text-4xl">
+                  <div key={f.value} className="bg-charcoal p-5 sm:p-6">
+                    <div className="whitespace-nowrap font-display text-[22px] text-gold sm:text-3xl lg:text-2xl xl:text-4xl">
                       {f.value}
                     </div>
                     <div className="mt-2 text-[11px] uppercase tracking-[0.22em] text-cream/55">
