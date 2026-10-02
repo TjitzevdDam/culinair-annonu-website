@@ -13,17 +13,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Chefpool private dinners | Culinair AnnoNu",
     description:
-      "Private dinners door heel Nederland, meestal voor vier personen, van maandag tot en met donderdag. Meld je aan voor onze chefpool.",
+      "Door heel Nederland verzorgen we doorgaans viergangendiners voor zes personen, van maandag tot en met donderdag. Meld je aan voor onze chefpool.",
     images: [{ url: "/images/gerecht-tartaar.jpg", width: 1200, height: 800 }],
   },
 };
-
-const facts = [
-  { value: "Vaak 4", label: "personen per diner" },
-  { value: "Jouw menu", label: "gangen en gasten flexibel" },
-  { value: "Ma t/m do", label: "doordeweekse avonden" },
-  { value: "Heel NL", label: "jij kiest je provincies" },
-];
 
 const steps = [
   "Meld je aan met het formulier.",
@@ -50,21 +43,12 @@ export default function ChefpoolPage() {
         <div className="mx-auto grid max-w-[1320px] gap-14 px-6 md:px-10 lg:grid-cols-[5fr_7fr] lg:gap-20">
           <div>
             <Reveal>
-              <div className="grid grid-cols-2 gap-px overflow-hidden rounded-sm border border-white/10 bg-white/[0.06]">
-                {facts.map((f) => (
-                  <div key={f.value} className="bg-charcoal p-5 sm:p-6">
-                    <div className="whitespace-nowrap font-display text-[22px] text-gold sm:text-3xl lg:text-2xl xl:text-4xl">
-                      {f.value}
-                    </div>
-                    <div className="mt-2 text-[11px] uppercase tracking-[0.22em] text-cream/55">
-                      {f.label}
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <p className="mt-5 text-sm leading-relaxed text-cream/60">
-                De meeste aanvragen zijn voor vier personen. Het aantal gasten en
-                gangen ligt niet vast: dat stemmen we per diner af.
+              <p className="border-l-2 border-gold pl-6 font-display text-2xl leading-snug text-cream md:text-3xl">
+                Door heel Nederland verzorgen we doorgaans{" "}
+                <span className="italic text-gold-light">
+                  viergangendiners voor zes personen
+                </span>
+                , van maandag tot en met donderdag.
               </p>
             </Reveal>
 
