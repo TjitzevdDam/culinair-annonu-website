@@ -13,16 +13,16 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Chefpool private dinners | Culinair AnnoNu",
     description:
-      "Viergangendiners voor maximaal zes personen, maandag tot en met donderdag, door heel Nederland. Meld je aan voor onze chefpool.",
+      "Private dinners door heel Nederland, meestal voor vier personen, van maandag tot en met donderdag. Meld je aan voor onze chefpool.",
     images: [{ url: "/images/gerecht-tartaar.jpg", width: 1200, height: 800 }],
   },
 };
 
 const facts = [
-  { value: "Max. 6", label: "personen per diner" },
-  { value: "4 gangen", label: "per diner" },
+  { value: "Vaak 4", label: "personen per diner" },
+  { value: "Jouw menu", label: "gangen en gasten flexibel" },
   { value: "Ma t/m do", label: "doordeweekse avonden" },
-  { value: "Heel NL", label: "jij kiest je regio's" },
+  { value: "Heel NL", label: "jij kiest je provincies" },
 ];
 
 const steps = [
@@ -62,6 +62,10 @@ export default function ChefpoolPage() {
                   </div>
                 ))}
               </div>
+              <p className="mt-5 text-sm leading-relaxed text-cream/60">
+                De meeste aanvragen zijn voor vier personen. Het aantal gasten en
+                gangen ligt niet vast: dat stemmen we per diner af.
+              </p>
             </Reveal>
 
             <Reveal delay={0.1}>
