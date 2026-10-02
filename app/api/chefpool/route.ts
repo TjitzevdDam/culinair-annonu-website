@@ -77,7 +77,8 @@ export async function POST(req: NextRequest) {
     return NextResponse.json(
       {
         error:
-          "Je aanmelding kon niet worden verstuurd. Mail je gegevens naar info@culinair-annonu.com.",
+          "Het versturen lukte niet. Stuur je aanmelding hieronder met één klik per mail.",
+        fallback: "mail",
       },
       { status: 500 },
     );

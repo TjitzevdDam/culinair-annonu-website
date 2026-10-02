@@ -40,11 +40,13 @@ export default function ChefpoolForm() {
   const [regions, setRegions] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [mailFallback, setMailFallback] = useState<string | null>(null);
   const [doneName, setDoneName] = useState<string | null>(null);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setError(null);
+    setMailFallback(null);
     if (regions.length === 0) {
       setError("Kies minimaal één provincie waar je diners wilt verzorgen.");
       return;
@@ -70,6 +72,21 @@ export default function ChefpoolForm() {
       const data = await res.json();
       if (!res.ok) {
         setError(data.error || "Er ging iets mis. Probeer het opnieuw.");
+        // Vangnet: lukt opslaan niet, dan gaan de gegevens kant-en-klaar per mail.
+        if (data.fallback === "mail") {
+          const body = [
+            `Naam: ${name}`,
+            `Adres: ${fd.get("street")}, ${fd.get("postalCode")} ${fd.get("city")}`,
+            `E-mail: ${fd.get("email")}`,
+            `Telefoon: ${fd.get("phone")}`,
+            `Provincies: ${regions.join(", ")}`,
+          ].join("\n");
+          setMailFallback(
+            `mailto:info@culinair-annonu.com?subject=${encodeURIComponent(
+              `Aanmelding chefpool: ${name}`,
+            )}&body=${encodeURIComponent(body)}`,
+          );
+        }
         setLoading(false);
         return;
       }
@@ -182,9 +199,17 @@ export default function ChefpoolForm() {
       </div>
 
       {error && (
-        <p className="rounded-md border border-red-500/40 bg-red-500/10 px-4 py-3 text-sm text-red-200">
-          {error}
-        </p>
+        <div className="rounded-md border border-red-500/40 bg-red-500/10 px-4 py-3 text-sm text-red-200">
+          <p>{error}</p>
+          {mailFallback && (
+            <a
+              href={mailFallback}
+              className="mt-3 inline-flex items-center gap-2 rounded-full border border-gold/60 px-5 py-2 text-[11px] uppercase tracking-[0.2em] text-gold-light transition-colors hover:bg-gold hover:text-charcoal"
+            >
+              Verstuur per mail →
+            </a>
+          )}
+        </div>
       )}
 
       <button
