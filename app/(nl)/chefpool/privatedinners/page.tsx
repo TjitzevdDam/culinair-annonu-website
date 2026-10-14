@@ -183,10 +183,10 @@ export default function ChefpoolAfsprakenPage() {
           <p>
             Vragen? Stuur Flora een bericht of mail naar{" "}
             <a
-              href="mailto:flora@culinair-annonu.com"
+              href="mailto:info@culinair-annonu.com"
               className="text-cream/85 underline decoration-gold/40 underline-offset-4 hover:text-gold-light"
             >
-              flora@culinair-annonu.com
+              info@culinair-annonu.com
             </a>
             .
           </p>
